@@ -8,15 +8,12 @@
   <style>
     :root{
       --bg:#0b1220;
-      --card:#121c33;
-      --card2:#0f1830;
       --text:#e9eefc;
       --muted:#9fb0d0;
       --border:rgba(255,255,255,.10);
       --accent:#5eead4;
       --danger:#fb7185;
       --warn:#fbbf24;
-      --ok:#34d399;
       --shadow:0 12px 40px rgba(0,0,0,.35);
       --radius:18px;
     }
@@ -33,65 +30,42 @@
       justify-content:center;
       padding:14px;
     }
-    .app{
-      width:min(560px, 100%);
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
+    .app{width:min(560px,100%);display:flex;flex-direction:column;gap:12px}
     .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:12px 14px;
-      border:1px solid var(--border);
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:12px 14px;border:1px solid var(--border);
       background: rgba(18,28,51,.62);
       backdrop-filter: blur(10px);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      position: sticky;
-      top: 10px;
-      z-index: 3;
+      position: sticky; top: 10px; z-index: 3;
     }
-    .brand{display:flex; flex-direction:column; gap:2px; min-width: 170px;}
-    .brand .title{font-weight:800; letter-spacing:.2px; font-size: 14px;}
-    .brand .sub{font-size:12px; color:var(--muted)}
-    .stats{
-      display:flex; align-items:center; gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
+    .brand{display:flex;flex-direction:column;gap:2px;min-width:170px}
+    .brand .title{font-weight:800;letter-spacing:.2px;font-size:14px}
+    .brand .sub{font-size:12px;color:var(--muted)}
+    .stats{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
     .pill{
-      display:flex; align-items:center; gap:8px;
-      padding:8px 10px;
+      display:flex;align-items:center;gap:8px;padding:8px 10px;
       background: rgba(15,24,48,.7);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-size: 12.5px;
-      color: var(--text);
-      white-space:nowrap;
+      border:1px solid var(--border);
+      border-radius:999px;
+      font-size:12.5px;white-space:nowrap
     }
     .pill b{font-size:13px}
     .iconbtn{
-      appearance:none;
-      border:1px solid var(--border);
+      appearance:none;border:1px solid var(--border);
       background: rgba(15,24,48,.65);
       color: var(--text);
-      border-radius: 12px;
-      padding:10px 12px;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      cursor:pointer;
-      box-shadow: 0 10px 24px rgba(0,0,0,.25);
-      transition: transform .06s ease, border-color .15s ease, background .15s ease;
+      border-radius:12px;padding:10px 12px;
+      display:inline-flex;align-items:center;gap:10px;
+      cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.25);
+      transition: transform .06s ease, border-color .15s ease;
       user-select:none;
     }
     .iconbtn:active{transform: translateY(1px) scale(.99)}
     .iconbtn:hover{border-color: rgba(94,234,212,.45)}
     .danger:hover{border-color: rgba(251,113,133,.55)}
-    .icon{width:18px;height:18px; display:inline-block; filter: drop-shadow(0 6px 10px rgba(0,0,0,.35));}
+    .icon{width:18px;height:18px;display:inline-block;filter: drop-shadow(0 6px 10px rgba(0,0,0,.35))}
     .card{
       border:1px solid var(--border);
       background: rgba(18,28,51,.62);
@@ -100,218 +74,114 @@
       box-shadow: var(--shadow);
       overflow:hidden;
     }
-    .section{padding:14px;}
+    .section{padding:14px}
     details{
-      border: 1px solid var(--border);
+      border:1px solid var(--border);
       background: rgba(15,24,48,.55);
-      border-radius: 14px;
-      padding: 10px 12px;
+      border-radius:14px;
+      padding:10px 12px;
     }
-    summary{
-      cursor:pointer;
-      font-weight:700;
-      list-style:none;
-      outline:none;
-    }
+    summary{cursor:pointer;font-weight:700;list-style:none;outline:none}
     summary::-webkit-details-marker{display:none}
     .hintgrid{
-      margin-top:10px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-      color:var(--muted);
-      font-size: 13px;
-      line-height: 1.35;
+      margin-top:10px;display:grid;grid-template-columns:1fr;gap:10px;
+      color:var(--muted);font-size:13px;line-height:1.35
     }
     .hintgrid .bubble{
       border:1px solid var(--border);
       background: rgba(18,28,51,.45);
-      border-radius: 12px;
-      padding:10px 10px;
-      color: var(--text);
+      border-radius:12px;padding:10px 10px;color:var(--text)
     }
-    .hintgrid .bubble small{display:block; color:var(--muted);margin-top:6px}
+    .hintgrid .bubble small{display:block;color:var(--muted);margin-top:6px}
 
-    .game{display:flex; flex-direction:column; gap:12px;}
+    .game{display:flex;flex-direction:column;gap:12px}
     .qcard{
       padding:14px;
       background: linear-gradient(180deg, rgba(15,24,48,.55), rgba(18,28,51,.4));
-      border-top: 1px solid var(--border);
+      border-top:1px solid var(--border)
     }
     .qmeta{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px; flex-wrap:wrap;
-      color: var(--muted);
-      font-size: 12.5px;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+      color:var(--muted);font-size:12.5px
     }
     .qtext{
-      margin-top:10px;
-      font-size: 18px;
-      line-height: 1.25;
-      font-weight: 800;
-      letter-spacing: .2px;
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
+      margin-top:10px;font-size:18px;line-height:1.25;font-weight:800;letter-spacing:.2px;
+      display:flex;gap:10px;align-items:flex-start
     }
     .tag{
-      flex:0 0 auto;
-      display:inline-flex; align-items:center;
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(94,234,212,.12);
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 800;
-      transform: translateY(2px);
+      flex:0 0 auto;display:inline-flex;align-items:center;padding:2px 8px;
+      border-radius:999px;border:1px solid var(--border);
+      background: rgba(94,234,212,.12);color: var(--accent);
+      font-size:12px;font-weight:800;transform: translateY(2px)
     }
 
-    .inputrow{display:grid; grid-template-columns: 1fr; gap:10px;}
-    label{font-size: 12.5px; color: var(--muted);}
+    .inputrow{display:grid;grid-template-columns:1fr;gap:10px}
+    label{font-size:12.5px;color:var(--muted)}
     input{
-      width:100%;
-      border: 1px solid var(--border);
-      background: rgba(15,24,48,.7);
-      color: var(--text);
-      border-radius: 14px;
-      padding: 12px 12px;
-      font-size: 15px;
-      outline:none;
+      width:100%;border:1px solid var(--border);background: rgba(15,24,48,.7);
+      color:var(--text);border-radius:14px;padding:12px 12px;font-size:15px;outline:none
     }
-    input:focus{
-      border-color: rgba(94,234,212,.55);
-      box-shadow: 0 0 0 4px rgba(94,234,212,.12);
-    }
-
-    .btnrow{
-      display:grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap:10px;
-      margin-top: 8px;
-    }
+    input:focus{border-color: rgba(94,234,212,.55);box-shadow:0 0 0 4px rgba(94,234,212,.12)}
+    .btnrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:8px}
     .btn{
-      appearance:none;
-      border: 1px solid var(--border);
-      background: rgba(15,24,48,.65);
-      color: var(--text);
-      border-radius: 14px;
-      padding: 12px 12px;
-      font-weight: 800;
-      font-size: 14px;
-      cursor:pointer;
-      transition: transform .06s ease, border-color .15s ease, background .15s ease;
+      appearance:none;border:1px solid var(--border);background: rgba(15,24,48,.65);
+      color:var(--text);border-radius:14px;padding:12px 12px;
+      font-weight:800;font-size:14px;cursor:pointer;
+      transition: transform .06s ease, border-color .15s ease;
       user-select:none;
     }
     .btn:active{transform: translateY(1px) scale(.99)}
     .btn:hover{border-color: rgba(94,234,212,.45)}
-    .btn.primary{
-      border-color: rgba(94,234,212,.35);
-      background: rgba(94,234,212,.14);
-    }
+    .btn.primary{border-color: rgba(94,234,212,.35);background: rgba(94,234,212,.14)}
     .btn.primary:hover{border-color: rgba(94,234,212,.65)}
-    .btn.warn{
-      border-color: rgba(251,191,36,.35);
-      background: rgba(251,191,36,.12);
-    }
+    .btn.warn{border-color: rgba(251,191,36,.35);background: rgba(251,191,36,.12)}
     .btn.warn:hover{border-color: rgba(251,191,36,.65)}
-    .btn.ghost{background: rgba(15,24,48,.35);}
-
-    .smallnote{color: var(--muted); font-size: 12.5px; line-height: 1.35;}
+    .btn.ghost{background: rgba(15,24,48,.35)}
+    .smallnote{color:var(--muted);font-size:12.5px;line-height:1.35}
     .footer{
-      padding: 12px 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 12px;
+      padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+      border-top:1px solid var(--border);color:var(--muted);font-size:12px
     }
 
-    .end{padding: 16px 14px; display:flex; flex-direction:column; gap: 10px;}
-    .end h2{margin:0; font-size: 18px; letter-spacing:.2px;}
+    .end{padding:16px 14px;display:flex;flex-direction:column;gap:10px}
+    .end h2{margin:0;font-size:18px;letter-spacing:.2px}
     .mono{
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,"Liberation Mono","Courier New", monospace;
-      font-size: 12px;
-      color: #cfe3ff;
-      background: rgba(15,24,48,.7);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 10px;
-      overflow:auto;
-      max-height: 240px;
-      white-space: pre-wrap;
-      word-break: break-word;
+      font-size:12px;color:#cfe3ff;background: rgba(15,24,48,.7);
+      border:1px solid var(--border);border-radius:14px;padding:10px;
+      overflow:auto;max-height:240px;white-space:pre-wrap;word-break:break-word
     }
-    .hidden{display:none !important;}
-
+    .hidden{display:none !important}
     .toast{
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 16px;
-      background: rgba(15,24,48,.86);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      box-shadow: var(--shadow);
-      opacity: 0;
-      pointer-events:none;
-      transition: opacity .2s ease, transform .2s ease;
-      z-index: 999;
+      position: fixed; left:50%; transform: translateX(-50%); bottom:16px;
+      background: rgba(15,24,48,.86); border:1px solid var(--border); color:var(--text);
+      padding:10px 12px; border-radius:999px; font-size:13px; box-shadow: var(--shadow);
+      opacity:0; pointer-events:none; transition: opacity .2s ease, transform .2s ease; z-index:999;
     }
-    .toast.show{opacity: 1; transform: translateX(-50%) translateY(-4px);}
+    .toast.show{opacity:1; transform: translateX(-50%) translateY(-4px)}
 
-    /* Start overlay */
     .overlay{
-      position: fixed;
-      inset: 0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 14px;
-      background: rgba(0,0,0,.55);
-      backdrop-filter: blur(6px);
-      z-index: 9999;
+      position: fixed; inset:0; display:flex; align-items:center; justify-content:center;
+      padding:14px; background: rgba(0,0,0,.55); backdrop-filter: blur(6px); z-index:9999;
     }
     .modal{
-      width:min(520px, 100%);
-      border:1px solid var(--border);
-      background: rgba(18,28,51,.86);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      overflow:hidden;
+      width:min(520px,100%); border:1px solid var(--border); background: rgba(18,28,51,.86);
+      border-radius:22px; box-shadow: var(--shadow); overflow:hidden;
     }
-    .modalHead{
-      padding: 14px 14px 10px 14px;
-      border-bottom: 1px solid var(--border);
-    }
-    .modalHead h1{
-      margin:0;
-      font-size: 18px;
-      letter-spacing:.2px;
-    }
-    .modalHead p{margin:6px 0 0 0; color: var(--muted); font-size: 13px; line-height: 1.35;}
-    .modalBody{padding: 14px;}
-    .modalBody .row{display:grid; gap:10px;}
+    .modalHead{padding:14px 14px 10px 14px; border-bottom:1px solid var(--border)}
+    .modalHead h1{margin:0; font-size:18px; letter-spacing:.2px}
+    .modalHead p{margin:6px 0 0 0; color:var(--muted); font-size:13px; line-height:1.35}
+    .modalBody{padding:14px}
+    .modalBody .row{display:grid; gap:10px}
     .modalFoot{
-      padding:14px;
-      border-top: 1px solid var(--border);
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
+      padding:14px; border-top:1px solid var(--border);
+      display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap:wrap;
     }
 
-    @media (max-width: 360px){
-      .qtext{font-size: 17px}
-      .btnrow{grid-template-columns: 1fr}
-      .brand{min-width: 120px}
+    @media (max-width:360px){
+      .qtext{font-size:17px}
+      .btnrow{grid-template-columns:1fr}
+      .brand{min-width:120px}
     }
   </style>
 </head>
@@ -340,10 +210,10 @@
         <summary>🗣️ How to ask (use these patterns)</summary>
         <div class="hintgrid">
           <div class="bubble"><b>Do you… ?</b><small>Do you like coffee? / Do you play football?</small></div>
-          <div class="bubble"><b>Did you… today / yesterday?</b><small>Did you wake up before 7? / Did you eat breakfast?</small></div>
-          <div class="bubble"><b>Can you… ?</b><small>Can you name 3 past tense verbs? / Can you whistle?</small></div>
-          <div class="bubble"><b>Have you ever… ?</b><small>Have you ever traveled by plane? / Have you ever cooked pasta?</small></div>
-          <div class="bubble"><b>Follow-up</b><small>Really? When? / What’s your favorite? / How often?</small></div>
+          <div class="bubble"><b>Did you… today / yesterday?</b><small>Did you eat breakfast? / Did you watch a movie?</small></div>
+          <div class="bubble"><b>Can you… ?</b><small>Can you whistle? / Can you do a magic trick?</small></div>
+          <div class="bubble"><b>Have you ever… ?</b><small>Have you ever traveled by plane? / Have you ever camped?</small></div>
+          <div class="bubble"><b>Follow-up</b><small>Really? When? / Why? / What happened?</small></div>
         </div>
       </details>
       <div class="smallnote" style="margin-top:10px;">
@@ -360,13 +230,13 @@
         </div>
 
         <div class="qtext" aria-live="polite">
-          <span class="tag" id="qTag">Q</span>
+          <span class="tag">Q</span>
           <span id="questionText">Loading…</span>
         </div>
 
         <div class="inputrow" style="margin-top:12px;">
           <div>
-            <label for="answerInput">Name of the classmate you found:</label>
+            <label for="answerInput">Who did you find? (type their name)</label>
             <input id="answerInput" inputmode="text" autocomplete="off" placeholder="e.g., Dasha / Ivan / Alina" />
           </div>
         </div>
@@ -424,7 +294,7 @@
             <input id="playerName" placeholder="e.g., Andrey" autocomplete="name" />
           </div>
           <div class="smallnote">
-            Your name will be used in the final submission (Google Form) and inside the JSON results.
+            Your name will be used in the final submission and inside the JSON results.
           </div>
         </div>
       </div>
@@ -452,70 +322,70 @@
   const ENTRY_NAME = "entry.1602674571";
   const ENTRY_JSON = "entry.1616965797";
 
-  const STORAGE_KEY = "fsw_game_v2";
+  const STORAGE_KEY = "fsw_game_v2_fun";
 
-  // 60 questions
+  // --------- FUN 60 QUESTIONS (replaced boring grammar ones) ----------
   const QUESTIONS = [
     "Find someone who woke up before 7 AM today.",
+    "Find someone who hit the snooze button 3+ times today.",
     "Find someone who drank coffee today.",
-    "Find someone who can name 3 verbs in the past tense.",
-    "Find someone who has a pet at home.",
-    "Find someone who walked to school today.",
-    "Find someone who took a bus today.",
-    "Find someone who ate breakfast today.",
-    "Find someone who can say the days of the week in English.",
-    "Find someone who can say 5 colors in English.",
-    "Find someone who can spell their last name in English.",
-    "Find someone who likes tea more than coffee.",
-    "Find someone who listens to music every day.",
-    "Find someone who watched a movie this week.",
-    "Find someone who played a video game yesterday.",
-    "Find someone who can say 10 numbers in English fast.",
-    "Find someone who can name 3 countries in English.",
-    "Find someone who knows an English tongue-twister (even short).",
-    "Find someone who has been to another city this month.",
-    "Find someone who likes winter more than summer.",
-    "Find someone who likes summer more than winter.",
+    "Find someone who drank tea today.",
+    "Find someone who ate something sweet today.",
+    "Find someone who forgot something at home this week.",
+    "Find someone who lost their keys at least once in their life.",
+    "Find someone who has a funny ringtone or notification sound.",
     "Find someone who can whistle.",
-    "Find someone who can cook one simple dish.",
+    "Find someone who can snap their fingers loudly.",
+    "Find someone who can do a cool dance move.",
+    "Find someone who can do a magic trick (even a simple one).",
+    "Find someone who can juggle (even 2 items).",
+    "Find someone who can draw well.",
+    "Find someone who plays a musical instrument.",
+    "Find someone who has watched an anime this month.",
+    "Find someone who watched a movie this week.",
+    "Find someone who watched the same movie 3+ times.",
+    "Find someone who likes horror movies.",
+    "Find someone who prefers comedy movies.",
+    "Find someone who loves winter more than summer.",
+    "Find someone who loves summer more than winter.",
+    "Find someone who loves rain.",
+    "Find someone who hates rain.",
+    "Find someone who likes spicy food.",
+    "Find someone who tried super spicy noodles before.",
+    "Find someone who likes pineapple on pizza.",
+    "Find someone who absolutely hates pineapple on pizza.",
+    "Find someone who loves sushi.",
+    "Find someone who has tried bubble tea.",
+    "Find someone who can recommend a good game (mobile/PC/console).",
+    "Find someone who played a video game yesterday.",
+    "Find someone who has a weird/funny nickname.",
+    "Find someone who has a lucky item (ring, coin, bracelet, etc.).",
+    "Find someone who collects something (cards, stickers, coins, anything).",
+    "Find someone who has a pet at home.",
+    "Find someone who wants a pet (but doesn’t have one).",
+    "Find someone who has a cat.",
+    "Find someone who has a dog.",
+    "Find someone who prefers cats to dogs.",
+    "Find someone who prefers dogs to cats.",
+    "Find someone who has been camping before.",
+    "Find someone who has slept in a tent before.",
+    "Find someone who has traveled by plane before.",
+    "Find someone who has been to another country.",
+    "Find someone who has a friend in another city/country.",
+    "Find someone who has stayed up all night (at least once).",
+    "Find someone who can keep a straight face in a staring contest.",
+    "Find someone who laughed so hard they cried (recently).",
+    "Find someone who had a funny dream recently.",
+    "Find someone who can tell a short joke in English.",
+    "Find someone who knows a funny meme right now.",
+    "Find someone who can say “hello” in 3 languages.",
+    "Find someone who loves sports.",
     "Find someone who can ride a bicycle.",
     "Find someone who can swim.",
-    "Find someone who has a favorite English song.",
-    "Find someone who has read a book this month.",
-    "Find someone who uses English on YouTube or TikTok sometimes.",
-    "Find someone who can say 3 irregular verbs (go–went, etc.).",
-    "Find someone who can make a question with 'Do you…?'",
-    "Find someone who can make a question with 'Did you…?'",
-    "Find someone who can make a question with 'Can you…?'",
-    "Find someone who can make a question with 'Have you ever…?'",
-    "Find someone who likes pizza.",
-    "Find someone who likes sushi.",
-    "Find someone who likes spicy food.",
-    "Find someone who has a hobby (any hobby).",
-    "Find someone who can name 5 school subjects in English.",
-    "Find someone who can name 3 animals in English.",
-    "Find someone who can name 3 fruits in English.",
-    "Find someone who can name 3 vegetables in English.",
-    "Find someone who can name 3 jobs in English.",
-    "Find someone who can tell the time in English (e.g., 'It’s half past…').",
-    "Find someone who was late once this week (honestly 😄).",
-    "Find someone who is always on time.",
-    "Find someone who likes mornings.",
-    "Find someone who likes nights.",
-    "Find someone who can say 'I like… / I don’t like…' correctly.",
-    "Find someone who can say 3 adjectives (big, small, interesting…).",
-    "Find someone who can explain one English word (simple meaning).",
-    "Find someone who can say 3 activities (play, read, watch…).",
-    "Find someone who can make a sentence in the past (Yesterday I… ).",
-    "Find someone who can make a sentence in the future (Tomorrow I will… ).",
-    "Find someone who can make a sentence with 'because'.",
-    "Find someone who can ask: 'What did you do yesterday?'",
-    "Find someone who can answer: 'I went… / I played… / I watched…'.",
-    "Find someone who can say one compliment in English.",
-    "Find someone who can say one polite phrase in English (please / sorry / excuse me).",
-    "Find someone who can name 3 items in a classroom in English.",
-    "Find someone who can name 3 clothes items in English.",
-    "Find someone who can say their favorite food in English.",
+    "Find someone who has tried ice skating.",
+    "Find someone who has sung karaoke before.",
+    "Find someone who can cook one tasty dish.",
+    "Find someone who has baked cookies or a cake before."
   ];
 
   // ---------------- DOM ----------------
@@ -593,18 +463,17 @@
     const order = shuffle(QUESTIONS);
     return {
       version: 2,
-      // set later:
       playerName: "",
-      startedAt: null,              // timer baseline (ms). null until Start pressed.
+      startedAt: null,
       durationSec: TOTAL_SECONDS,
 
-      order,                         // shuffled questions
+      order,
       total: order.length,
       currentIndex: 0,
       questionStartAt: null,
 
       skipped: [],
-      answeredMap: {},               // idx -> {question, person, time_sec, stars}
+      answeredMap: {},
       totalStars: 0,
 
       ended: false,
@@ -644,10 +513,8 @@
 
     if (!hasName || !started) {
       startOverlay.classList.remove("hidden");
-      // prefill if exists
       playerNameInput.value = state.playerName || "";
       setTimeout(() => playerNameInput.focus(), 50);
-      // timer display when not started
       timeLeftEl.textContent = msToClock(TOTAL_SECONDS * 1000);
       return true;
     }
@@ -669,7 +536,7 @@
     const total = state.total;
     for (let i = idx + 1; i < total; i++) if (!state.answeredMap[i]) return i;
     for (let i = 0; i < total; i++) if (!state.answeredMap[i]) return i;
-    return total; // none left
+    return total;
   }
 
   function currentIndexValid() {
@@ -681,12 +548,8 @@
     timerInterval = setInterval(() => {
       const left = secondsLeft();
       timeLeftEl.textContent = msToClock(left * 1000);
-
-      if (left <= 0 && !state.ended) {
-        endGame("Time is up ⏱️");
-      }
+      if (left <= 0 && !state.ended) endGame("Time is up ⏱️");
     }, 250);
-
     timeLeftEl.textContent = msToClock(secondsLeft() * 1000);
   }
 
@@ -694,17 +557,14 @@
     const answered = Object.keys(state.answeredMap)
       .map(k => ({ idx: Number(k), ...state.answeredMap[k] }))
       .sort((a,b)=>a.idx-b.idx)
-      .map(x => ({
-        q: x.question,
-        person: x.person,
-        time_sec: x.time_sec,
-        stars: x.stars
-      }));
+      .map(x => ({ q: x.question, person: x.person, time_sec: x.time_sec, stars: x.stars }));
 
     const skipped = (state.skipped || []).map(i => state.order[i]).filter(Boolean);
 
     const endTime = state.endedAt || now();
-    const spentSec = state.startedAt ? Math.min(state.durationSec, Math.max(0, Math.floor((endTime - state.startedAt)/1000))) : 0;
+    const spentSec = state.startedAt
+      ? Math.min(state.durationSec, Math.max(0, Math.floor((endTime - state.startedAt)/1000)))
+      : 0;
 
     return {
       game: "FindSomeoneWho",
@@ -721,7 +581,6 @@
   }
 
   function sendToGoogleForm(payloadObj) {
-    // POST to /formResponse via hidden iframe (works on GitHub Pages)
     const json = safeStringify(payloadObj);
 
     hiddenForm.action = FORM_POST_URL;
@@ -784,20 +643,17 @@
       endGame("All questions finished ✅");
       return;
     }
-    // if current is already answered (can happen after reload), jump
+
     if (state.answeredMap[state.currentIndex]) {
       state.currentIndex = nextUnansweredFrom(state.currentIndex);
       saveState();
       if (!currentIndexValid()) { endGame("All questions finished ✅"); return; }
     }
 
-    const q = state.order[state.currentIndex];
-    questionTextEl.textContent = q;
+    questionTextEl.textContent = state.order[state.currentIndex];
 
-    // prepare per-question timer baseline
     if (!state.questionStartAt) state.questionStartAt = now();
 
-    // clear & focus
     answerInputEl.value = "";
     setTimeout(() => answerInputEl.focus(), 50);
   }
@@ -805,19 +661,13 @@
   // ---------------- Events ----------------
   startBtn.addEventListener("click", () => {
     const name = (playerNameInput.value || "").trim();
-    if (name.length < 2) {
-      toast("Type your name ✍️");
-      playerNameInput.focus();
-      return;
-    }
+    if (name.length < 2) { toast("Type your name ✍️"); playerNameInput.focus(); return; }
 
     state.playerName = name;
-
-    // Start timer only once if not started
     if (!state.startedAt) state.startedAt = now();
     if (!state.questionStartAt) state.questionStartAt = now();
-
     saveState();
+
     startOverlay.classList.add("hidden");
     playerLineEl.textContent = `Player: ${state.playerName}`;
     toast("Started ▶");
@@ -825,7 +675,6 @@
     renderQuestion();
   });
 
-  // allow Enter to start
   playerNameInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") startBtn.click();
   });
@@ -837,7 +686,6 @@
     state = freshState();
     saveState();
     toast("Reset ✅");
-    // show start overlay again
     ensureStartOverlay();
     renderQuestion();
   });
@@ -870,11 +718,7 @@
     if (!requireStarted() || state.ended) return;
 
     const person = (answerInputEl.value || "").trim();
-    if (person.length < 2) {
-      toast("Type a classmate name ✍️");
-      answerInputEl.focus();
-      return;
-    }
+    if (person.length < 2) { toast("Type a name ✍️"); answerInputEl.focus(); return; }
 
     const idx = state.currentIndex;
     const q = state.order[idx];
@@ -884,8 +728,6 @@
 
     state.answeredMap[idx] = { question: q, person, time_sec: tSec, stars };
     state.totalStars += stars;
-
-    // remove from skipped
     state.skipped = (state.skipped || []).filter(i => i !== idx);
 
     state.history.push({type:"answer", idx, person, time_sec: tSec, stars, at: now()});
@@ -896,14 +738,10 @@
 
     toast(`+${stars}⭐`);
 
-    if (countAnswered() >= state.total) {
-      endGame("All questions finished ✅");
-      return;
-    }
+    if (countAnswered() >= state.total) { endGame("All questions finished ✅"); return; }
     renderQuestion();
   });
 
-  // Enter = Answer
   answerInputEl.addEventListener("keydown", (e) => {
     if (e.key === "Enter") answerBtn.click();
   });
@@ -911,7 +749,6 @@
   backBtn.addEventListener("click", () => {
     if (!requireStarted() || state.ended) return;
 
-    // go back to last history item (if exists)
     for (let k = (state.history || []).length - 1; k >= 0; k--) {
       const idx = state.history[k].idx;
       if (typeof idx === "number" && idx !== state.currentIndex) {
@@ -937,29 +774,23 @@
     renderQuestion();
   });
 
-  // Save on background
   document.addEventListener("visibilitychange", () => saveState());
 
   // ---------------- Boot ----------------
-  // Validate questions count:
   if (QUESTIONS.length !== TOTAL_QUESTIONS) {
     console.warn("QUESTIONS length:", QUESTIONS.length, "expected:", TOTAL_QUESTIONS);
   }
 
-  // attach form names (stable)
   hiddenForm.action = FORM_POST_URL;
   fName.name = ENTRY_NAME;
   fJson.name = ENTRY_JSON;
 
   const needsStart = ensureStartOverlay();
 
-  // If already started before and time expired, end immediately
   if (state.startedAt && secondsLeft() <= 0 && !state.ended) {
     endGame("Time is up ⏱️");
   } else {
-    // If started, run timer
     if (state.startedAt) startTimer();
-    // Render question (or just show overlay)
     if (!needsStart) renderQuestion();
   }
 })();
