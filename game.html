@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Find Someone Who — Class Game</title>
+  <meta name="description" content="Find Someone Who — timed English class game. Works on GitHub Pages." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#121c33;
+      --card2:#0f1830;
+      --text:#e9eefc;
+      --muted:#9fb0d0;
+      --border:rgba(255,255,255,.10);
+      --accent:#5eead4;
+      --danger:#fb7185;
+      --warn:#fbbf24;
+      --ok:#34d399;
+      --shadow:0 12px 40px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% 0%, rgba(94,234,212,.12), transparent 50%),
+                  radial-gradient(900px 700px at 90% 30%, rgba(251,113,133,.10), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      display:flex;
+      justify-content:center;
+      padding:14px;
+    }
+    .app{
+      width:min(560px, 100%);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 14px;
+      border:1px solid var(--border);
+      background: rgba(18,28,51,.62);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 10px;
+      z-index: 3;
+    }
+    .brand{display:flex; flex-direction:column; gap:2px; min-width: 170px;}
+    .brand .title{font-weight:800; letter-spacing:.2px; font-size: 14px;}
+    .brand .sub{font-size:12px; color:var(--muted)}
+    .stats{
+      display:flex; align-items:center; gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      display:flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      background: rgba(15,24,48,.7);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 12.5px;
+      color: var(--text);
+      white-space:nowrap;
+    }
+    .pill b{font-size:13px}
+    .iconbtn{
+      appearance:none;
+      border:1px solid var(--border);
+      background: rgba(15,24,48,.65);
+      color: var(--text);
+      border-radius: 12px;
+      padding:10px 12px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      cursor:pointer;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      transition: transform .06s ease, border-color .15s ease, background .15s ease;
+      user-select:none;
+    }
+    .iconbtn:active{transform: translateY(1px) scale(.99)}
+    .iconbtn:hover{border-color: rgba(94,234,212,.45)}
+    .danger:hover{border-color: rgba(251,113,133,.55)}
+    .icon{width:18px;height:18px; display:inline-block; filter: drop-shadow(0 6px 10px rgba(0,0,0,.35));}
+    .card{
+      border:1px solid var(--border);
+      background: rgba(18,28,51,.62);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .section{padding:14px;}
+    details{
+      border: 1px solid var(--border);
+      background: rgba(15,24,48,.55);
+      border-radius: 14px;
+      padding: 10px 12px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:700;
+      list-style:none;
+      outline:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    .hintgrid{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      color:var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .hintgrid .bubble{
+      border:1px solid var(--border);
+      background: rgba(18,28,51,.45);
+      border-radius: 12px;
+      padding:10px 10px;
+      color: var(--text);
+    }
+    .hintgrid .bubble small{display:block; color:var(--muted);margin-top:6px}
+
+    .game{display:flex; flex-direction:column; gap:12px;}
+    .qcard{
+      padding:14px;
+      background: linear-gradient(180deg, rgba(15,24,48,.55), rgba(18,28,51,.4));
+      border-top: 1px solid var(--border);
+    }
+    .qmeta{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; flex-wrap:wrap;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+    .qtext{
+      margin-top:10px;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 800;
+      letter-spacing: .2px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .tag{
+      flex:0 0 auto;
+      display:inline-flex; align-items:center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(94,234,212,.12);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      transform: translateY(2px);
+    }
+
+    .inputrow{display:grid; grid-template-columns: 1fr; gap:10px;}
+    label{font-size: 12.5px; color: var(--muted);}
+    input{
+      width:100%;
+      border: 1px solid var(--border);
+      background: rgba(15,24,48,.7);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 12px;
+      font-size: 15px;
+      outline:none;
+    }
+    input:focus{
+      border-color: rgba(94,234,212,.55);
+      box-shadow: 0 0 0 4px rgba(94,234,212,.12);
+    }
+
+    .btnrow{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:10px;
+      margin-top: 8px;
+    }
+    .btn{
+      appearance:none;
+      border: 1px solid var(--border);
+      background: rgba(15,24,48,.65);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 12px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor:pointer;
+      transition: transform .06s ease, border-color .15s ease, background .15s ease;
+      user-select:none;
+    }
+    .btn:active{transform: translateY(1px) scale(.99)}
+    .btn:hover{border-color: rgba(94,234,212,.45)}
+    .btn.primary{
+      border-color: rgba(94,234,212,.35);
+      background: rgba(94,234,212,.14);
+    }
+    .btn.primary:hover{border-color: rgba(94,234,212,.65)}
+    .btn.warn{
+      border-color: rgba(251,191,36,.35);
+      background: rgba(251,191,36,.12);
+    }
+    .btn.warn:hover{border-color: rgba(251,191,36,.65)}
+    .btn.ghost{background: rgba(15,24,48,.35);}
+
+    .smallnote{color: var(--muted); font-size: 12.5px; line-height: 1.35;}
+    .footer{
+      padding: 12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .end{padding: 16px 14px; display:flex; flex-direction:column; gap: 10px;}
+    .end h2{margin:0; font-size: 18px; letter-spacing:.2px;}
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,"Liberation Mono","Courier New", monospace;
+      font-size: 12px;
+      color: #cfe3ff;
+      background: rgba(15,24,48,.7);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      overflow:auto;
+      max-height: 240px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .hidden{display:none !important;}
+
+    .toast{
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 16px;
+      background: rgba(15,24,48,.86);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease;
+      z-index: 999;
+    }
+    .toast.show{opacity: 1; transform: translateX(-50%) translateY(-4px);}
+
+    /* Start overlay */
+    .overlay{
+      position: fixed;
+      inset: 0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 14px;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(6px);
+      z-index: 9999;
+    }
+    .modal{
+      width:min(520px, 100%);
+      border:1px solid var(--border);
+      background: rgba(18,28,51,.86);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modalHead{
+      padding: 14px 14px 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .modalHead h1{
+      margin:0;
+      font-size: 18px;
+      letter-spacing:.2px;
+    }
+    .modalHead p{margin:6px 0 0 0; color: var(--muted); font-size: 13px; line-height: 1.35;}
+    .modalBody{padding: 14px;}
+    .modalBody .row{display:grid; gap:10px;}
+    .modalFoot{
+      padding:14px;
+      border-top: 1px solid var(--border);
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width: 360px){
+      .qtext{font-size: 17px}
+      .btnrow{grid-template-columns: 1fr}
+      .brand{min-width: 120px}
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <div class="topbar">
+      <div class="brand">
+        <div class="title">Find Someone Who… 🎯</div>
+        <div class="sub" id="playerLine">Player: —</div>
+      </div>
+      <div class="stats">
+        <div class="pill" title="Stars based on how fast you answer">⭐ <b id="stars">0</b></div>
+        <div class="pill" title="Time left">⏱ <b id="timeLeft">25:00</b></div>
+        <button class="iconbtn danger" id="resetBtn" type="button" title="Reset everything">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 12a9 9 0 1 1-2.64-6.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M21 3v7h-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Reset
+        </button>
+      </div>
+    </div>
+
+    <div class="card section">
+      <details open>
+        <summary>🗣️ How to ask (use these patterns)</summary>
+        <div class="hintgrid">
+          <div class="bubble"><b>Do you… ?</b><small>Do you like coffee? / Do you play football?</small></div>
+          <div class="bubble"><b>Did you… today / yesterday?</b><small>Did you wake up before 7? / Did you eat breakfast?</small></div>
+          <div class="bubble"><b>Can you… ?</b><small>Can you name 3 past tense verbs? / Can you whistle?</small></div>
+          <div class="bubble"><b>Have you ever… ?</b><small>Have you ever traveled by plane? / Have you ever cooked pasta?</small></div>
+          <div class="bubble"><b>Follow-up</b><small>Really? When? / What’s your favorite? / How often?</small></div>
+        </div>
+      </details>
+      <div class="smallnote" style="margin-top:10px;">
+        ✅ Ask classmates in English. When you find someone, type their name and press <b>Answer</b>.
+        You can <b>Skip</b> and do it later.
+      </div>
+    </div>
+
+    <div class="card game" id="gameCard">
+      <div class="qcard">
+        <div class="qmeta">
+          <div>Progress: <b id="progress">0/60</b></div>
+          <div>Skipped: <b id="skippedCount">0</b></div>
+        </div>
+
+        <div class="qtext" aria-live="polite">
+          <span class="tag" id="qTag">Q</span>
+          <span id="questionText">Loading…</span>
+        </div>
+
+        <div class="inputrow" style="margin-top:12px;">
+          <div>
+            <label for="answerInput">Name of the classmate you found:</label>
+            <input id="answerInput" inputmode="text" autocomplete="off" placeholder="e.g., Dasha / Ivan / Alina" />
+          </div>
+        </div>
+
+        <div class="btnrow">
+          <button class="btn ghost" id="skipBtn" type="button">➜ Skip (later)</button>
+          <button class="btn warn" id="backBtn" type="button">⇦ Back</button>
+          <button class="btn primary" id="answerBtn" type="button">✔ Answer</button>
+        </div>
+
+        <div class="smallnote" style="margin-top:10px;">
+          ⭐ Speed stars: under 20s = 3⭐, 20–40s = 2⭐, 40s+ = 1⭐
+        </div>
+      </div>
+
+      <div class="footer">
+        <div>Auto sends results when time is up or all questions are done.</div>
+        <div><span id="sendStatus">Not sent yet</span></div>
+      </div>
+    </div>
+
+    <div class="card end hidden" id="endCard">
+      <h2 id="endTitle">Finished ✅</h2>
+      <div class="smallnote" id="endSubtitle">Your results were prepared and sent automatically.</div>
+      <div class="pill" style="justify-content:center; max-width:260px;">
+        ⭐ Total ⭐ <b id="endStars">0</b>
+      </div>
+      <div class="mono" id="jsonPreview"></div>
+      <div class="btnrow" style="grid-template-columns: 1fr;">
+        <button class="btn primary" id="restartBtn" type="button">🔁 Restart game</button>
+      </div>
+    </div>
+
+    <!-- Hidden POST sender to Google Forms -->
+    <iframe name="hidden_iframe" class="hidden"></iframe>
+    <form id="hiddenForm" class="hidden" method="POST" target="hidden_iframe">
+      <input type="text" name="entry.1602674571" id="fName">
+      <textarea name="entry.1616965797" id="fJson"></textarea>
+    </form>
+
+    <div class="toast" id="toast"></div>
+  </div>
+
+  <!-- Start overlay -->
+  <div class="overlay hidden" id="startOverlay">
+    <div class="modal">
+      <div class="modalHead">
+        <h1>Start the game 🎯</h1>
+        <p>Enter your name. Timer starts only after you press <b>Start</b>.</p>
+      </div>
+      <div class="modalBody">
+        <div class="row">
+          <div>
+            <label for="playerName">Your name:</label>
+            <input id="playerName" placeholder="e.g., Andrey" autocomplete="name" />
+          </div>
+          <div class="smallnote">
+            Your name will be used in the final submission (Google Form) and inside the JSON results.
+          </div>
+        </div>
+      </div>
+      <div class="modalFoot">
+        <div class="smallnote">✅ Works offline • auto-saves progress</div>
+        <button class="btn primary" id="startBtn" type="button">▶ Start</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+(() => {
+  // ---------------- CONFIG ----------------
+  const TOTAL_MINUTES = 25;
+  const TOTAL_SECONDS = TOTAL_MINUTES * 60;
+  const TOTAL_QUESTIONS = 60;
+
+  // Your Google Form view URL:
+  const FORM_VIEW_URL =
+    "https://docs.google.com/forms/d/e/1FAIpQLSeUfIjONawOOwb2fARpaMnT0o74Xnj5vdBJg8nvhi5DlutY_A/viewform?usp=pp_url";
+
+  // Convert to formResponse for POST:
+  const FORM_POST_URL = FORM_VIEW_URL.replace("/viewform", "/formResponse");
+
+  const ENTRY_NAME = "entry.1602674571";
+  const ENTRY_JSON = "entry.1616965797";
+
+  const STORAGE_KEY = "fsw_game_v2";
+
+  // 60 questions
+  const QUESTIONS = [
+    "Find someone who woke up before 7 AM today.",
+    "Find someone who drank coffee today.",
+    "Find someone who can name 3 verbs in the past tense.",
+    "Find someone who has a pet at home.",
+    "Find someone who walked to school today.",
+    "Find someone who took a bus today.",
+    "Find someone who ate breakfast today.",
+    "Find someone who can say the days of the week in English.",
+    "Find someone who can say 5 colors in English.",
+    "Find someone who can spell their last name in English.",
+    "Find someone who likes tea more than coffee.",
+    "Find someone who listens to music every day.",
+    "Find someone who watched a movie this week.",
+    "Find someone who played a video game yesterday.",
+    "Find someone who can say 10 numbers in English fast.",
+    "Find someone who can name 3 countries in English.",
+    "Find someone who knows an English tongue-twister (even short).",
+    "Find someone who has been to another city this month.",
+    "Find someone who likes winter more than summer.",
+    "Find someone who likes summer more than winter.",
+    "Find someone who can whistle.",
+    "Find someone who can cook one simple dish.",
+    "Find someone who can ride a bicycle.",
+    "Find someone who can swim.",
+    "Find someone who has a favorite English song.",
+    "Find someone who has read a book this month.",
+    "Find someone who uses English on YouTube or TikTok sometimes.",
+    "Find someone who can say 3 irregular verbs (go–went, etc.).",
+    "Find someone who can make a question with 'Do you…?'",
+    "Find someone who can make a question with 'Did you…?'",
+    "Find someone who can make a question with 'Can you…?'",
+    "Find someone who can make a question with 'Have you ever…?'",
+    "Find someone who likes pizza.",
+    "Find someone who likes sushi.",
+    "Find someone who likes spicy food.",
+    "Find someone who has a hobby (any hobby).",
+    "Find someone who can name 5 school subjects in English.",
+    "Find someone who can name 3 animals in English.",
+    "Find someone who can name 3 fruits in English.",
+    "Find someone who can name 3 vegetables in English.",
+    "Find someone who can name 3 jobs in English.",
+    "Find someone who can tell the time in English (e.g., 'It’s half past…').",
+    "Find someone who was late once this week (honestly 😄).",
+    "Find someone who is always on time.",
+    "Find someone who likes mornings.",
+    "Find someone who likes nights.",
+    "Find someone who can say 'I like… / I don’t like…' correctly.",
+    "Find someone who can say 3 adjectives (big, small, interesting…).",
+    "Find someone who can explain one English word (simple meaning).",
+    "Find someone who can say 3 activities (play, read, watch…).",
+    "Find someone who can make a sentence in the past (Yesterday I… ).",
+    "Find someone who can make a sentence in the future (Tomorrow I will… ).",
+    "Find someone who can make a sentence with 'because'.",
+    "Find someone who can ask: 'What did you do yesterday?'",
+    "Find someone who can answer: 'I went… / I played… / I watched…'.",
+    "Find someone who can say one compliment in English.",
+    "Find someone who can say one polite phrase in English (please / sorry / excuse me).",
+    "Find someone who can name 3 items in a classroom in English.",
+    "Find someone who can name 3 clothes items in English.",
+    "Find someone who can say their favorite food in English.",
+  ];
+
+  // ---------------- DOM ----------------
+  const $ = (id) => document.getElementById(id);
+
+  const starsEl = $("stars");
+  const timeLeftEl = $("timeLeft");
+  const resetBtn = $("resetBtn");
+  const progressEl = $("progress");
+  const skippedCountEl = $("skippedCount");
+  const questionTextEl = $("questionText");
+  const answerInputEl = $("answerInput");
+  const skipBtn = $("skipBtn");
+  const answerBtn = $("answerBtn");
+  const backBtn = $("backBtn");
+  const sendStatusEl = $("sendStatus");
+  const playerLineEl = $("playerLine");
+
+  const endCard = $("endCard");
+  const gameCard = $("gameCard");
+  const endTitle = $("endTitle");
+  const endSubtitle = $("endSubtitle");
+  const endStars = $("endStars");
+  const jsonPreview = $("jsonPreview");
+  const restartBtn = $("restartBtn");
+
+  const startOverlay = $("startOverlay");
+  const playerNameInput = $("playerName");
+  const startBtn = $("startBtn");
+
+  const hiddenForm = $("hiddenForm");
+  const fName = $("fName");
+  const fJson = $("fJson");
+
+  const toastEl = $("toast");
+
+  // ---------------- Utils ----------------
+  const now = () => Date.now();
+
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    setTimeout(() => toastEl.classList.remove("show"), 1400);
+  }
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function msToClock(ms) {
+    const s = Math.max(0, Math.floor(ms / 1000));
+    const mm = String(Math.floor(s / 60)).padStart(2, "0");
+    const ss = String(s % 60).padStart(2, "0");
+    return `${mm}:${ss}`;
+  }
+
+  function safeStringify(obj) {
+    try { return JSON.stringify(obj); }
+    catch { return JSON.stringify({error:"json_failed"}); }
+  }
+
+  function starsForSeconds(sec) {
+    if (sec <= 20) return 3;
+    if (sec <= 40) return 2;
+    return 1;
+  }
+
+  // ---------------- State ----------------
+  function freshState() {
+    const order = shuffle(QUESTIONS);
+    return {
+      version: 2,
+      // set later:
+      playerName: "",
+      startedAt: null,              // timer baseline (ms). null until Start pressed.
+      durationSec: TOTAL_SECONDS,
+
+      order,                         // shuffled questions
+      total: order.length,
+      currentIndex: 0,
+      questionStartAt: null,
+
+      skipped: [],
+      answeredMap: {},               // idx -> {question, person, time_sec, stars}
+      totalStars: 0,
+
+      ended: false,
+      endedAt: null,
+      endedReason: "",
+
+      sent: false,
+      sentAt: null,
+
+      history: []
+    };
+  }
+
+  function loadState() {
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      const st = JSON.parse(raw);
+      if (!st || !Array.isArray(st.order) || st.order.length !== TOTAL_QUESTIONS) return null;
+      return st;
+    }catch(e){ return null; }
+  }
+
+  function saveState() {
+    localStorage.setItem(STORAGE_KEY, safeStringify(state));
+  }
+
+  let state = loadState() || freshState();
+  let timerInterval = null;
+
+  // ---------------- Game Flow ----------------
+  function ensureStartOverlay() {
+    const hasName = (state.playerName || "").trim().length > 0;
+    const started = !!state.startedAt;
+
+    playerLineEl.textContent = hasName ? `Player: ${state.playerName}` : `Player: —`;
+
+    if (!hasName || !started) {
+      startOverlay.classList.remove("hidden");
+      // prefill if exists
+      playerNameInput.value = state.playerName || "";
+      setTimeout(() => playerNameInput.focus(), 50);
+      // timer display when not started
+      timeLeftEl.textContent = msToClock(TOTAL_SECONDS * 1000);
+      return true;
+    }
+    startOverlay.classList.add("hidden");
+    return false;
+  }
+
+  function secondsLeft() {
+    if (!state.startedAt) return TOTAL_SECONDS;
+    const elapsed = Math.floor((now() - state.startedAt) / 1000);
+    return Math.max(0, state.durationSec - elapsed);
+  }
+
+  function countAnswered() {
+    return Object.keys(state.answeredMap || {}).length;
+  }
+
+  function nextUnansweredFrom(idx) {
+    const total = state.total;
+    for (let i = idx + 1; i < total; i++) if (!state.answeredMap[i]) return i;
+    for (let i = 0; i < total; i++) if (!state.answeredMap[i]) return i;
+    return total; // none left
+  }
+
+  function currentIndexValid() {
+    return state.currentIndex >= 0 && state.currentIndex < state.total;
+  }
+
+  function startTimer() {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      const left = secondsLeft();
+      timeLeftEl.textContent = msToClock(left * 1000);
+
+      if (left <= 0 && !state.ended) {
+        endGame("Time is up ⏱️");
+      }
+    }, 250);
+
+    timeLeftEl.textContent = msToClock(secondsLeft() * 1000);
+  }
+
+  function computePayload() {
+    const answered = Object.keys(state.answeredMap)
+      .map(k => ({ idx: Number(k), ...state.answeredMap[k] }))
+      .sort((a,b)=>a.idx-b.idx)
+      .map(x => ({
+        q: x.question,
+        person: x.person,
+        time_sec: x.time_sec,
+        stars: x.stars
+      }));
+
+    const skipped = (state.skipped || []).map(i => state.order[i]).filter(Boolean);
+
+    const endTime = state.endedAt || now();
+    const spentSec = state.startedAt ? Math.min(state.durationSec, Math.max(0, Math.floor((endTime - state.startedAt)/1000))) : 0;
+
+    return {
+      game: "FindSomeoneWho",
+      player: state.playerName,
+      total_questions: state.total,
+      answered_count: answered.length,
+      skipped_count: skipped.length,
+      total_stars: state.totalStars,
+      time_spent_sec: spentSec,
+      ended_reason: state.endedReason || null,
+      answered,
+      skipped
+    };
+  }
+
+  function sendToGoogleForm(payloadObj) {
+    // POST to /formResponse via hidden iframe (works on GitHub Pages)
+    const json = safeStringify(payloadObj);
+
+    hiddenForm.action = FORM_POST_URL;
+    fName.name = ENTRY_NAME;
+    fJson.name = ENTRY_JSON;
+
+    fName.value = state.playerName;
+    fJson.value = "here is json " + json;
+
+    try {
+      hiddenForm.submit();
+      state.sent = true;
+      state.sentAt = now();
+      saveState();
+      sendStatusEl.textContent = "Sent ✅";
+    } catch (e) {
+      console.error(e);
+      sendStatusEl.textContent = "Send failed ⚠️";
+    }
+  }
+
+  function endGame(reason) {
+    state.ended = true;
+    state.endedAt = now();
+    state.endedReason = reason;
+    saveState();
+    clearInterval(timerInterval);
+
+    const payload = computePayload();
+    if (!state.sent) sendToGoogleForm(payload);
+
+    showEnd(reason, payload);
+  }
+
+  function showEnd(title, payload) {
+    gameCard.classList.add("hidden");
+    endCard.classList.remove("hidden");
+    endTitle.textContent = title;
+    endStars.textContent = String(state.totalStars);
+    endSubtitle.textContent = state.sent ? "Results were sent automatically ✅" : "Results prepared (not sent).";
+    jsonPreview.textContent = safeStringify(payload);
+  }
+
+  function renderQuestion() {
+    if (state.ended) {
+      showEnd(state.endedReason || "Finished ✅", computePayload());
+      return;
+    }
+
+    gameCard.classList.remove("hidden");
+    endCard.classList.add("hidden");
+
+    const answered = countAnswered();
+    progressEl.textContent = `${answered}/${state.total}`;
+    skippedCountEl.textContent = String((state.skipped || []).length);
+    starsEl.textContent = String(state.totalStars);
+    sendStatusEl.textContent = state.sent ? "Sent ✅" : "Not sent yet";
+
+    if (!currentIndexValid()) {
+      endGame("All questions finished ✅");
+      return;
+    }
+    // if current is already answered (can happen after reload), jump
+    if (state.answeredMap[state.currentIndex]) {
+      state.currentIndex = nextUnansweredFrom(state.currentIndex);
+      saveState();
+      if (!currentIndexValid()) { endGame("All questions finished ✅"); return; }
+    }
+
+    const q = state.order[state.currentIndex];
+    questionTextEl.textContent = q;
+
+    // prepare per-question timer baseline
+    if (!state.questionStartAt) state.questionStartAt = now();
+
+    // clear & focus
+    answerInputEl.value = "";
+    setTimeout(() => answerInputEl.focus(), 50);
+  }
+
+  // ---------------- Events ----------------
+  startBtn.addEventListener("click", () => {
+    const name = (playerNameInput.value || "").trim();
+    if (name.length < 2) {
+      toast("Type your name ✍️");
+      playerNameInput.focus();
+      return;
+    }
+
+    state.playerName = name;
+
+    // Start timer only once if not started
+    if (!state.startedAt) state.startedAt = now();
+    if (!state.questionStartAt) state.questionStartAt = now();
+
+    saveState();
+    startOverlay.classList.add("hidden");
+    playerLineEl.textContent = `Player: ${state.playerName}`;
+    toast("Started ▶");
+    startTimer();
+    renderQuestion();
+  });
+
+  // allow Enter to start
+  playerNameInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") startBtn.click();
+  });
+
+  resetBtn.addEventListener("click", () => {
+    const ok = confirm("Reset everything? This will delete your progress and restart the game.");
+    if (!ok) return;
+    clearInterval(timerInterval);
+    state = freshState();
+    saveState();
+    toast("Reset ✅");
+    // show start overlay again
+    ensureStartOverlay();
+    renderQuestion();
+  });
+
+  function requireStarted() {
+    if (!state.startedAt || !(state.playerName||"").trim()) {
+      ensureStartOverlay();
+      toast("Enter name to start");
+      return false;
+    }
+    return true;
+  }
+
+  skipBtn.addEventListener("click", () => {
+    if (!requireStarted() || state.ended) return;
+
+    const idx = state.currentIndex;
+    if (!state.answeredMap[idx] && !state.skipped.includes(idx)) state.skipped.push(idx);
+
+    state.history.push({type:"skip", idx, at: now()});
+    state.currentIndex = nextUnansweredFrom(idx);
+    state.questionStartAt = now();
+    saveState();
+
+    toast("Skipped ↪");
+    renderQuestion();
+  });
+
+  answerBtn.addEventListener("click", () => {
+    if (!requireStarted() || state.ended) return;
+
+    const person = (answerInputEl.value || "").trim();
+    if (person.length < 2) {
+      toast("Type a classmate name ✍️");
+      answerInputEl.focus();
+      return;
+    }
+
+    const idx = state.currentIndex;
+    const q = state.order[idx];
+
+    const tSec = Math.max(1, Math.round((now() - (state.questionStartAt || now())) / 1000));
+    const stars = starsForSeconds(tSec);
+
+    state.answeredMap[idx] = { question: q, person, time_sec: tSec, stars };
+    state.totalStars += stars;
+
+    // remove from skipped
+    state.skipped = (state.skipped || []).filter(i => i !== idx);
+
+    state.history.push({type:"answer", idx, person, time_sec: tSec, stars, at: now()});
+
+    state.currentIndex = nextUnansweredFrom(idx);
+    state.questionStartAt = now();
+    saveState();
+
+    toast(`+${stars}⭐`);
+
+    if (countAnswered() >= state.total) {
+      endGame("All questions finished ✅");
+      return;
+    }
+    renderQuestion();
+  });
+
+  // Enter = Answer
+  answerInputEl.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") answerBtn.click();
+  });
+
+  backBtn.addEventListener("click", () => {
+    if (!requireStarted() || state.ended) return;
+
+    // go back to last history item (if exists)
+    for (let k = (state.history || []).length - 1; k >= 0; k--) {
+      const idx = state.history[k].idx;
+      if (typeof idx === "number" && idx !== state.currentIndex) {
+        state.currentIndex = idx;
+        state.questionStartAt = now();
+        saveState();
+        toast("Back ⇦");
+        renderQuestion();
+        return;
+      }
+    }
+    toast("No previous");
+  });
+
+  restartBtn.addEventListener("click", () => {
+    const ok = confirm("Restart the game from zero?");
+    if (!ok) return;
+    clearInterval(timerInterval);
+    state = freshState();
+    saveState();
+    toast("Restarted 🔁");
+    ensureStartOverlay();
+    renderQuestion();
+  });
+
+  // Save on background
+  document.addEventListener("visibilitychange", () => saveState());
+
+  // ---------------- Boot ----------------
+  // Validate questions count:
+  if (QUESTIONS.length !== TOTAL_QUESTIONS) {
+    console.warn("QUESTIONS length:", QUESTIONS.length, "expected:", TOTAL_QUESTIONS);
+  }
+
+  // attach form names (stable)
+  hiddenForm.action = FORM_POST_URL;
+  fName.name = ENTRY_NAME;
+  fJson.name = ENTRY_JSON;
+
+  const needsStart = ensureStartOverlay();
+
+  // If already started before and time expired, end immediately
+  if (state.startedAt && secondsLeft() <= 0 && !state.ended) {
+    endGame("Time is up ⏱️");
+  } else {
+    // If started, run timer
+    if (state.startedAt) startTimer();
+    // Render question (or just show overlay)
+    if (!needsStart) renderQuestion();
+  }
+})();
+</script>
+</body>
+</html>
