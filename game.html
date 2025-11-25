@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Find Someone Who — Class Game</title>
   <meta name="description" content="Find Someone Who — timed English class game. Works on GitHub Pages." />
   <style>
@@ -16,21 +16,41 @@
       --warn:#fbbf24;
       --shadow:0 12px 40px rgba(0,0,0,.35);
       --radius:18px;
+
+      --pad:14px;
+      --safeTop: env(safe-area-inset-top);
+      --safeBottom: env(safe-area-inset-bottom);
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 800px at 20% 0%, rgba(94,234,212,.12), transparent 50%),
-                  radial-gradient(900px 700px at 90% 30%, rgba(251,113,133,.10), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 800px at 20% 0%, rgba(94,234,212,.12), transparent 50%),
+        radial-gradient(900px 700px at 90% 30%, rgba(251,113,133,.10), transparent 55%),
+        var(--bg);
       color:var(--text);
-      display:flex;
-      justify-content:center;
-      padding:14px;
+
+      /* ✅ IMPORTANT: allow normal scrolling on phones */
+      min-height: 100dvh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+
+      padding: calc(var(--pad) + var(--safeTop)) var(--pad) calc(var(--pad) + var(--safeBottom));
     }
-    .app{width:min(560px,100%);display:flex;flex-direction:column;gap:12px}
+
+    .app{
+      width:min(560px,100%);
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      padding-bottom: calc(10px + var(--safeBottom));
+    }
+
     .topbar{
       display:flex;align-items:center;justify-content:space-between;gap:10px;
       padding:12px 14px;border:1px solid var(--border);
@@ -38,11 +58,15 @@
       backdrop-filter: blur(10px);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      position: sticky; top: 10px; z-index: 3;
+      position: sticky;
+      top: calc(8px + var(--safeTop));
+      z-index: 30;
     }
+
     .brand{display:flex;flex-direction:column;gap:2px;min-width:170px}
     .brand .title{font-weight:800;letter-spacing:.2px;font-size:14px}
     .brand .sub{font-size:12px;color:var(--muted)}
+
     .stats{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
     .pill{
       display:flex;align-items:center;gap:8px;padding:8px 10px;
@@ -52,6 +76,7 @@
       font-size:12.5px;white-space:nowrap
     }
     .pill b{font-size:13px}
+
     .iconbtn{
       appearance:none;border:1px solid var(--border);
       background: rgba(15,24,48,.65);
@@ -66,6 +91,7 @@
     .iconbtn:hover{border-color: rgba(94,234,212,.45)}
     .danger:hover{border-color: rgba(251,113,133,.55)}
     .icon{width:18px;height:18px;display:inline-block;filter: drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+
     .card{
       border:1px solid var(--border);
       background: rgba(18,28,51,.62);
@@ -75,6 +101,7 @@
       overflow:hidden;
     }
     .section{padding:14px}
+
     details{
       border:1px solid var(--border);
       background: rgba(15,24,48,.55);
@@ -119,7 +146,12 @@
     label{font-size:12.5px;color:var(--muted)}
     input{
       width:100%;border:1px solid var(--border);background: rgba(15,24,48,.7);
-      color:var(--text);border-radius:14px;padding:12px 12px;font-size:15px;outline:none
+      color:var(--text);border-radius:14px;padding:12px 12px;
+
+      /* ✅ iOS: 16px prevents auto-zoom and "locked" feeling */
+      font-size:16px;
+
+      outline:none
     }
     input:focus{border-color: rgba(94,234,212,.55);box-shadow:0 0 0 4px rgba(94,234,212,.12)}
     .btnrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:8px}
@@ -138,6 +170,7 @@
     .btn.warn:hover{border-color: rgba(251,191,36,.65)}
     .btn.ghost{background: rgba(15,24,48,.35)}
     .smallnote{color:var(--muted);font-size:12.5px;line-height:1.35}
+
     .footer{
       padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
       border-top:1px solid var(--border);color:var(--muted);font-size:12px
@@ -152,21 +185,41 @@
       overflow:auto;max-height:240px;white-space:pre-wrap;word-break:break-word
     }
     .hidden{display:none !important}
+
     .toast{
-      position: fixed; left:50%; transform: translateX(-50%); bottom:16px;
-      background: rgba(15,24,48,.86); border:1px solid var(--border); color:var(--text);
-      padding:10px 12px; border-radius:999px; font-size:13px; box-shadow: var(--shadow);
-      opacity:0; pointer-events:none; transition: opacity .2s ease, transform .2s ease; z-index:999;
+      position: fixed;
+      left:50%;
+      transform: translateX(-50%);
+      bottom: calc(16px + var(--safeBottom));
+      background: rgba(15,24,48,.86);
+      border:1px solid var(--border);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:999px;
+      font-size:13px;
+      box-shadow: var(--shadow);
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease;
+      z-index:999;
     }
     .toast.show{opacity:1; transform: translateX(-50%) translateY(-4px)}
 
+    /* Start overlay */
     .overlay{
-      position: fixed; inset:0; display:flex; align-items:center; justify-content:center;
-      padding:14px; background: rgba(0,0,0,.55); backdrop-filter: blur(6px); z-index:9999;
+      position: fixed; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      padding: calc(var(--pad) + var(--safeTop)) var(--pad) calc(var(--pad) + var(--safeBottom));
+      background: rgba(0,0,0,.55); backdrop-filter: blur(6px);
+      z-index:9999;
     }
     .modal{
-      width:min(520px,100%); border:1px solid var(--border); background: rgba(18,28,51,.86);
-      border-radius:22px; box-shadow: var(--shadow); overflow:hidden;
+      width:min(520px,100%);
+      border:1px solid var(--border);
+      background: rgba(18,28,51,.86);
+      border-radius:22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
     }
     .modalHead{padding:14px 14px 10px 14px; border-bottom:1px solid var(--border)}
     .modalHead h1{margin:0; font-size:18px; letter-spacing:.2px}
@@ -181,7 +234,7 @@
     /* ======= BIG STAR ANIMATION (Answer reward) ======= */
     #fxLayer{
       position: fixed;
-      top: 64px;          /* just under the sticky topbar */
+      top: calc(64px + var(--safeTop));
       left: 0;
       right: 0;
       height: 170px;
@@ -245,7 +298,7 @@
       .qtext{font-size:17px}
       .btnrow{grid-template-columns:1fr}
       .brand{min-width:120px}
-      #fxLayer{ top: 74px; height: 160px; }
+      #fxLayer{ height: 160px; }
       .scorePop{ font-size: 30px; }
     }
   </style>
@@ -270,7 +323,6 @@
       </div>
     </div>
 
-    <!-- Big animation layer -->
     <div id="fxLayer" aria-hidden="true"></div>
 
     <div class="card section">
@@ -338,7 +390,6 @@
       </div>
     </div>
 
-    <!-- Hidden POST sender to Google Forms -->
     <iframe name="hidden_iframe" class="hidden"></iframe>
     <form id="hiddenForm" class="hidden" method="POST" target="hidden_iframe">
       <input type="text" name="entry.1602674571" id="fName">
@@ -348,7 +399,6 @@
     <div class="toast" id="toast"></div>
   </div>
 
-  <!-- Start overlay -->
   <div class="overlay hidden" id="startOverlay">
     <div class="modal">
       <div class="modalHead">
@@ -375,24 +425,18 @@
 
 <script>
 (() => {
-  // ---------------- CONFIG ----------------
   const TOTAL_MINUTES = 25;
   const TOTAL_SECONDS = TOTAL_MINUTES * 60;
   const TOTAL_QUESTIONS = 60;
 
-  // Your Google Form view URL:
   const FORM_VIEW_URL =
     "https://docs.google.com/forms/d/e/1FAIpQLSeUfIjONawOOwb2fARpaMnT0o74Xnj5vdBJg8nvhi5DlutY_A/viewform?usp=pp_url";
-
-  // Convert to formResponse for POST:
   const FORM_POST_URL = FORM_VIEW_URL.replace("/viewform", "/formResponse");
-
   const ENTRY_NAME = "entry.1602674571";
   const ENTRY_JSON = "entry.1616965797";
 
-  const STORAGE_KEY = "fsw_game_v3_fun_fx";
+  const STORAGE_KEY = "fsw_game_v4_fun_fx_mobilefix";
 
-  // --------- FUN 60 QUESTIONS ----------
   const QUESTIONS = [
     "Find someone who woke up before 7 AM today.",
     "Find someone who hit the snooze button 3+ times today.",
@@ -456,7 +500,6 @@
     "Find someone who has baked cookies or a cake before."
   ];
 
-  // ---------------- DOM ----------------
   const $ = (id) => document.getElementById(id);
 
   const starsEl = $("stars");
@@ -490,7 +533,6 @@
 
   const toastEl = $("toast");
 
-  // ---------------- Utils ----------------
   const now = () => Date.now();
 
   function toast(msg) {
@@ -526,15 +568,13 @@
     return 1;
   }
 
-  // ---------------- BIG STAR FX ----------------
+  // ⭐ FX
   function rand(min, max){ return Math.random() * (max - min) + min; }
-
   function fireStars(starsEarned){
     const layer = document.getElementById("fxLayer");
     const starsPill = document.getElementById("starsPill");
     if (!layer) return;
 
-    // Counter bump
     if (starsPill){
       starsPill.classList.remove("bump");
       void starsPill.offsetWidth;
@@ -542,21 +582,18 @@
       setTimeout(()=>starsPill.classList.remove("bump"), 450);
     }
 
-    // Big "+N⭐" popup
     const pop = document.createElement("div");
     pop.className = "scorePop";
     pop.textContent = `+${starsEarned}⭐`;
     layer.appendChild(pop);
     setTimeout(()=>pop.remove(), 900);
 
-    // Particle count depends on reward
     const count = starsEarned === 3 ? 20 : (starsEarned === 2 ? 14 : 10);
 
     for (let i=0;i<count;i++){
       const sp = document.createElement("span");
       sp.className = "starParticle";
       sp.textContent = "⭐";
-
       sp.style.setProperty("--x0", `${rand(-20, 20)}px`);
       sp.style.setProperty("--x1", `${rand(-140, 140)}px`);
       sp.style.setProperty("--x2", `${rand(-220, 220)}px`);
@@ -564,17 +601,24 @@
       sp.style.setProperty("--y2", `${rand(-90, -160)}px`);
       sp.style.animationDelay = `${rand(0, 120)}ms`;
       sp.style.fontSize = `${rand(22, 36)}px`;
-
       layer.appendChild(sp);
       setTimeout(()=>sp.remove(), 1100);
     }
   }
 
-  // ---------------- State ----------------
+  // ✅ Mobile helper: when keyboard opens, scroll input into view
+  function scrollIntoViewSoon(el) {
+    if (!el) return;
+    setTimeout(() => {
+      try { el.scrollIntoView({behavior:"smooth", block:"center"}); }
+      catch { el.scrollIntoView(); }
+    }, 250);
+  }
+
   function freshState() {
     const order = shuffle(QUESTIONS);
     return {
-      version: 3,
+      version: 4,
       playerName: "",
       startedAt: null,
       durationSec: TOTAL_SECONDS,
@@ -606,27 +650,24 @@
       const st = JSON.parse(raw);
       if (!st || !Array.isArray(st.order) || st.order.length !== TOTAL_QUESTIONS) return null;
       return st;
-    }catch(e){ return null; }
-  }
-
-  function saveState() {
-    localStorage.setItem(STORAGE_KEY, safeStringify(state));
+    }catch{ return null; }
   }
 
   let state = loadState() || freshState();
+  const saveState = () => localStorage.setItem(STORAGE_KEY, safeStringify(state));
+
   let timerInterval = null;
 
-  // ---------------- Game Flow ----------------
   function ensureStartOverlay() {
     const hasName = (state.playerName || "").trim().length > 0;
     const started = !!state.startedAt;
-
     playerLineEl.textContent = hasName ? `Player: ${state.playerName}` : `Player: —`;
 
     if (!hasName || !started) {
       startOverlay.classList.remove("hidden");
       playerNameInput.value = state.playerName || "";
       setTimeout(() => playerNameInput.focus(), 50);
+      scrollIntoViewSoon(playerNameInput);
       timeLeftEl.textContent = msToClock(TOTAL_SECONDS * 1000);
       return true;
     }
@@ -694,11 +735,9 @@
 
   function sendToGoogleForm(payloadObj) {
     const json = safeStringify(payloadObj);
-
     hiddenForm.action = FORM_POST_URL;
     fName.name = ENTRY_NAME;
     fJson.name = ENTRY_JSON;
-
     fName.value = state.playerName;
     fJson.value = "here is json " + json;
 
@@ -714,6 +753,16 @@
     }
   }
 
+  function showEnd(title, payload) {
+    gameCard.classList.add("hidden");
+    endCard.classList.remove("hidden");
+    endTitle.textContent = title;
+    endStars.textContent = String(state.totalStars);
+    endSubtitle.textContent = state.sent ? "Results were sent automatically ✅" : "Results prepared (not sent).";
+    jsonPreview.textContent = safeStringify(payload);
+    scrollIntoViewSoon(endTitle);
+  }
+
   function endGame(reason) {
     state.ended = true;
     state.endedAt = now();
@@ -723,17 +772,7 @@
 
     const payload = computePayload();
     if (!state.sent) sendToGoogleForm(payload);
-
     showEnd(reason, payload);
-  }
-
-  function showEnd(title, payload) {
-    gameCard.classList.add("hidden");
-    endCard.classList.remove("hidden");
-    endTitle.textContent = title;
-    endStars.textContent = String(state.totalStars);
-    endSubtitle.textContent = state.sent ? "Results were sent automatically ✅" : "Results prepared (not sent).";
-    jsonPreview.textContent = safeStringify(payload);
   }
 
   function renderQuestion() {
@@ -741,9 +780,6 @@
       showEnd(state.endedReason || "Finished ✅", computePayload());
       return;
     }
-
-    gameCard.classList.remove("hidden");
-    endCard.classList.add("hidden");
 
     const answered = countAnswered();
     progressEl.textContent = `${answered}/${state.total}`;
@@ -765,12 +801,12 @@
     questionTextEl.textContent = state.order[state.currentIndex];
 
     if (!state.questionStartAt) state.questionStartAt = now();
-
     answerInputEl.value = "";
     setTimeout(() => answerInputEl.focus(), 50);
+    scrollIntoViewSoon(answerInputEl);
   }
 
-  // ---------------- Events ----------------
+  // Events
   startBtn.addEventListener("click", () => {
     const name = (playerNameInput.value || "").trim();
     if (name.length < 2) { toast("Type your name ✍️"); playerNameInput.focus(); return; }
@@ -786,6 +822,9 @@
     startTimer();
     renderQuestion();
   });
+
+  playerNameInput.addEventListener("focus", () => scrollIntoViewSoon(playerNameInput));
+  answerInputEl.addEventListener("focus", () => scrollIntoViewSoon(answerInputEl));
 
   playerNameInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") startBtn.click();
@@ -889,11 +928,7 @@
 
   document.addEventListener("visibilitychange", () => saveState());
 
-  // ---------------- Boot ----------------
-  if (QUESTIONS.length !== TOTAL_QUESTIONS) {
-    console.warn("QUESTIONS length:", QUESTIONS.length, "expected:", TOTAL_QUESTIONS);
-  }
-
+  // Boot
   hiddenForm.action = FORM_POST_URL;
   fName.name = ENTRY_NAME;
   fJson.name = ENTRY_JSON;
