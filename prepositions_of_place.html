@@ -1,0 +1,1287 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Prepositions of Place — Slides + Practice</title>
+  <style>
+    :root{
+      --bg1:#0b1220; --bg2:#0f1b33;
+      --card:#121c33cc; --card2:#0f1730cc;
+      --text:#e9eefc; --muted:#aeb8d6;
+      --accent:#7c5cff; --accent2:#2ee5b7;
+      --danger:#ff4d6d; --ok:#2ee5b7;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 22px;
+      --stroke: rgba(255,255,255,.10);
+      --stroke2: rgba(255,255,255,.14);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(124,92,255,.35), transparent 55%),
+        radial-gradient(950px 650px at 95% 5%, rgba(46,229,183,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: env(safe-area-inset-top) 14px env(safe-area-inset-bottom);
+    }
+
+    /* Top bar */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 12px 0 10px;
+      background: linear-gradient(180deg, rgba(11,18,32,.95), rgba(11,18,32,.65), rgba(11,18,32,0));
+      backdrop-filter: blur(10px);
+    }
+    .titleRow{
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+      padding: 6px 2px 10px;
+    }
+    .title{
+      line-height:1.05;
+    }
+    .title h1{
+      font-size: 18px;
+      margin:0;
+      letter-spacing:.2px;
+    }
+    .title p{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size: 12.5px;
+    }
+    .tabs{
+      display:flex; gap:8px; align-items:center;
+    }
+    .pill{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      padding: 9px 11px;
+      border-radius: 999px;
+      font-weight:700;
+      font-size: 12.5px;
+      cursor:pointer;
+      user-select:none;
+      display:flex; align-items:center; gap:8px;
+      transition: transform .12s ease, background .15s ease, border-color .15s ease;
+    }
+    .pill:active{ transform: scale(.98) }
+    .pill[data-active="true"]{
+      border-color: rgba(124,92,255,.55);
+      background: linear-gradient(135deg, rgba(124,92,255,.28), rgba(46,229,183,.18));
+    }
+
+    /* Chips nav */
+    .chips{
+      display:flex;
+      gap:8px;
+      overflow:auto;
+      padding: 4px 2px 10px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .chips::-webkit-scrollbar{ display:none; }
+    .chip{
+      flex:0 0 auto;
+      scroll-snap-align: start;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.05);
+      padding: 9px 12px;
+      border-radius: 999px;
+      cursor:pointer;
+      user-select:none;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: rgba(233,238,252,.92);
+      transition: background .15s ease, border-color .15s ease, transform .12s ease;
+      white-space:nowrap;
+    }
+    .chip:active{ transform: scale(.98) }
+    .chip[data-current="true"]{
+      border-color: rgba(46,229,183,.55);
+      background: rgba(46,229,183,.12);
+    }
+
+    /* Cards / sections */
+    .section{
+      margin: 10px 0 22px;
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(18,28,51,.75), rgba(10,15,29,.55));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .sectionHead{
+      padding: 14px 14px 10px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      justify-content:space-between;
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .sectionHead h2{
+      margin:0;
+      font-size: 14.75px;
+      letter-spacing:.2px;
+    }
+    .sectionHead .hint{
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.35;
+      max-width: 520px;
+    }
+
+    /* Slides */
+    .slidesWrap{
+      padding: 12px 12px 14px;
+    }
+    .slidesControls{
+      display:flex; gap:9px; align-items:center; justify-content:space-between;
+      margin: 2px 2px 10px;
+    }
+    .btn{
+      border:1px solid var(--stroke2);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 13px;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .12s ease, background .15s ease, border-color .15s ease;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn:active{ transform: scale(.985) }
+    .btn.primary{
+      border-color: rgba(124,92,255,.55);
+      background: rgba(124,92,255,.18);
+    }
+    .btn.good{
+      border-color: rgba(46,229,183,.55);
+      background: rgba(46,229,183,.14);
+    }
+    .btn.danger{
+      border-color: rgba(255,77,109,.55);
+      background: rgba(255,77,109,.12);
+    }
+    .btn.wide{ width:100%; justify-content:center; }
+    .small{
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .slides{
+      display:flex;
+      gap: 12px;
+      overflow:auto;
+      padding: 2px 2px 10px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .slides::-webkit-scrollbar{ display:none; }
+    .slide{
+      scroll-snap-align: center;
+      flex: 0 0 92%;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(16,24,45,.85), rgba(10,15,29,.65));
+      border-radius: 20px;
+      padding: 14px;
+      position:relative;
+      overflow:hidden;
+      min-height: 390px;
+    }
+    @media (min-width: 840px){
+      .slide{ flex-basis: 55%; min-height: 420px; }
+    }
+
+    .slideTop{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+    }
+    .prep{
+      font-size: 26px;
+      font-weight: 950;
+      letter-spacing: .3px;
+      margin: 0;
+      line-height: 1.08;
+    }
+    .badge{
+      border:1px solid rgba(124,92,255,.45);
+      background: rgba(124,92,255,.15);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 12px;
+      white-space:nowrap;
+      align-self:flex-start;
+    }
+    .desc{
+      margin: 8px 0 8px;
+      color: rgba(233,238,252,.92);
+      font-size: 13.5px;
+      line-height: 1.35;
+    }
+    .ex{
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 12.75px;
+      line-height: 1.35;
+    }
+    .ex b{ color: rgba(233,238,252,.94) }
+
+    /* Scene (box + cat) */
+    .scene{
+      position: relative;
+      height: 210px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(600px 240px at 50% 0%, rgba(124,92,255,.18), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      overflow:hidden;
+    }
+    .floor{
+      position:absolute; left:0; right:0; bottom:0; height: 46%;
+      background: linear-gradient(180deg, rgba(46,229,183,.06), rgba(0,0,0,.18));
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    .box{
+      position:absolute;
+      left: 50%; top: 56%;
+      width: 98px; height: 78px;
+      transform: translate(-50%, -50%);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+    }
+    .box:before{
+      content:"";
+      position:absolute; inset: 10px 12px;
+      border-radius: 12px;
+      border: 1px dashed rgba(255,255,255,.16);
+      opacity:.8;
+    }
+
+    .box2{
+      position:absolute;
+      top: 56%;
+      width: 92px; height: 72px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 18px 40px rgba(0,0,0,.25);
+      transform: translate(-50%, -50%);
+      display:none;
+    }
+
+    .cat{
+      position:absolute;
+      width: 54px; height: 54px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transform: translate(-50%, -50%);
+      transition: left .35s cubic-bezier(.2,.85,.2,1), top .35s cubic-bezier(.2,.85,.2,1), transform .35s cubic-bezier(.2,.85,.2,1), filter .35s ease;
+      user-select:none;
+    }
+    .cat .face{
+      font-size: 22px;
+      line-height: 1;
+      transform: translateY(1px);
+      filter: drop-shadow(0 2px 10px rgba(0,0,0,.35));
+    }
+    .cat:before, .cat:after{
+      content:"";
+      position:absolute;
+      top: -10px;
+      width: 16px; height: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.18);
+      border-bottom: none;
+      transform: rotate(45deg);
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    .cat:before{ left: 10px; }
+    .cat:after{ right: 10px; }
+
+    .labelMini{
+      position:absolute;
+      left: 10px;
+      top: 10px;
+      font-size: 12px;
+      color: rgba(233,238,252,.86);
+      font-weight: 800;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 7px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+    }
+
+    .arrowHint{
+      position:absolute;
+      right: 12px;
+      bottom: 12px;
+      font-size: 12px;
+      color: rgba(233,238,252,.82);
+      font-weight: 800;
+      opacity:.9;
+      background: rgba(0,0,0,.20);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 7px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+    }
+    .path{
+      display:none;
+      position:absolute;
+      inset: 0;
+      pointer-events:none;
+      opacity:.9;
+    }
+    .path svg{ width:100%; height:100%; }
+    .path .stroke{
+      stroke: rgba(46,229,183,.65);
+      stroke-width: 4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-dasharray: 7 8;
+      filter: drop-shadow(0 6px 18px rgba(46,229,183,.15));
+    }
+
+    /* Practice */
+    .practiceBody{
+      padding: 12px 12px 14px;
+      display:grid;
+      gap: 12px;
+    }
+    .cardRow{
+      display:grid;
+      gap: 12px;
+    }
+    @media (min-width: 840px){
+      .practiceBody{ grid-template-columns: 1.15fr .85fr; align-items:start; }
+    }
+
+    .prompt{
+      padding: 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(16,24,45,.70), rgba(10,15,29,.50));
+    }
+    .prompt h3{
+      margin:0 0 6px;
+      font-size: 15px;
+      letter-spacing:.2px;
+    }
+    .prompt p{
+      margin:0;
+      color: var(--muted);
+      font-size: 12.75px;
+      line-height: 1.35;
+    }
+
+    .answerBox{
+      margin-top: 10px;
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .reveal{
+      flex: 1 1 auto;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      font-weight: 950;
+      letter-spacing:.2px;
+      min-height: 46px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .reveal .mut{ color: rgba(233,238,252,.72); font-weight: 900; }
+    .reveal .ans{ opacity:.0; transform: translateY(3px); transition: opacity .16s ease, transform .16s ease; }
+    .reveal[data-shown="true"] .ans{ opacity:1; transform: translateY(0px); }
+
+    .options{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .opt{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      border-radius: 16px;
+      padding: 12px 10px;
+      font-weight: 900;
+      font-size: 13px;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .12s ease, background .15s ease, border-color .15s ease, filter .15s ease;
+      text-align:center;
+    }
+    .opt:active{ transform: scale(.985) }
+    .opt[data-state="correct"]{
+      border-color: rgba(46,229,183,.60);
+      background: rgba(46,229,183,.14);
+    }
+    .opt[data-state="wrong"]{
+      border-color: rgba(255,77,109,.60);
+      background: rgba(255,77,109,.10);
+      filter: saturate(1.15);
+    }
+
+    .scoreRow{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .score{
+      font-weight: 950;
+      letter-spacing:.2px;
+      display:flex; gap:10px; align-items:center;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    .score b{ color: rgba(46,229,183,.95) }
+    .micro{
+      color: var(--muted);
+      font-size: 12.5px;
+      font-weight: 800;
+    }
+
+    /* Inputs */
+    .field{
+      display:grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    label{
+      font-size: 12px;
+      color: rgba(233,238,252,.82);
+      font-weight: 900;
+      letter-spacing:.2px;
+    }
+    input[type="text"], textarea{
+      width:100%;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      color: var(--text);
+      padding: 12px 12px;
+      font-size: 14px;
+      outline: none;
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+    input::placeholder, textarea::placeholder{ color: rgba(174,184,214,.72); }
+
+    /* Toast */
+    .toast{
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: calc(env(safe-area-inset-bottom) + 16px);
+      z-index: 90;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.28);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+      font-weight: 900;
+      font-size: 13px;
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .toast.show{
+      opacity: 1;
+      transform: translateX(-50%) translateY(-6px);
+    }
+
+    /* Hidden form/iframe */
+    iframe#hidden_iframe{ display:none; width:0; height:0; border:0; }
+    form#hidden_gform{ display:none; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="titleRow">
+        <div class="title">
+          <h1>Prepositions of Place 📍</h1>
+          <p>Swipe slides →. Tap a chip to jump.</p>
+        </div>
+        <div class="tabs">
+          <div class="pill" id="tabTheory" data-active="true">📚 Theory</div>
+          <div class="pill" id="tabPractice" data-active="false">🎯 Practice</div>
+        </div>
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+
+    <!-- THEORY -->
+    <section class="section" id="theorySection">
+      <div class="sectionHead">
+        <div>
+          <h2>1) Theory (slide by slide)</h2>
+          <div class="hint">Each slide shows a <b>box</b> and a <b>cat</b>. Students say where the cat is.</div>
+        </div>
+        <div class="small" id="counter">1 / 1</div>
+      </div>
+
+      <div class="slidesWrap">
+        <div class="slidesControls">
+          <button class="btn" id="prevBtn">← Prev</button>
+          <div class="small">Tip: swipe / scroll →</div>
+          <button class="btn primary" id="nextBtn">Next →</button>
+        </div>
+
+        <div class="slides" id="slides"></div>
+      </div>
+    </section>
+
+    <!-- PRACTICE -->
+    <section class="section" id="practiceSection">
+      <div class="sectionHead">
+        <div>
+          <h2>2) Practice (guess the preposition)</h2>
+          <div class="hint">Watch the animation. Students say the preposition. Then tap <b>Reveal</b> (or use the options).</div>
+        </div>
+        <div class="small">Hidden log ✅</div>
+      </div>
+
+      <div class="practiceBody">
+        <div class="cardRow">
+          <div class="prompt">
+            <h3 id="practiceTitle">What is the preposition?</h3>
+            <p id="practiceHint">Say it out loud. Then check.</p>
+
+            <!-- inserted practice scene here -->
+            <div id="practiceSceneAnchor"></div>
+
+            <div class="answerBox">
+              <div class="reveal" id="reveal" data-shown="false" title="Tap Reveal to show the answer">
+                <span class="mut">Answer:</span>
+                <span class="ans" id="answerText">—</span>
+              </div>
+              <button class="btn good" id="newBtn">🎲 New</button>
+              <button class="btn" id="revealBtn">👀 Reveal</button>
+            </div>
+
+            <div class="options" id="options"></div>
+
+            <div class="scoreRow">
+              <div class="score">✅ Correct: <b id="scoreOk">0</b> &nbsp; ❌ Wrong: <b id="scoreBad">0</b></div>
+              <div class="micro">Tap an option to self-check</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="prompt">
+          <h3>Student answer (write)</h3>
+          <p>Write <b>3 sentences</b> using prepositions of place. Example: “The book is on the table.”</p>
+
+          <div class="field">
+            <label for="studentName">Name (for hidden form)</label>
+            <input id="studentName" type="text" placeholder="Type name (e.g., Andrew)" autocomplete="off" />
+          </div>
+
+          <div class="field">
+            <label for="studentText">Your 3 sentences</label>
+            <textarea id="studentText" placeholder="1) ...&#10;2) ...&#10;3) ..."></textarea>
+          </div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+            <button class="btn primary" id="sendBtn">📩 Send (hidden)</button>
+            <button class="btn" id="goTheory">📚 Back to Theory</button>
+            <button class="btn danger" id="resetScore">♻️ Reset</button>
+          </div>
+
+          <p style="margin-top:10px;color:var(--muted);font-size:12.75px;line-height:1.35">
+            (Teacher note) Sending is silent — it does <b>not</b> open Google Forms.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div style="height:18px"></div>
+  </div>
+
+  <div class="toast" id="toast">Saved</div>
+
+  <!-- Hidden Google Form submit (silent) -->
+  <iframe id="hidden_iframe" name="hidden_iframe"></iframe>
+  <form id="hidden_gform"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSeUfIjONawOOwb2fARpaMnT0o74Xnj5vdBJg8nvhi5DlutY_A/formResponse"
+        method="POST"
+        target="hidden_iframe">
+    <input type="hidden" name="entry.1602674571" id="g_name" value="">
+    <input type="hidden" name="entry.1616965797" id="g_json" value="">
+  </form>
+
+  <script>
+    // =========================
+    // Google Form mapping:
+    // entry.1602674571 = name
+    // entry.1616965797 = json
+    // =========================
+
+    // ===== Data: prepositions of place =====
+    const PREPS = [
+      { key:"at", label:"at", short:"a point / exact place", example:"The cat is <b>at</b> the box.", tag:"point",
+        layout:"single", pos:{x:50,y:58,scale:1.0,z:3}, note:"Use for a point/place (at the door, at the desk)." },
+
+      { key:"in", label:"in", short:"inside (in the box)", example:"The cat is <b>in</b> the box.", tag:"inside",
+        layout:"single", pos:{x:50,y:56,scale:0.85,z:1}, catInBox:true, note:"Inside the box (not visible fully)." },
+
+      { key:"on", label:"on", short:"on top of (touching)", example:"The cat is <b>on</b> the box.", tag:"top",
+        layout:"single", pos:{x:50,y:38,scale:1.0,z:4}, note:"On = touching the surface." },
+
+      { key:"under", label:"under", short:"below (often covered)", example:"The cat is <b>under</b> the box.", tag:"below",
+        layout:"single", pos:{x:50,y:78,scale:0.95,z:1}, note:"Under = below (often “covered”)." },
+
+      { key:"above", label:"above", short:"higher than (not touching)", example:"The cat is <b>above</b> the box.", tag:"above",
+        layout:"single", pos:{x:50,y:24,scale:0.95,z:4}, note:"Above = higher than, not touching." },
+
+      { key:"below", label:"below", short:"lower than (neutral)", example:"The cat is <b>below</b> the box.", tag:"below",
+        layout:"single", pos:{x:50,y:86,scale:0.95,z:1}, note:"Below = lower than (neutral word)." },
+
+      { key:"over", label:"over", short:"higher + covering / across", example:"The cat is <b>over</b> the box.", tag:"above",
+        layout:"single", pos:{x:50,y:26,scale:1.0,z:5}, note:"Over often suggests “covering” or movement across." },
+
+      { key:"in front of", label:"in front of", short:"before (in front)", example:"The cat is <b>in front of</b> the box.", tag:"front",
+        layout:"single", pos:{x:50,y:64,scale:1.06,z:6}, front:true, note:"Closer to you than the box." },
+
+      { key:"behind", label:"behind", short:"at the back (hidden)", example:"The cat is <b>behind</b> the box.", tag:"back",
+        layout:"single", pos:{x:50,y:52,scale:0.85,z:0}, behind:true, note:"Often partly hidden by the box." },
+
+      { key:"next to / beside", label:"next to / beside", short:"very close on the side", example:"The cat is <b>next to</b> the box.", tag:"side",
+        layout:"single", pos:{x:22,y:56,scale:1.0,z:4}, note:"Next to = beside (same meaning)." },
+
+      { key:"between", label:"between", short:"in the middle of two things", example:"The cat is <b>between</b> the boxes.", tag:"two",
+        layout:"double", pos:{x:50,y:56,scale:1.0,z:4}, boxes:{a:30,b:70}, note:"Between = 2 things." },
+
+      { key:"among", label:"among", short:"in the middle of many things", example:"The cat is <b>among</b> the boxes.", tag:"many",
+        layout:"triple", pos:{x:50,y:58,scale:0.95,z:4}, boxes:{a:28,b:50,c:72}, note:"Among = many things (3+)." },
+
+      { key:"near / close to", label:"near / close to", short:"not far", example:"The cat is <b>near</b> the box.", tag:"near",
+        layout:"single", pos:{x:72,y:56,scale:1.0,z:4}, note:"Near = close to (not necessarily touching)." },
+
+      { key:"far from", label:"far from", short:"a long distance", example:"The cat is <b>far from</b> the box.", tag:"far",
+        layout:"single", pos:{x:12,y:82,scale:0.95,z:2}, note:"Far from = big distance." },
+
+      { key:"inside", label:"inside", short:"inside (same as in)", example:"The cat is <b>inside</b> the box.", tag:"inside",
+        layout:"single", pos:{x:50,y:56,scale:0.85,z:1}, catInBox:true, note:"Inside ≈ in (more explicit)." },
+
+      { key:"outside", label:"outside", short:"not inside", example:"The cat is <b>outside</b> the box.", tag:"outside",
+        layout:"single", pos:{x:82,y:76,scale:1.0,z:3}, note:"Outside = not inside." },
+
+      { key:"around", label:"around", short:"surrounding / circle", example:"The cat is <b>around</b> the box.", tag:"around",
+        layout:"single", around:true, pos:{x:50,y:56,scale:1.0,z:4}, note:"Around = in a circle / surrounding." },
+
+      { key:"opposite", label:"opposite", short:"facing / across", example:"The cat is <b>opposite</b> the box.", tag:"opp",
+        layout:"single", pos:{x:50,y:18,scale:1.0,z:4}, note:"Opposite = across from (facing)." },
+
+      { key:"to the left of", label:"to the left of", short:"left side", example:"The cat is <b>to the left of</b> the box.", tag:"left",
+        layout:"single", pos:{x:22,y:56,scale:1.0,z:4}, note:"Left = your left (viewer/teacher)." },
+
+      { key:"to the right of", label:"to the right of", short:"right side", example:"The cat is <b>to the right of</b> the box.", tag:"right",
+        layout:"single", pos:{x:78,y:56,scale:1.0,z:4}, note:"Right = your right (viewer/teacher)." },
+
+      { key:"in the middle of", label:"in the middle of", short:"exact center area", example:"The cat is <b>in the middle of</b> the scene.", tag:"middle",
+        layout:"single", pos:{x:50,y:56,scale:1.02,z:4}, note:"Middle = center position." },
+    ];
+
+    // ===== Helpers =====
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+    function toast(msg){
+      const t = $("#toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      clearTimeout(toast._id);
+      toast._id = setTimeout(()=>t.classList.remove("show"), 850);
+    }
+
+    // ===== Build Theory Slides =====
+    const slidesEl = $("#slides");
+    const chipsEl = $("#chips");
+    const counterEl = $("#counter");
+
+    function sceneHTML(mode){
+      return `
+        <div class="scene">
+          <div class="labelMini">Box + Cat</div>
+          <div class="path" aria-hidden="true">
+            <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+              <path class="stroke" d="M50,10 C80,10 90,30 50,50 C10,50 20,30 50,10 Z"></path>
+            </svg>
+          </div>
+          <div class="floor"></div>
+          <div class="box"></div>
+          <div class="box2" data-box="2"></div>
+          <div class="box2" data-box="3"></div>
+          <div class="cat" aria-label="cat"><span class="face">🐱</span></div>
+          <div class="arrowHint">Swipe →</div>
+        </div>
+      `;
+    }
+
+    function slideCard(p, idx){
+      return `
+        <article class="slide" data-idx="${idx}">
+          <div class="slideTop">
+            <div>
+              <h3 class="prep">${p.label}</h3>
+              <div class="desc">${p.short}</div>
+            </div>
+            <div class="badge">#${idx+1}</div>
+          </div>
+          <div class="ex">${p.example}</div>
+          ${sceneHTML(p.layout)}
+          <div class="ex" style="margin-top:10px">
+            💡 <b>Note:</b> ${p.note}
+          </div>
+        </article>
+      `;
+    }
+
+    function buildTheory(){
+      chipsEl.innerHTML = PREPS.map((p,i)=>(
+        `<div class="chip" data-i="${i}">${p.label}</div>`
+      )).join("");
+
+      slidesEl.innerHTML = PREPS.map(slideCard).join("");
+      PREPS.forEach((p, i) => applySlideLayout(i, p));
+      setCurrentFromScroll();
+    }
+
+    function applySlideLayout(i, p){
+      const slide = slidesEl.querySelector(`.slide[data-idx="${i}"]`);
+      if(!slide) return;
+
+      const scene = slide.querySelector(".scene");
+      const cat = slide.querySelector(".cat");
+      const box = slide.querySelector(".box");
+      const box2a = slide.querySelector('.box2[data-box="2"]');
+      const box2b = slide.querySelector('.box2[data-box="3"]');
+      const path = slide.querySelector(".path");
+
+      // Reset
+      box.style.left = "50%";
+      box.style.top = "56%";
+      box.style.zIndex = "3";
+      box2a.style.display = "none";
+      box2b.style.display = "none";
+      path.style.display = "none";
+
+      // Multi-box layouts
+      if(p.layout === "double" || p.layout === "triple"){
+        box.style.left = (p.boxes?.a ?? 30) + "%";
+        box2a.style.display = "block";
+        box2a.style.left = (p.boxes?.b ?? 70) + "%";
+        box2a.style.top = "56%";
+        box2a.style.transform = "translate(-50%, -50%)";
+      }
+      if(p.layout === "triple"){
+        box2b.style.display = "block";
+        box2b.style.left = (p.boxes?.c ?? 72) + "%";
+        box2b.style.top = "56%";
+        box2b.style.transform = "translate(-50%, -50%)";
+      }
+
+      // Cat in box effect
+      if(p.catInBox){
+        cat.style.filter = "brightness(.95)";
+      } else {
+        cat.style.filter = "none";
+      }
+
+      if(p.around){
+        path.style.display = "block";
+        cat.animate([
+          { left:"50%", top:"22%", transform:"translate(-50%,-50%) scale(1.0)" },
+          { left:"80%", top:"42%", transform:"translate(-50%,-50%) scale(1.0)" },
+          { left:"50%", top:"76%", transform:"translate(-50%,-50%) scale(1.0)" },
+          { left:"20%", top:"42%", transform:"translate(-50%,-50%) scale(1.0)" },
+          { left:"50%", top:"22%", transform:"translate(-50%,-50%) scale(1.0)" },
+        ], { duration: 1800, iterations: Infinity, easing:"ease-in-out" });
+      } else {
+        setCatPosition(slide, p.pos, p);
+      }
+    }
+
+    function setCatPosition(container, pos, p){
+      const cat = container.querySelector(".cat");
+      const box = container.querySelector(".box");
+
+      const x = pos?.x ?? 50;
+      const y = pos?.y ?? 56;
+      const scale = pos?.scale ?? 1.0;
+      const z = pos?.z ?? 4;
+
+      cat.style.left = x + "%";
+      cat.style.top  = y + "%";
+      cat.style.zIndex = String(z);
+      cat.style.transform = `translate(-50%, -50%) scale(${scale})`;
+
+      if(p.behind){
+        cat.style.opacity = "0.92";
+        cat.style.zIndex = "0";
+        box.style.zIndex = "3";
+        cat.style.filter = "brightness(.88)";
+      } else {
+        cat.style.opacity = "1";
+      }
+
+      if(p.front){
+        cat.style.zIndex = "6";
+        cat.style.filter = "none";
+      }
+
+      if(p.catInBox){
+        cat.style.zIndex = "1";
+        box.style.zIndex = "4";
+        cat.style.filter = "brightness(.95)";
+      }
+    }
+
+    // ===== Slide navigation =====
+    let currentIndex = 0;
+
+    function scrollToSlide(i){
+      const slide = slidesEl.querySelector(`.slide[data-idx="${i}"]`);
+      if(!slide) return;
+      slide.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      currentIndex = i;
+      updateUI();
+    }
+
+    function updateUI(){
+      $$(".chip").forEach(ch => ch.dataset.current = (Number(ch.dataset.i) === currentIndex) ? "true" : "false");
+      counterEl.textContent = `${currentIndex + 1} / ${PREPS.length}`;
+    }
+
+    function setCurrentFromScroll(){
+      const slides = $$(".slide");
+      if(!slides.length) return;
+      const rect = slidesEl.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+
+      let best = { i: 0, dist: Infinity };
+      slides.forEach(s => {
+        const r = s.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        const dist = Math.abs(cx - centerX);
+        if(dist < best.dist){
+          best = { i: Number(s.dataset.idx), dist };
+        }
+      });
+
+      currentIndex = best.i;
+      updateUI();
+    }
+
+    // ===== Practice mode + LOGGING =====
+    let practiceIndex = 0;
+    let scoreOk = 0, scoreBad = 0;
+
+    // stored attempts
+    const LS_KEY = "place_preps_practice_log_v1";
+    let practiceLog = null;
+
+    function loadLog(){
+      try{
+        const raw = localStorage.getItem(LS_KEY);
+        practiceLog = raw ? JSON.parse(raw) : null;
+      }catch(e){ practiceLog = null; }
+      if(!practiceLog){
+        practiceLog = {
+          topic: "prepositions_of_place",
+          startedAt: new Date().toISOString(),
+          attempts: [],
+          writeTask: ""
+        };
+      }
+    }
+    function saveLog(){
+      try{ localStorage.setItem(LS_KEY, JSON.stringify(practiceLog)); }catch(e){}
+    }
+
+    const practiceSceneHTML = `
+      <div class="scene" id="practiceScene">
+        <div class="labelMini">Guess!</div>
+        <div class="path" id="practicePath" aria-hidden="true">
+          <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+            <path class="stroke" d="M50,10 C80,10 90,30 50,50 C10,50 20,30 50,10 Z"></path>
+          </svg>
+        </div>
+        <div class="floor"></div>
+        <div class="box" id="pBox"></div>
+        <div class="box2" id="pBox2" data-box="2"></div>
+        <div class="box2" id="pBox3" data-box="3"></div>
+        <div class="cat" id="pCat"><span class="face">🐱</span></div>
+      </div>
+    `;
+
+    function injectPracticeScene(){
+      $("#practiceSceneAnchor").innerHTML = practiceSceneHTML;
+    }
+
+    function pickFourOptions(correctLabel){
+      const all = PREPS.map(p=>p.label);
+      const pool = all.filter(x=>x !== correctLabel);
+      const picked = [];
+      while(picked.length < 3 && pool.length){
+        const j = Math.floor(Math.random()*pool.length);
+        picked.push(pool.splice(j,1)[0]);
+      }
+      const options = [correctLabel, ...picked];
+      for(let i=options.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [options[i], options[j]] = [options[j], options[i]];
+      }
+      return options;
+    }
+
+    function renderOptions(correct){
+      const optionsEl = $("#options");
+      optionsEl.innerHTML = "";
+      const options = pickFourOptions(correct.label);
+
+      options.forEach(text=>{
+        const b = document.createElement("div");
+        b.className = "opt";
+        b.textContent = text;
+        b.addEventListener("click", ()=>{
+          // lock once chosen until new
+          $$(".opt").forEach(o=>o.style.pointerEvents="none");
+          const isCorrect = (text === correct.label);
+
+          // visual + score
+          if(isCorrect){
+            b.dataset.state = "correct";
+            scoreOk++;
+            $("#scoreOk").textContent = scoreOk;
+            toast("✅ Correct!");
+          }else{
+            b.dataset.state = "wrong";
+            scoreBad++;
+            $("#scoreBad").textContent = scoreBad;
+            $$(".opt").forEach(o=>{
+              if(o.textContent === correct.label) o.dataset.state = "correct";
+            });
+            toast("❌ Wrong!");
+          }
+
+          // reveal answer too
+          $("#reveal").dataset.shown = "true";
+
+          // LOG attempt
+          logAttempt({
+            correct: correct.label,
+            chosen: text,
+            result: isCorrect ? "correct" : "wrong",
+            revealed: false
+          });
+        });
+        optionsEl.appendChild(b);
+      });
+    }
+
+    function applyPracticeLayout(p){
+      const box = $("#pBox");
+      const box2 = $("#pBox2");
+      const box3 = $("#pBox3");
+      const path = $("#practicePath");
+
+      // Reset boxes/path
+      box.style.left = "50%";
+      box.style.top = "56%";
+      box.style.zIndex = "3";
+      box2.style.display = "none";
+      box3.style.display = "none";
+      path.style.display = "none";
+
+      // Stop any previous animations: replace cat node
+      const oldCat = $("#pCat");
+      const catClone = oldCat.cloneNode(true);
+      oldCat.parentNode.replaceChild(catClone, oldCat);
+
+      // Multi boxes
+      if(p.layout === "double" || p.layout === "triple"){
+        box.style.left = (p.boxes?.a ?? 30) + "%";
+        box2.style.display = "block";
+        box2.style.left = (p.boxes?.b ?? 70) + "%";
+        box2.style.top = "56%";
+        box2.style.transform = "translate(-50%, -50%)";
+      }
+      if(p.layout === "triple"){
+        box3.style.display = "block";
+        box3.style.left = (p.boxes?.c ?? 72) + "%";
+        box3.style.top = "56%";
+        box3.style.transform = "translate(-50%, -50%)";
+      }
+
+      // Around animation
+      if(p.around){
+        path.style.display = "block";
+        const c = $("#pCat");
+        c.animate([
+          { left:"50%", top:"22%", transform:"translate(-50%,-50%) scale(1.0)" },
+          { left:"80%", top:"42%", transform:"translate(-50%,-50%) scale(1.0)" },
+          { left:"50%", top:"76%", transform:"translate(-50%,-50%) scale(1.0)" },
+          { left:"20%", top:"42%", transform:"translate(-50%,-50%) scale(1.0)" },
+          { left:"50%", top:"22%", transform:"translate(-50%,-50%) scale(1.0)" },
+        ], { duration: 1800, iterations: Infinity, easing:"ease-in-out" });
+        return;
+      }
+
+      // Static position
+      const c = $("#pCat");
+      const x = p.pos?.x ?? 50;
+      const y = p.pos?.y ?? 56;
+      const scale = p.pos?.scale ?? 1.0;
+      c.style.left = x + "%";
+      c.style.top  = y + "%";
+      c.style.zIndex = String(p.pos?.z ?? 4);
+      c.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      c.style.filter = "none";
+      c.style.opacity = "1";
+
+      if(p.behind){
+        c.style.zIndex = "0";
+        box.style.zIndex = "3";
+        c.style.filter = "brightness(.88)";
+      }
+      if(p.front){
+        c.style.zIndex = "6";
+      }
+      if(p.catInBox){
+        c.style.zIndex = "1";
+        box.style.zIndex = "4";
+        c.style.filter = "brightness(.95)";
+      }
+    }
+
+    function newPractice(){
+      practiceIndex = Math.floor(Math.random() * PREPS.length);
+      const p = PREPS[practiceIndex];
+
+      $("#reveal").dataset.shown = "false";
+      $("#answerText").textContent = p.label;
+
+      $("#options").innerHTML = "";
+      applyPracticeLayout(p);
+      renderOptions(p);
+
+      setTimeout(()=>$$(".opt").forEach(o=>o.style.pointerEvents="auto"), 0);
+    }
+
+    function logAttempt({correct, chosen, result, revealed}){
+      const name = ($("#studentName").value || "").trim();
+      practiceLog.attempts.push({
+        ts: new Date().toISOString(),
+        name: name || null,
+        correct,
+        chosen: chosen ?? null,
+        result: result ?? null,
+        revealed: !!revealed
+      });
+      saveLog();
+    }
+
+    // Reveal button also logs (if they reveal first)
+    function logRevealIfNeeded(){
+      const p = PREPS[practiceIndex];
+      logAttempt({
+        correct: p.label,
+        chosen: null,
+        result: "reveal_only",
+        revealed: true
+      });
+    }
+
+    // ===== Hidden Google Form submit =====
+    function submitToGoogleForm(name, jsonString){
+      // Fill hidden inputs
+      $("#g_name").value = name;
+      $("#g_json").value = jsonString;
+
+      // Submit silently
+      $("#hidden_gform").submit();
+    }
+
+    function buildPayload(){
+      practiceLog.writeTask = ($("#studentText").value || "").trim();
+      const payload = {
+        topic: "prepositions_of_place",
+        startedAt: practiceLog.startedAt,
+        sentAt: new Date().toISOString(),
+        score: { correct: scoreOk, wrong: scoreBad },
+        writeTask: practiceLog.writeTask,
+        attempts: practiceLog.attempts
+      };
+      return payload;
+    }
+
+    function sendHidden(){
+      const name = ($("#studentName").value || "").trim();
+      if(!name){
+        toast("Type name first ✍️");
+        $("#studentName").focus();
+        return;
+      }
+
+      // Ensure latest text saved into payload
+      const payload = buildPayload();
+      const jsonStr = JSON.stringify(payload);
+
+      try{
+        submitToGoogleForm(name, jsonStr);
+        toast("Sent ✅ (hidden)");
+      }catch(e){
+        toast("Send failed ❌");
+      }
+    }
+
+    // ===== Tabs / navigation =====
+    function goToSection(id){
+      document.getElementById(id).scrollIntoView({ behavior:"smooth", block:"start" });
+    }
+
+    // ===== Init =====
+    loadLog();
+    buildTheory();
+    injectPracticeScene();
+    newPractice();
+
+    // Restore saved name/text if you want (optional, helpful)
+    try{
+      const savedName = localStorage.getItem("place_preps_name") || "";
+      const savedText = localStorage.getItem("place_preps_text") || "";
+      if(savedName) $("#studentName").value = savedName;
+      if(savedText) $("#studentText").value = savedText;
+    }catch(e){}
+
+    // Chips click
+    chipsEl.addEventListener("click", (e)=>{
+      const chip = e.target.closest(".chip");
+      if(!chip) return;
+      scrollToSlide(Number(chip.dataset.i));
+    });
+
+    // Slide buttons
+    $("#prevBtn").addEventListener("click", ()=> scrollToSlide(Math.max(0, currentIndex - 1)));
+    $("#nextBtn").addEventListener("click", ()=> scrollToSlide(Math.min(PREPS.length - 1, currentIndex + 1)));
+
+    // Track scroll to update counter + chip highlight
+    let scrollTick = null;
+    slidesEl.addEventListener("scroll", ()=>{
+      clearTimeout(scrollTick);
+      scrollTick = setTimeout(setCurrentFromScroll, 90);
+    }, { passive:true });
+
+    // Tabs
+    $("#tabTheory").addEventListener("click", ()=>{
+      $("#tabTheory").dataset.active = "true";
+      $("#tabPractice").dataset.active = "false";
+      goToSection("theorySection");
+    });
+    $("#tabPractice").addEventListener("click", ()=>{
+      $("#tabTheory").dataset.active = "false";
+      $("#tabPractice").dataset.active = "true";
+      goToSection("practiceSection");
+    });
+
+    // Practice buttons
+    $("#newBtn").addEventListener("click", newPractice);
+
+    $("#revealBtn").addEventListener("click", ()=>{
+      const wasShown = $("#reveal").dataset.shown === "true";
+      $("#reveal").dataset.shown = "true";
+      toast("Answer revealed 👀");
+      // log only if it was previously hidden AND no option was clicked yet
+      if(!wasShown){
+        // if options are still clickable, we assume no answer chosen yet
+        const stillClickable = $$(".opt").some(o => o.style.pointerEvents !== "none");
+        if(stillClickable) logRevealIfNeeded();
+      }
+    });
+
+    $("#reveal").addEventListener("click", ()=>{
+      const shown = $("#reveal").dataset.shown === "true";
+      $("#reveal").dataset.shown = shown ? "false" : "true";
+    });
+
+    // Student answer save (local)
+    $("#studentName").addEventListener("input", ()=>{
+      try{ localStorage.setItem("place_preps_name", $("#studentName").value); }catch(e){}
+    });
+    $("#studentText").addEventListener("input", ()=>{
+      try{ localStorage.setItem("place_preps_text", $("#studentText").value); }catch(e){}
+      saveLog();
+    });
+
+    // Send hidden
+    $("#sendBtn").addEventListener("click", sendHidden);
+
+    // Back / reset
+    $("#goTheory").addEventListener("click", ()=>goToSection("theorySection"));
+    $("#resetScore").addEventListener("click", ()=>{
+      scoreOk = 0; scoreBad = 0;
+      $("#scoreOk").textContent = "0";
+      $("#scoreBad").textContent = "0";
+      // also reset log
+      practiceLog = { topic:"prepositions_of_place", startedAt: new Date().toISOString(), attempts: [], writeTask:"" };
+      saveLog();
+      toast("Reset ♻️");
+    });
+
+    // Keep tabs state in sync when user scrolls manually
+    const onScroll = ()=>{
+      const theoryTop = $("#theorySection").getBoundingClientRect().top;
+      const practiceTop = $("#practiceSection").getBoundingClientRect().top;
+      const isPractice = (practiceTop < 120 && practiceTop > -4000) && (Math.abs(practiceTop) < Math.abs(theoryTop));
+      $("#tabTheory").dataset.active = isPractice ? "false" : "true";
+      $("#tabPractice").dataset.active = isPractice ? "true" : "false";
+    };
+    window.addEventListener("scroll", onScroll, { passive:true });
+
+    updateUI();
+  </script>
+</body>
+</html>
