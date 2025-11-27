@@ -7,10 +7,9 @@
   <style>
     :root{
       --bg1:#0b1220; --bg2:#0f1b33;
-      --card:#121c33cc; --card2:#0f1730cc;
       --text:#e9eefc; --muted:#aeb8d6;
       --accent:#7c5cff; --accent2:#2ee5b7;
-      --danger:#ff4d6d; --ok:#2ee5b7;
+      --danger:#ff4d6d;
       --shadow: 0 18px 60px rgba(0,0,0,.45);
       --radius: 22px;
       --stroke: rgba(255,255,255,.10);
@@ -49,9 +48,7 @@
       display:flex; gap:10px; align-items:center; justify-content:space-between;
       padding: 6px 2px 10px;
     }
-    .title{
-      line-height:1.05;
-    }
+    .title{ line-height:1.05; }
     .title h1{
       font-size: 18px;
       margin:0;
@@ -62,9 +59,7 @@
       color:var(--muted);
       font-size: 12.5px;
     }
-    .tabs{
-      display:flex; gap:8px; align-items:center;
-    }
+    .tabs{ display:flex; gap:8px; align-items:center; }
     .pill{
       border:1px solid var(--stroke);
       background: rgba(255,255,255,.06);
@@ -85,9 +80,7 @@
 
     /* Chips nav */
     .chips{
-      display:flex;
-      gap:8px;
-      overflow:auto;
+      display:flex; gap:8px; overflow:auto;
       padding: 4px 2px 10px;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
@@ -114,7 +107,7 @@
       background: rgba(46,229,183,.12);
     }
 
-    /* Cards / sections */
+    /* Sections */
     .section{
       margin: 10px 0 22px;
       border:1px solid var(--stroke);
@@ -125,29 +118,20 @@
     }
     .sectionHead{
       padding: 14px 14px 10px;
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      justify-content:space-between;
+      display:flex; gap:10px; align-items:flex-start; justify-content:space-between;
       border-bottom:1px solid rgba(255,255,255,.06);
     }
-    .sectionHead h2{
-      margin:0;
-      font-size: 14.75px;
-      letter-spacing:.2px;
-    }
+    .sectionHead h2{ margin:0; font-size: 14.75px; letter-spacing:.2px; }
     .sectionHead .hint{
       margin: 4px 0 0;
       color: var(--muted);
       font-size: 12.5px;
       line-height: 1.35;
-      max-width: 520px;
+      max-width: 540px;
     }
 
     /* Slides */
-    .slidesWrap{
-      padding: 12px 12px 14px;
-    }
+    .slidesWrap{ padding: 12px 12px 14px; }
     .slidesControls{
       display:flex; gap:9px; align-items:center; justify-content:space-between;
       margin: 2px 2px 10px;
@@ -166,28 +150,15 @@
       display:inline-flex; align-items:center; gap:10px;
     }
     .btn:active{ transform: scale(.985) }
-    .btn.primary{
-      border-color: rgba(124,92,255,.55);
-      background: rgba(124,92,255,.18);
-    }
-    .btn.good{
-      border-color: rgba(46,229,183,.55);
-      background: rgba(46,229,183,.14);
-    }
-    .btn.danger{
-      border-color: rgba(255,77,109,.55);
-      background: rgba(255,77,109,.12);
-    }
+    .btn.primary{ border-color: rgba(124,92,255,.55); background: rgba(124,92,255,.18); }
+    .btn.good{ border-color: rgba(46,229,183,.55); background: rgba(46,229,183,.14); }
+    .btn.danger{ border-color: rgba(255,77,109,.55); background: rgba(255,77,109,.12); }
     .btn.wide{ width:100%; justify-content:center; }
-    .small{
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 700;
-    }
+
+    .small{ font-size: 12px; color: var(--muted); font-weight: 700; }
+
     .slides{
-      display:flex;
-      gap: 12px;
-      overflow:auto;
+      display:flex; gap: 12px; overflow:auto;
       padding: 2px 2px 10px;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
@@ -208,9 +179,7 @@
       .slide{ flex-basis: 55%; min-height: 420px; }
     }
 
-    .slideTop{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
-    }
+    .slideTop{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
     .prep{
       font-size: 26px;
       font-weight: 950;
@@ -242,7 +211,7 @@
     }
     .ex b{ color: rgba(233,238,252,.94) }
 
-    /* Scene (box + cat) */
+    /* Scene */
     .scene{
       position: relative;
       height: 210px;
@@ -258,7 +227,6 @@
       background: linear-gradient(180deg, rgba(46,229,183,.06), rgba(0,0,0,.18));
       border-top: 1px solid rgba(255,255,255,.06);
     }
-
     .box{
       position:absolute;
       left: 50%; top: 56%;
@@ -276,7 +244,6 @@
       border: 1px dashed rgba(255,255,255,.16);
       opacity:.8;
     }
-
     .box2{
       position:absolute;
       top: 56%;
@@ -288,7 +255,6 @@
       transform: translate(-50%, -50%);
       display:none;
     }
-
     .cat{
       position:absolute;
       width: 54px; height: 54px;
@@ -339,7 +305,6 @@
       border-radius: 999px;
       backdrop-filter: blur(8px);
     }
-
     .arrowHint{
       position:absolute;
       right: 12px;
@@ -377,10 +342,6 @@
       display:grid;
       gap: 12px;
     }
-    .cardRow{
-      display:grid;
-      gap: 12px;
-    }
     @media (min-width: 840px){
       .practiceBody{ grid-template-columns: 1.15fr .85fr; align-items:start; }
     }
@@ -391,17 +352,8 @@
       border: 1px solid rgba(255,255,255,.10);
       background: linear-gradient(180deg, rgba(16,24,45,.70), rgba(10,15,29,.50));
     }
-    .prompt h3{
-      margin:0 0 6px;
-      font-size: 15px;
-      letter-spacing:.2px;
-    }
-    .prompt p{
-      margin:0;
-      color: var(--muted);
-      font-size: 12.75px;
-      line-height: 1.35;
-    }
+    .prompt h3{ margin:0 0 6px; font-size: 15px; letter-spacing:.2px; }
+    .prompt p{ margin:0; color: var(--muted); font-size: 12.75px; line-height: 1.35; }
 
     .answerBox{
       margin-top: 10px;
@@ -474,18 +426,10 @@
       background: rgba(255,255,255,.05);
     }
     .score b{ color: rgba(46,229,183,.95) }
-    .micro{
-      color: var(--muted);
-      font-size: 12.5px;
-      font-weight: 800;
-    }
+    .micro{ color: var(--muted); font-size: 12.5px; font-weight: 800; }
 
     /* Inputs */
-    .field{
-      display:grid;
-      gap: 8px;
-      margin-top: 12px;
-    }
+    .field{ display:grid; gap: 8px; margin-top: 12px; }
     label{
       font-size: 12px;
       color: rgba(233,238,252,.82);
@@ -504,6 +448,45 @@
     }
     textarea{ min-height: 120px; resize: vertical; }
     input::placeholder, textarea::placeholder{ color: rgba(174,184,214,.72); }
+
+    /* Examples list */
+    .examples{
+      margin-top: 12px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      border-radius: 18px;
+      overflow:hidden;
+    }
+    .examples summary{
+      cursor:pointer;
+      user-select:none;
+      padding: 12px 12px;
+      font-weight: 950;
+      letter-spacing:.2px;
+      outline:none;
+      list-style:none;
+    }
+    .examples summary::-webkit-details-marker{ display:none; }
+    .examples .content{
+      padding: 0 12px 12px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: rgba(233,238,252,.92);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .exGrid{
+      display:grid;
+      gap: 10px;
+    }
+    .exItem{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: 16px;
+      padding: 10px 10px;
+    }
+    .exItem b{ display:block; margin-bottom:6px; }
+    .exItem ul{ margin:0; padding-left: 18px; }
+    .exItem li{ margin: 4px 0; color: rgba(233,238,252,.88); }
 
     /* Toast */
     .toast{
@@ -529,7 +512,6 @@
       transform: translateX(-50%) translateY(-6px);
     }
 
-    /* Hidden form/iframe */
     iframe#hidden_iframe{ display:none; width:0; height:0; border:0; }
     form#hidden_gform{ display:none; }
   </style>
@@ -577,44 +559,47 @@
       <div class="sectionHead">
         <div>
           <h2>2) Practice (guess the preposition)</h2>
-          <div class="hint">Watch the animation. Students say the preposition. Then tap <b>Reveal</b> (or use the options).</div>
+          <div class="hint">Choose an answer. Then tap <b>Reveal</b> if you want to check.</div>
         </div>
-        <div class="small">Hidden log ✅</div>
+        <div class="small">Log ✅</div>
       </div>
 
       <div class="practiceBody">
-        <div class="cardRow">
-          <div class="prompt">
-            <h3 id="practiceTitle">What is the preposition?</h3>
-            <p id="practiceHint">Say it out loud. Then check.</p>
+        <div class="prompt">
+          <h3 id="practiceTitle">What is the preposition?</h3>
+          <p id="practiceHint">Say it out loud. Then check.</p>
 
-            <!-- inserted practice scene here -->
-            <div id="practiceSceneAnchor"></div>
+          <div id="practiceSceneAnchor"></div>
 
-            <div class="answerBox">
-              <div class="reveal" id="reveal" data-shown="false" title="Tap Reveal to show the answer">
-                <span class="mut">Answer:</span>
-                <span class="ans" id="answerText">—</span>
-              </div>
-              <button class="btn good" id="newBtn">🎲 New</button>
-              <button class="btn" id="revealBtn">👀 Reveal</button>
+          <div class="answerBox">
+            <div class="reveal" id="reveal" data-shown="false" title="Tap Reveal to show the answer">
+              <span class="mut">Answer:</span>
+              <span class="ans" id="answerText">—</span>
             </div>
+            <button class="btn good" id="newBtn">🎲 New</button>
+            <button class="btn" id="revealBtn">👀 Reveal</button>
+          </div>
 
-            <div class="options" id="options"></div>
+          <div class="options" id="options"></div>
 
-            <div class="scoreRow">
-              <div class="score">✅ Correct: <b id="scoreOk">0</b> &nbsp; ❌ Wrong: <b id="scoreBad">0</b></div>
-              <div class="micro">Tap an option to self-check</div>
-            </div>
+          <div class="scoreRow">
+            <div class="score">✅ Correct: <b id="scoreOk">0</b> &nbsp; ❌ Wrong: <b id="scoreBad">0</b></div>
+            <div class="micro">Tap an option to self-check</div>
           </div>
         </div>
 
         <div class="prompt">
-          <h3>Student answer (write)</h3>
-          <p>Write <b>3 sentences</b> using prepositions of place. Example: “The book is on the table.”</p>
+          <h3>Write 3 sentences</h3>
+
+          <details class="examples" id="examplesDetails">
+            <summary>📌 Examples for every preposition (tap to open)</summary>
+            <div class="content">
+              <div class="exGrid" id="examplesGrid"></div>
+            </div>
+          </details>
 
           <div class="field">
-            <label for="studentName">Name (for hidden form)</label>
+            <label for="studentName">Name</label>
             <input id="studentName" type="text" placeholder="Type name (e.g., Andrew)" autocomplete="off" />
           </div>
 
@@ -624,14 +609,10 @@
           </div>
 
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
-            <button class="btn primary" id="sendBtn">📩 Send (hidden)</button>
+            <button class="btn primary" id="sendBtn">📩 Send</button>
             <button class="btn" id="goTheory">📚 Back to Theory</button>
             <button class="btn danger" id="resetScore">♻️ Reset</button>
           </div>
-
-          <p style="margin-top:10px;color:var(--muted);font-size:12.75px;line-height:1.35">
-            (Teacher note) Sending is silent — it does <b>not</b> open Google Forms.
-          </p>
         </div>
       </div>
     </section>
@@ -641,7 +622,7 @@
 
   <div class="toast" id="toast">Saved</div>
 
-  <!-- Hidden Google Form submit (silent) -->
+  <!-- Google Form submit (silent) -->
   <iframe id="hidden_iframe" name="hidden_iframe"></iframe>
   <form id="hidden_gform"
         action="https://docs.google.com/forms/d/e/1FAIpQLSeUfIjONawOOwb2fARpaMnT0o74Xnj5vdBJg8nvhi5DlutY_A/formResponse"
@@ -652,79 +633,93 @@
   </form>
 
   <script>
-    // =========================
-    // Google Form mapping:
-    // entry.1602674571 = name
-    // entry.1616965797 = json
-    // =========================
-
-    // ===== Data: prepositions of place =====
+    // ===== Data =====
     const PREPS = [
-      { key:"at", label:"at", short:"a point / exact place", example:"The cat is <b>at</b> the box.", tag:"point",
-        layout:"single", pos:{x:50,y:58,scale:1.0,z:3}, note:"Use for a point/place (at the door, at the desk)." },
+      { key:"at", label:"at", short:"a point / exact place", example:"The cat is <b>at</b> the box.",
+        layout:"single", pos:{x:50,y:58,scale:1.0,z:3}, note:"Use for a point/place (at the door, at the desk).",
+        examples:["Meet me at the bus stop.","He is at the entrance."] },
 
-      { key:"in", label:"in", short:"inside (in the box)", example:"The cat is <b>in</b> the box.", tag:"inside",
-        layout:"single", pos:{x:50,y:56,scale:0.85,z:1}, catInBox:true, note:"Inside the box (not visible fully)." },
+      { key:"in", label:"in", short:"inside", example:"The cat is <b>in</b> the box.",
+        layout:"single", pos:{x:50,y:56,scale:0.85,z:1}, catInBox:true, note:"Inside the box (not visible fully).",
+        examples:["The keys are in my pocket.","She is in the classroom."] },
 
-      { key:"on", label:"on", short:"on top of (touching)", example:"The cat is <b>on</b> the box.", tag:"top",
-        layout:"single", pos:{x:50,y:38,scale:1.0,z:4}, note:"On = touching the surface." },
+      { key:"on", label:"on", short:"on top of (touching)", example:"The cat is <b>on</b> the box.",
+        layout:"single", pos:{x:50,y:38,scale:1.0,z:4}, note:"On = touching the surface.",
+        examples:["The phone is on the table.","There is a sticker on the box."] },
 
-      { key:"under", label:"under", short:"below (often covered)", example:"The cat is <b>under</b> the box.", tag:"below",
-        layout:"single", pos:{x:50,y:78,scale:0.95,z:1}, note:"Under = below (often “covered”)." },
+      { key:"under", label:"under", short:"below (often covered)", example:"The cat is <b>under</b> the box.",
+        layout:"single", pos:{x:50,y:78,scale:0.95,z:1}, note:"Under = below (often “covered”).",
+        examples:["The ball is under the chair.","My shoes are under the bed."] },
 
-      { key:"above", label:"above", short:"higher than (not touching)", example:"The cat is <b>above</b> the box.", tag:"above",
-        layout:"single", pos:{x:50,y:24,scale:0.95,z:4}, note:"Above = higher than, not touching." },
+      { key:"above", label:"above", short:"higher than (not touching)", example:"The cat is <b>above</b> the box.",
+        layout:"single", pos:{x:50,y:24,scale:0.95,z:4}, note:"Above = higher than, not touching.",
+        examples:["The picture is above the sofa.","A plane is above the city."] },
 
-      { key:"below", label:"below", short:"lower than (neutral)", example:"The cat is <b>below</b> the box.", tag:"below",
-        layout:"single", pos:{x:50,y:86,scale:0.95,z:1}, note:"Below = lower than (neutral word)." },
+      { key:"below", label:"below", short:"lower than (neutral)", example:"The cat is <b>below</b> the box.",
+        layout:"single", pos:{x:50,y:86,scale:0.95,z:1}, note:"Below = lower than (neutral word).",
+        examples:["The map is below the clock.","The text is below the photo."] },
 
-      { key:"over", label:"over", short:"higher + covering / across", example:"The cat is <b>over</b> the box.", tag:"above",
-        layout:"single", pos:{x:50,y:26,scale:1.0,z:5}, note:"Over often suggests “covering” or movement across." },
+      { key:"over", label:"over", short:"higher + covering / across", example:"The cat is <b>over</b> the box.",
+        layout:"single", pos:{x:50,y:26,scale:1.0,z:5}, note:"Over can suggest “covering” or movement across.",
+        examples:["Put a blanket over the chair.","The bridge goes over the river."] },
 
-      { key:"in front of", label:"in front of", short:"before (in front)", example:"The cat is <b>in front of</b> the box.", tag:"front",
-        layout:"single", pos:{x:50,y:64,scale:1.06,z:6}, front:true, note:"Closer to you than the box." },
+      { key:"in front of", label:"in front of", short:"before (front)", example:"The cat is <b>in front of</b> the box.",
+        layout:"single", pos:{x:50,y:64,scale:1.06,z:6}, front:true, note:"Closer to you than the box.",
+        examples:["A car is in front of the house.","Stand in front of the board."] },
 
-      { key:"behind", label:"behind", short:"at the back (hidden)", example:"The cat is <b>behind</b> the box.", tag:"back",
-        layout:"single", pos:{x:50,y:52,scale:0.85,z:0}, behind:true, note:"Often partly hidden by the box." },
+      { key:"behind", label:"behind", short:"at the back", example:"The cat is <b>behind</b> the box.",
+        layout:"single", pos:{x:50,y:52,scale:0.85,z:0}, behind:true, note:"Often partly hidden by the box.",
+        examples:["The bag is behind the door.","She is behind me in the line."] },
 
-      { key:"next to / beside", label:"next to / beside", short:"very close on the side", example:"The cat is <b>next to</b> the box.", tag:"side",
-        layout:"single", pos:{x:22,y:56,scale:1.0,z:4}, note:"Next to = beside (same meaning)." },
+      { key:"next to / beside", label:"next to / beside", short:"very close on the side", example:"The cat is <b>next to</b> the box.",
+        layout:"single", pos:{x:22,y:56,scale:1.0,z:4}, note:"Next to = beside (same meaning).",
+        examples:["Sit next to your friend.","The bank is beside the post office."] },
 
-      { key:"between", label:"between", short:"in the middle of two things", example:"The cat is <b>between</b> the boxes.", tag:"two",
-        layout:"double", pos:{x:50,y:56,scale:1.0,z:4}, boxes:{a:30,b:70}, note:"Between = 2 things." },
+      { key:"between", label:"between", short:"in the middle of two things", example:"The cat is <b>between</b> the boxes.",
+        layout:"double", pos:{x:50,y:56,scale:1.0,z:4}, boxes:{a:30,b:70}, note:"Between = 2 things.",
+        examples:["The shop is between the café and the library.","The cat is between two chairs."] },
 
-      { key:"among", label:"among", short:"in the middle of many things", example:"The cat is <b>among</b> the boxes.", tag:"many",
-        layout:"triple", pos:{x:50,y:58,scale:0.95,z:4}, boxes:{a:28,b:50,c:72}, note:"Among = many things (3+)." },
+      { key:"among", label:"among", short:"in the middle of many things", example:"The cat is <b>among</b> the boxes.",
+        layout:"triple", pos:{x:50,y:58,scale:0.95,z:4}, boxes:{a:28,b:50,c:72}, note:"Among = many things (3+).",
+        examples:["He was among the students.","The house is among trees."] },
 
-      { key:"near / close to", label:"near / close to", short:"not far", example:"The cat is <b>near</b> the box.", tag:"near",
-        layout:"single", pos:{x:72,y:56,scale:1.0,z:4}, note:"Near = close to (not necessarily touching)." },
+      { key:"near / close to", label:"near / close to", short:"not far", example:"The cat is <b>near</b> the box.",
+        layout:"single", pos:{x:72,y:56,scale:1.0,z:4}, note:"Near = close to (not necessarily touching).",
+        examples:["My home is near the park.","Stay close to the wall."] },
 
-      { key:"far from", label:"far from", short:"a long distance", example:"The cat is <b>far from</b> the box.", tag:"far",
-        layout:"single", pos:{x:12,y:82,scale:0.95,z:2}, note:"Far from = big distance." },
+      { key:"far from", label:"far from", short:"a long distance", example:"The cat is <b>far from</b> the box.",
+        layout:"single", pos:{x:12,y:82,scale:0.95,z:2}, note:"Far from = big distance.",
+        examples:["The airport is far from the city center.","My school is far from my house."] },
 
-      { key:"inside", label:"inside", short:"inside (same as in)", example:"The cat is <b>inside</b> the box.", tag:"inside",
-        layout:"single", pos:{x:50,y:56,scale:0.85,z:1}, catInBox:true, note:"Inside ≈ in (more explicit)." },
+      { key:"inside", label:"inside", short:"inside (explicit)", example:"The cat is <b>inside</b> the box.",
+        layout:"single", pos:{x:50,y:56,scale:0.85,z:1}, catInBox:true, note:"Inside ≈ in (more explicit).",
+        examples:["Keep the food inside the fridge.","It’s warm inside the room."] },
 
-      { key:"outside", label:"outside", short:"not inside", example:"The cat is <b>outside</b> the box.", tag:"outside",
-        layout:"single", pos:{x:82,y:76,scale:1.0,z:3}, note:"Outside = not inside." },
+      { key:"outside", label:"outside", short:"not inside", example:"The cat is <b>outside</b> the box.",
+        layout:"single", pos:{x:82,y:76,scale:1.0,z:3}, note:"Outside = not inside.",
+        examples:["Leave your shoes outside the door.","We are outside the building."] },
 
-      { key:"around", label:"around", short:"surrounding / circle", example:"The cat is <b>around</b> the box.", tag:"around",
-        layout:"single", around:true, pos:{x:50,y:56,scale:1.0,z:4}, note:"Around = in a circle / surrounding." },
+      { key:"around", label:"around", short:"surrounding / circle", example:"The cat is <b>around</b> the box.",
+        layout:"single", around:true, pos:{x:50,y:56,scale:1.0,z:4}, note:"Around = in a circle / surrounding.",
+        examples:["There are trees around the house.","Walk around the table."] },
 
-      { key:"opposite", label:"opposite", short:"facing / across", example:"The cat is <b>opposite</b> the box.", tag:"opp",
-        layout:"single", pos:{x:50,y:18,scale:1.0,z:4}, note:"Opposite = across from (facing)." },
+      { key:"opposite", label:"opposite", short:"across from", example:"The cat is <b>opposite</b> the box.",
+        layout:"single", pos:{x:50,y:18,scale:1.0,z:4}, note:"Opposite = across from (facing).",
+        examples:["The pharmacy is opposite the bank.","Sit opposite me."] },
 
-      { key:"to the left of", label:"to the left of", short:"left side", example:"The cat is <b>to the left of</b> the box.", tag:"left",
-        layout:"single", pos:{x:22,y:56,scale:1.0,z:4}, note:"Left = your left (viewer/teacher)." },
+      { key:"to the left of", label:"to the left of", short:"left side", example:"The cat is <b>to the left of</b> the box.",
+        layout:"single", pos:{x:22,y:56,scale:1.0,z:4}, note:"Left = your left (viewer/teacher).",
+        examples:["The door is to the left of the window.","The TV is to the left of the sofa."] },
 
-      { key:"to the right of", label:"to the right of", short:"right side", example:"The cat is <b>to the right of</b> the box.", tag:"right",
-        layout:"single", pos:{x:78,y:56,scale:1.0,z:4}, note:"Right = your right (viewer/teacher)." },
+      { key:"to the right of", label:"to the right of", short:"right side", example:"The cat is <b>to the right of</b> the box.",
+        layout:"single", pos:{x:78,y:56,scale:1.0,z:4}, note:"Right = your right (viewer/teacher).",
+        examples:["The kitchen is to the right of the hall.","The lamp is to the right of the bed."] },
 
-      { key:"in the middle of", label:"in the middle of", short:"exact center area", example:"The cat is <b>in the middle of</b> the scene.", tag:"middle",
-        layout:"single", pos:{x:50,y:56,scale:1.02,z:4}, note:"Middle = center position." },
+      { key:"in the middle of", label:"in the middle of", short:"exact center area", example:"The cat is <b>in the middle of</b> the scene.",
+        layout:"single", pos:{x:50,y:56,scale:1.02,z:4}, note:"Middle = center position.",
+        examples:["The chair is in the middle of the room.","The logo is in the middle of the page."] },
     ];
 
-    // ===== Helpers =====
     const $ = sel => document.querySelector(sel);
     const $$ = sel => Array.from(document.querySelectorAll(sel));
 
@@ -736,7 +731,21 @@
       toast._id = setTimeout(()=>t.classList.remove("show"), 850);
     }
 
-    // ===== Build Theory Slides =====
+    // ===== Build Examples Grid =====
+    function buildExamples(){
+      const grid = $("#examplesGrid");
+      grid.innerHTML = PREPS.map(p => `
+        <div class="exItem">
+          <b>${p.label}</b>
+          <ul>
+            <li>${p.examples[0]}</li>
+            <li>${p.examples[1]}</li>
+          </ul>
+        </div>
+      `).join("");
+    }
+
+    // ===== Theory slides =====
     const slidesEl = $("#slides");
     const chipsEl = $("#chips");
     const counterEl = $("#counter");
@@ -793,14 +802,12 @@
       const slide = slidesEl.querySelector(`.slide[data-idx="${i}"]`);
       if(!slide) return;
 
-      const scene = slide.querySelector(".scene");
       const cat = slide.querySelector(".cat");
       const box = slide.querySelector(".box");
       const box2a = slide.querySelector('.box2[data-box="2"]');
       const box2b = slide.querySelector('.box2[data-box="3"]');
       const path = slide.querySelector(".path");
 
-      // Reset
       box.style.left = "50%";
       box.style.top = "56%";
       box.style.zIndex = "3";
@@ -808,26 +815,14 @@
       box2b.style.display = "none";
       path.style.display = "none";
 
-      // Multi-box layouts
       if(p.layout === "double" || p.layout === "triple"){
         box.style.left = (p.boxes?.a ?? 30) + "%";
         box2a.style.display = "block";
         box2a.style.left = (p.boxes?.b ?? 70) + "%";
-        box2a.style.top = "56%";
-        box2a.style.transform = "translate(-50%, -50%)";
       }
       if(p.layout === "triple"){
         box2b.style.display = "block";
         box2b.style.left = (p.boxes?.c ?? 72) + "%";
-        box2b.style.top = "56%";
-        box2b.style.transform = "translate(-50%, -50%)";
-      }
-
-      // Cat in box effect
-      if(p.catInBox){
-        cat.style.filter = "brightness(.95)";
-      } else {
-        cat.style.filter = "none";
       }
 
       if(p.around){
@@ -857,21 +852,17 @@
       cat.style.top  = y + "%";
       cat.style.zIndex = String(z);
       cat.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      cat.style.filter = "none";
+      cat.style.opacity = "1";
 
       if(p.behind){
-        cat.style.opacity = "0.92";
         cat.style.zIndex = "0";
         box.style.zIndex = "3";
         cat.style.filter = "brightness(.88)";
-      } else {
-        cat.style.opacity = "1";
       }
-
       if(p.front){
         cat.style.zIndex = "6";
-        cat.style.filter = "none";
       }
-
       if(p.catInBox){
         cat.style.zIndex = "1";
         box.style.zIndex = "4";
@@ -915,11 +906,10 @@
       updateUI();
     }
 
-    // ===== Practice mode + LOGGING =====
+    // ===== Practice + logging =====
     let practiceIndex = 0;
     let scoreOk = 0, scoreBad = 0;
 
-    // stored attempts
     const LS_KEY = "place_preps_practice_log_v1";
     let practiceLog = null;
 
@@ -929,12 +919,7 @@
         practiceLog = raw ? JSON.parse(raw) : null;
       }catch(e){ practiceLog = null; }
       if(!practiceLog){
-        practiceLog = {
-          topic: "prepositions_of_place",
-          startedAt: new Date().toISOString(),
-          attempts: [],
-          writeTask: ""
-        };
+        practiceLog = { topic: "prepositions_of_place", startedAt: new Date().toISOString(), attempts: [], writeTask: "" };
       }
     }
     function saveLog(){
@@ -987,11 +972,9 @@
         b.className = "opt";
         b.textContent = text;
         b.addEventListener("click", ()=>{
-          // lock once chosen until new
           $$(".opt").forEach(o=>o.style.pointerEvents="none");
           const isCorrect = (text === correct.label);
 
-          // visual + score
           if(isCorrect){
             b.dataset.state = "correct";
             scoreOk++;
@@ -1007,10 +990,8 @@
             toast("❌ Wrong!");
           }
 
-          // reveal answer too
           $("#reveal").dataset.shown = "true";
 
-          // LOG attempt
           logAttempt({
             correct: correct.label,
             chosen: text,
@@ -1028,7 +1009,6 @@
       const box3 = $("#pBox3");
       const path = $("#practicePath");
 
-      // Reset boxes/path
       box.style.left = "50%";
       box.style.top = "56%";
       box.style.zIndex = "3";
@@ -1036,12 +1016,11 @@
       box3.style.display = "none";
       path.style.display = "none";
 
-      // Stop any previous animations: replace cat node
+      // replace cat to stop old animations
       const oldCat = $("#pCat");
       const catClone = oldCat.cloneNode(true);
       oldCat.parentNode.replaceChild(catClone, oldCat);
 
-      // Multi boxes
       if(p.layout === "double" || p.layout === "triple"){
         box.style.left = (p.boxes?.a ?? 30) + "%";
         box2.style.display = "block";
@@ -1056,7 +1035,6 @@
         box3.style.transform = "translate(-50%, -50%)";
       }
 
-      // Around animation
       if(p.around){
         path.style.display = "block";
         const c = $("#pCat");
@@ -1070,7 +1048,6 @@
         return;
       }
 
-      // Static position
       const c = $("#pCat");
       const x = p.pos?.x ?? 50;
       const y = p.pos?.y ?? 56;
@@ -1080,7 +1057,6 @@
       c.style.zIndex = String(p.pos?.z ?? 4);
       c.style.transform = `translate(-50%, -50%) scale(${scale})`;
       c.style.filter = "none";
-      c.style.opacity = "1";
 
       if(p.behind){
         c.style.zIndex = "0";
@@ -1124,30 +1100,21 @@
       saveLog();
     }
 
-    // Reveal button also logs (if they reveal first)
     function logRevealIfNeeded(){
       const p = PREPS[practiceIndex];
-      logAttempt({
-        correct: p.label,
-        chosen: null,
-        result: "reveal_only",
-        revealed: true
-      });
+      logAttempt({ correct: p.label, chosen: null, result: "reveal", revealed: true });
     }
 
-    // ===== Hidden Google Form submit =====
+    // ===== Send to Google Form (silent) =====
     function submitToGoogleForm(name, jsonString){
-      // Fill hidden inputs
       $("#g_name").value = name;
       $("#g_json").value = jsonString;
-
-      // Submit silently
       $("#hidden_gform").submit();
     }
 
     function buildPayload(){
       practiceLog.writeTask = ($("#studentText").value || "").trim();
-      const payload = {
+      return {
         topic: "prepositions_of_place",
         startedAt: practiceLog.startedAt,
         sentAt: new Date().toISOString(),
@@ -1155,24 +1122,18 @@
         writeTask: practiceLog.writeTask,
         attempts: practiceLog.attempts
       };
-      return payload;
     }
 
-    function sendHidden(){
+    function sendData(){
       const name = ($("#studentName").value || "").trim();
-      if(!name){
-        toast("Type name first ✍️");
-        $("#studentName").focus();
-        return;
-      }
+      if(!name){ toast("Type name ✍️"); $("#studentName").focus(); return; }
 
-      // Ensure latest text saved into payload
       const payload = buildPayload();
       const jsonStr = JSON.stringify(payload);
 
       try{
         submitToGoogleForm(name, jsonStr);
-        toast("Sent ✅ (hidden)");
+        toast("Sent ✅");
       }catch(e){
         toast("Send failed ❌");
       }
@@ -1185,17 +1146,10 @@
 
     // ===== Init =====
     loadLog();
+    buildExamples();
     buildTheory();
     injectPracticeScene();
     newPractice();
-
-    // Restore saved name/text if you want (optional, helpful)
-    try{
-      const savedName = localStorage.getItem("place_preps_name") || "";
-      const savedText = localStorage.getItem("place_preps_text") || "";
-      if(savedName) $("#studentName").value = savedName;
-      if(savedText) $("#studentText").value = savedText;
-    }catch(e){}
 
     // Chips click
     chipsEl.addEventListener("click", (e)=>{
@@ -1233,10 +1187,8 @@
     $("#revealBtn").addEventListener("click", ()=>{
       const wasShown = $("#reveal").dataset.shown === "true";
       $("#reveal").dataset.shown = "true";
-      toast("Answer revealed 👀");
-      // log only if it was previously hidden AND no option was clicked yet
+      toast("Answer 👀");
       if(!wasShown){
-        // if options are still clickable, we assume no answer chosen yet
         const stillClickable = $$(".opt").some(o => o.style.pointerEvents !== "none");
         if(stillClickable) logRevealIfNeeded();
       }
@@ -1247,7 +1199,7 @@
       $("#reveal").dataset.shown = shown ? "false" : "true";
     });
 
-    // Student answer save (local)
+    // Save name/text locally (optional)
     $("#studentName").addEventListener("input", ()=>{
       try{ localStorage.setItem("place_preps_name", $("#studentName").value); }catch(e){}
     });
@@ -1256,8 +1208,8 @@
       saveLog();
     });
 
-    // Send hidden
-    $("#sendBtn").addEventListener("click", sendHidden);
+    // Send
+    $("#sendBtn").addEventListener("click", sendData);
 
     // Back / reset
     $("#goTheory").addEventListener("click", ()=>goToSection("theorySection"));
@@ -1265,13 +1217,12 @@
       scoreOk = 0; scoreBad = 0;
       $("#scoreOk").textContent = "0";
       $("#scoreBad").textContent = "0";
-      // also reset log
       practiceLog = { topic:"prepositions_of_place", startedAt: new Date().toISOString(), attempts: [], writeTask:"" };
       saveLog();
       toast("Reset ♻️");
     });
 
-    // Keep tabs state in sync when user scrolls manually
+    // Keep tabs state in sync when user scrolls
     const onScroll = ()=>{
       const theoryTop = $("#theorySection").getBoundingClientRect().top;
       const practiceTop = $("#practiceSection").getBoundingClientRect().top;
@@ -1280,6 +1231,14 @@
       $("#tabPractice").dataset.active = isPractice ? "true" : "false";
     };
     window.addEventListener("scroll", onScroll, { passive:true });
+
+    // Restore saved name/text
+    try{
+      const savedName = localStorage.getItem("place_preps_name") || "";
+      const savedText = localStorage.getItem("place_preps_text") || "";
+      if(savedName) $("#studentName").value = savedName;
+      if(savedText) $("#studentText").value = savedText;
+    }catch(e){}
 
     updateUI();
   </script>
