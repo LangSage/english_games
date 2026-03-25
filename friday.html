@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#111827" />
-  <title>Угадай слово</title>
+  <title>Head Cards Game</title>
   <style>
     :root {
       --bg1: #0f172a;
@@ -17,6 +17,7 @@
       --accent-2: #a78bfa;
       --danger: #fb7185;
       --ok: #34d399;
+      --warn: #fbbf24;
       --shadow: 0 18px 45px rgba(0,0,0,0.28);
       --radius: 26px;
     }
@@ -30,7 +31,7 @@
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background:
         radial-gradient(circle at top left, rgba(96,165,250,0.24), transparent 34%),
-        radial-gradient(circle at bottom right, rgba(167,139,250,0.2), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(167,139,250,0.20), transparent 30%),
         linear-gradient(180deg, var(--bg1), var(--bg2));
       color: var(--text);
       -webkit-tap-highlight-color: transparent;
@@ -72,9 +73,9 @@
 
     h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: 30px;
       line-height: 1.05;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
 
     .subtitle {
@@ -84,11 +85,7 @@
       line-height: 1.4;
     }
 
-    .screen {
-      display: none;
-      animation: fadeIn 0.25s ease;
-    }
-
+    .screen { display: none; animation: fadeIn 0.22s ease; }
     .screen.active { display: block; }
 
     @keyframes fadeIn {
@@ -112,29 +109,26 @@
     }
 
     .player-btn,
-    .action-btn,
-    .icon-btn {
+    .action-btn {
       border: 0;
       cursor: pointer;
       color: var(--text);
       background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.09));
       border-radius: 22px;
       box-shadow: var(--shadow);
-      transition: transform 0.15s ease, opacity 0.15s ease, background 0.2s ease;
+      transition: transform 0.15s ease, opacity 0.15s ease;
     }
 
     .player-btn:active,
-    .action-btn:active,
-    .icon-btn:active {
-      transform: scale(0.98);
-    }
+    .action-btn:active { transform: scale(0.98); }
 
     .player-btn {
-      min-height: 92px;
-      padding: 12px;
+      min-height: 94px;
+      padding: 14px 12px;
       font-size: 24px;
       font-weight: 800;
       letter-spacing: -0.02em;
+      line-height: 1.1;
     }
 
     .helper {
@@ -142,12 +136,6 @@
       color: var(--muted);
       font-size: 14px;
       line-height: 1.45;
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
     }
 
     .you {
@@ -164,7 +152,7 @@
     }
 
     .you strong {
-      font-size: 21px;
+      font-size: 22px;
       color: white;
       letter-spacing: -0.02em;
     }
@@ -194,7 +182,7 @@
     }
 
     .card-word {
-      font-size: 32px;
+      font-size: 33px;
       line-height: 1.08;
       font-weight: 900;
       letter-spacing: -0.03em;
@@ -230,6 +218,48 @@
       margin-top: 12px;
     }
 
+    .status {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.4;
+      display: none;
+    }
+
+    .status.show { display: block; }
+    .status.ok { background: rgba(52,211,153,0.12); color: #d1fae5; }
+    .status.warn { background: rgba(251,191,36,0.12); color: #fde68a; }
+
+    textarea {
+      width: 100%;
+      min-height: 340px;
+      border: 0;
+      outline: none;
+      resize: vertical;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.08);
+      color: white;
+      font-size: 18px;
+      line-height: 1.5;
+      padding: 16px;
+      margin-top: 14px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+      font-family: inherit;
+      user-select: text;
+    }
+
+    .format-box {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
     .footer-link {
       margin-top: auto;
       padding: 6px 0 2px;
@@ -243,66 +273,6 @@
       display: inline-block;
       border-radius: 999px;
       background: rgba(255,255,255,0.05);
-    }
-
-    .host-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .row {
-      padding: 12px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.10);
-    }
-
-    .row label {
-      display: block;
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 6px;
-      font-weight: 700;
-    }
-
-    .row input {
-      width: 100%;
-      border: 0;
-      outline: none;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.1);
-      color: white;
-      font-size: 18px;
-      padding: 14px 14px;
-      margin-bottom: 8px;
-    }
-
-    .row input:last-child { margin-bottom: 0; }
-
-    .bulk-editor {
-      width: 100%;
-      min-height: 320px;
-      border: 0;
-      outline: none;
-      resize: vertical;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.08);
-      color: white;
-      font-size: 18px;
-      line-height: 1.5;
-      padding: 16px;
-      margin-top: 14px;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10);
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-
-    .bulk-hint {
-      margin-top: 10px;
-      font-size: 14px;
-      line-height: 1.45;
-      color: var(--muted);
     }
 
     .modal {
@@ -361,23 +331,11 @@
       color: #fecdd3;
     }
 
-    .status {
-      margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      font-size: 14px;
-      line-height: 1.4;
-      display: none;
-    }
-
-    .status.show { display: block; }
-    .status.ok { background: rgba(52,211,153,0.12); color: #d1fae5; }
-    .status.warn { background: rgba(251,191,36,0.12); color: #fde68a; }
-
     @media (max-width: 390px) {
-      .player-btn { font-size: 21px; min-height: 82px; }
-      .card-word { font-size: 28px; }
-      h1 { font-size: 24px; }
+      .player-btn { font-size: 21px; min-height: 84px; }
+      .card-word { font-size: 29px; }
+      h1 { font-size: 25px; }
+      textarea { min-height: 300px; font-size: 17px; }
     }
   </style>
 </head>
@@ -385,69 +343,69 @@
   <div class="app">
     <div class="topbar">
       <div class="title-wrap" id="secretTapArea">
-        <h1>Угадай слово</h1>
-        <p class="subtitle">Выбираешь себя → видишь всех, кроме себя. Твоё слово спрятано.</p>
+        <h1>Head Cards Game</h1>
+        <p class="subtitle">Choose yourself → see everybody except yourself. Your own word stays hidden.</p>
       </div>
     </div>
 
     <section id="selectScreen" class="screen active">
       <div class="panel">
-        <div class="hero">
-          <div class="subtitle" style="margin:0; font-size:16px; color:#e2e8f0;">Нажми на своё имя перед игрой.</div>
-          <div class="grid" id="playerGrid"></div>
-          <div class="helper">
-            После выбора экран блокируется и сохраняется в браузере. Простая перезагрузка не покажет твоё слово и не вернёт выбор игроков.
-          </div>
-        </div>
+        <div class="subtitle" style="margin:0; font-size:16px; color:#e2e8f0;">Tap your own name before the game starts.</div>
+        <div class="grid" id="playerGrid"></div>
+        <div class="helper">After you choose your name, the screen stays locked in the browser. A normal refresh will not reveal your own word.</div>
       </div>
     </section>
 
     <section id="playerScreen" class="screen">
       <div class="panel">
-        <div class="you">Ты выбрал(а): <strong id="youName"></strong></div>
-        <div class="helper" style="margin-top:12px;">Ниже показаны все пары <strong>имя — слово</strong>, кроме тебя.</div>
+        <div class="you">You are: <strong id="youName"></strong></div>
+        <div class="helper" style="margin-top:12px;">Below you can see all <strong>name — word</strong> pairs except your own.</div>
         <div class="list" id="otherList"></div>
         <div class="actions">
-          <button class="action-btn secondary" id="lockInfoBtn">Экран заблокирован</button>
-          <button class="action-btn danger" id="changePlayerBtn">Сменить игрока</button>
+          <button class="action-btn secondary" id="lockInfoBtn">Locked</button>
+          <button class="action-btn danger" id="changePlayerBtn">Change player</button>
         </div>
-        <div class="tiny">Чтобы выбрать другого игрока, нужен PIN ведущего.</div>
+        <div class="tiny">Changing the player requires the host PIN.</div>
       </div>
     </section>
 
     <section id="hostScreen" class="screen">
       <div class="panel">
-        <h2 style="margin:0 0 8px; font-size:26px; line-height:1.05;">Режим ведущего</h2>
-        <div class="helper" style="margin-top:0;">Тут можно поменять имена, слова, перемешать карточки и сбросить блокировку.</div>
+        <h2 style="margin:0 0 8px; font-size:26px; line-height:1.05;">Host mode</h2>
+        <div class="helper" style="margin-top:0;">Edit everything in one block. One line = one player.</div>
         <div class="status" id="hostStatus"></div>
-        <div class="actions" style="margin-top:14px;">
-          <button class="action-btn" id="saveBtn">Сохранить</button>
-          <button class="action-btn secondary" id="shuffleBtn">Перемешать слова</button>
-          <button class="action-btn secondary" id="changePinBtn">Сменить PIN</button>
-          <button class="action-btn danger" id="resetSessionBtn">Сбросить игрока</button>
+        <textarea id="bulkEditor" spellcheck="false"></textarea>
+        <div class="format-box">
+          Format: <strong>Name - word</strong><br>
+          Also works with <strong>:</strong>, <strong>=</strong> or <strong>—</strong>.<br>
+          Example: <strong>Timur - your word</strong>
         </div>
-        <textarea id="bulkEditor" class="bulk-editor" spellcheck="false" placeholder="Глеб - пицца&#10;Рустам - велосипед&#10;Оганес - телефон"></textarea>
-        <div class="bulk-hint">Одна строка = один игрок. Формат: <strong>Имя - слово</strong>. Можно использовать также <strong>:</strong>, <strong>=</strong> или табуляцию. Пустые строки игнорируются.</div>
         <div class="actions">
-          <button class="action-btn secondary" id="backBtn">Назад</button>
-          <button class="action-btn" id="goStartBtn">К выбору игрока</button>
+          <button class="action-btn" id="saveBtn">Save</button>
+          <button class="action-btn secondary" id="shuffleBtn">Shuffle words</button>
+          <button class="action-btn secondary" id="changePinBtn">Change PIN</button>
+          <button class="action-btn danger" id="resetSessionBtn">Reset player</button>
         </div>
-        <div class="tiny">Скрытый вход в режим ведущего: 5 быстрых тапов по заголовку сверху. PIN по умолчанию: <strong>2026</strong>.</div>
+        <div class="actions">
+          <button class="action-btn secondary" id="backBtn">Back</button>
+          <button class="action-btn" id="goStartBtn">Player list</button>
+        </div>
+        <div class="tiny">Hidden entry: tap the title 5 times. Default PIN: <strong>2026</strong>.</div>
       </div>
     </section>
 
-    <div class="footer-link"><span>Мобильная версия • крупные кнопки • без своей карточки</span></div>
+    <div class="footer-link"><span>Phone version • big buttons • hidden own card</span></div>
   </div>
 
   <div class="modal" id="pinModal">
     <div class="modal-card">
-      <h3 class="modal-title" id="modalTitle">Введите PIN</h3>
-      <p id="modalText">Нужен PIN ведущего.</p>
+      <h3 class="modal-title" id="modalTitle">Enter PIN</h3>
+      <p id="modalText">Host PIN required.</p>
       <input id="pinInput" class="pin-input" inputmode="numeric" maxlength="8" placeholder="••••" />
       <div class="error" id="pinError"></div>
       <div class="actions">
-        <button class="action-btn secondary" id="modalCancelBtn">Отмена</button>
-        <button class="action-btn" id="modalOkBtn">Открыть</button>
+        <button class="action-btn secondary" id="modalCancelBtn">Cancel</button>
+        <button class="action-btn" id="modalOkBtn">Open</button>
       </div>
     </div>
   </div>
@@ -457,17 +415,17 @@
     const STORAGE_SESSION = 'headGameSession_v4';
     const STORAGE_PIN = 'headGamePin_v4';
 
-    const defaultPlayers = [
-      { id: 'gleb', name: 'Глеб', word: 'пицца' },
-      { id: 'rustam', name: 'Рустам', word: 'велосипед' },
-      { id: 'oganes', name: 'Оганес', word: 'телефон' },
-      { id: 'vladimir', name: 'Владимир', word: 'компьютер' },
-      { id: 'stepan', name: 'Степан', word: 'книга' },
-      { id: 'kiril', name: 'Кирил', word: 'школа' },
-      { id: 'andrew', name: 'Andrew', word: 'огнетушитель' },
-      { id: 'daniel', name: 'Daniel', word: 'самолёт' },
-      { id: 'mirron', name: 'Миррон', word: '' }
-    ];
+ const defaultPlayers = [
+  { "name": "Timur", "word": "огнетушитель / fire extinguisher" },
+  { "name": "Dadash", "word": "школа / school" },
+  { "name": "Roman", "word": "компьютер / computer" },
+  { "name": "Mike", "word": "велосипед / bicycle" },
+  { "name": "Nick", "word": "самолёт / airplane" },
+  { "name": "Irina", "word": "больница / hospital" },
+  { "name": "Daria", "word": "пицца / pizza" },
+  { "name": "Mr. Andrew", "word": "гитара / guitar" },
+  { "name": "Konstantin", "word": "фотоаппарат / camera" }
+];
 
     const els = {
       selectScreen: document.getElementById('selectScreen'),
@@ -476,6 +434,7 @@
       playerGrid: document.getElementById('playerGrid'),
       otherList: document.getElementById('otherList'),
       youName: document.getElementById('youName'),
+      hostStatus: document.getElementById('hostStatus'),
       bulkEditor: document.getElementById('bulkEditor'),
       pinModal: document.getElementById('pinModal'),
       pinInput: document.getElementById('pinInput'),
@@ -490,7 +449,6 @@
       resetSessionBtn: document.getElementById('resetSessionBtn'),
       backBtn: document.getElementById('backBtn'),
       goStartBtn: document.getElementById('goStartBtn'),
-      hostStatus: document.getElementById('hostStatus'),
       secretTapArea: document.getElementById('secretTapArea'),
       modalCancelBtn: document.getElementById('modalCancelBtn'),
       modalOkBtn: document.getElementById('modalOkBtn')
@@ -500,33 +458,32 @@
     let tapCount = 0;
     let tapTimer = null;
 
+    function slugify(text, fallback = 'player') {
+      const base = String(text || '')
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9а-яё]+/gi, '-')
+        .replace(/^-+|-+$/g, '') || fallback;
+      return base + '-' + Math.random().toString(36).slice(2, 6);
+    }
+
+    function clone(obj) {
+      return JSON.parse(JSON.stringify(obj));
+    }
+
     function loadPlayers() {
       try {
         const raw = localStorage.getItem(STORAGE_PLAYERS);
         if (!raw) {
           localStorage.setItem(STORAGE_PLAYERS, JSON.stringify(defaultPlayers));
-          return JSON.parse(JSON.stringify(defaultPlayers));
+          return clone(defaultPlayers);
         }
         const parsed = JSON.parse(raw);
         if (!Array.isArray(parsed) || !parsed.length) throw new Error('bad players');
-
-        const normalized = parsed
-          .map((item, index) => ({
-            id: item?.id || makeId(item?.name || `player-${index + 1}`, index),
-            name: String(item?.name || '').trim(),
-            word: String(item?.word || '').trim()
-          }))
-          .filter(item => item.name);
-
-        if (!normalized.some(p => p.name.toLowerCase() === 'миррон' || p.id === 'mirron')) {
-          normalized.push({ id: 'mirron', name: 'Миррон', word: '' });
-        }
-
-        localStorage.setItem(STORAGE_PLAYERS, JSON.stringify(normalized));
-        return normalized;
+        return parsed;
       } catch {
         localStorage.setItem(STORAGE_PLAYERS, JSON.stringify(defaultPlayers));
-        return JSON.parse(JSON.stringify(defaultPlayers));
+        return clone(defaultPlayers);
       }
     }
 
@@ -578,7 +535,7 @@
       data.forEach(player => {
         const btn = document.createElement('button');
         btn.className = 'player-btn';
-        btn.textContent = player.name || 'Без имени';
+        btn.textContent = player.name || 'No name';
         btn.addEventListener('click', () => {
           setSession(player.id);
           renderPlayer(player.id);
@@ -610,67 +567,29 @@
       showScreen('playerScreen');
     }
 
+    function toBulkText(data) {
+      return data.map(p => `${p.name} - ${p.word || ''}`.trimEnd()).join('\n');
+    }
+
+    function parseBulkText(text) {
+      const lines = String(text || '').split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+      const out = [];
+      for (const line of lines) {
+        const match = line.match(/^(.*?)\s*(?:-|—|:|=)\s*(.*)$/);
+        if (match) {
+          const name = match[1].trim();
+          const word = match[2].trim();
+          if (name) out.push({ id: slugify(name), name, word });
+        } else {
+          out.push({ id: slugify(line), name: line, word: '' });
+        }
+      }
+      return out;
+    }
+
     function renderHost() {
-      const data = players();
-      els.bulkEditor.value = stringifyPlayers(data);
+      els.bulkEditor.value = toBulkText(players());
       showScreen('hostScreen');
-    }
-
-    function stringifyPlayers(data) {
-      return data.map(player => `${player.name} - ${player.word || ''}`.trimEnd()).join('\n');
-    }
-
-    function makeId(name, index = 0) {
-      const base = String(name || '')
-        .toLowerCase()
-        .normalize('NFKD')
-        .replace(/[̀-ͯ]/g, '')
-        .replace(/[^a-zа-яё0-9]+/gi, '-')
-        .replace(/^-+|-+$/g, '');
-      return `${base || 'player'}-${index + 1}`;
-    }
-
-    function parseBulkPlayers(text) {
-      const lines = String(text || '')
-        .split(/\r?\n/)
-        .map(line => line.trim())
-        .filter(Boolean);
-
-      const parsed = [];
-      lines.forEach((line, index) => {
-        const parts = line.split(/\s(?:-|:|=)\s|	+/);
-        const name = (parts.shift() || '').trim();
-        const word = parts.join(' - ').trim();
-        if (!name) return;
-        parsed.push({
-          id: makeId(name, index),
-          name,
-          word
-        });
-      });
-      return parsed;
-    }
-
-    function readHostInputs() {
-      const updated = parseBulkPlayers(els.bulkEditor.value);
-      return updated;
-    }
-
-    function shuffleWordsOnly() {
-      const data = readHostInputs();
-      if (!data.length) {
-        showHostStatus('Добавь хотя бы одного игрока.', 'warn');
-        return;
-      }
-      const words = data.map(p => p.word);
-      for (let i = words.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [words[i], words[j]] = [words[j], words[i]];
-      }
-      const shuffled = data.map((p, i) => ({ ...p, word: words[i] }));
-      savePlayers(shuffled);
-      renderHost();
-      showHostStatus('Слова перемешаны.', 'ok');
     }
 
     function showHostStatus(text, type = 'ok') {
@@ -679,7 +598,7 @@
       clearTimeout(showHostStatus._t);
       showHostStatus._t = setTimeout(() => {
         els.hostStatus.className = 'status';
-      }, 2200);
+      }, 2400);
     }
 
     function askPin(title, text) {
@@ -701,26 +620,20 @@
     }
 
     async function openHostWithPin() {
-      const pin = await askPin('Режим ведущего', 'Введите PIN ведущего, чтобы открыть настройки игры.');
+      const pin = await askPin('Host mode', 'Enter the host PIN to open settings.');
       if (pin === null) return;
       if (pin !== getPin()) {
-        els.pinError.textContent = 'Неверный PIN';
-        els.pinModal.classList.add('open');
-        modalResolver = null;
-        setTimeout(() => closeModal(null), 800);
+        els.pinError.textContent = 'Wrong PIN';
         return;
       }
       renderHost();
     }
 
     async function confirmChangePlayer() {
-      const pin = await askPin('Сменить игрока', 'Введите PIN ведущего, чтобы сбросить экран и выбрать другого игрока.');
+      const pin = await askPin('Change player', 'Enter the host PIN to reset the current player.');
       if (pin === null) return;
       if (pin !== getPin()) {
-        els.pinError.textContent = 'Неверный PIN';
-        els.pinModal.classList.add('open');
-        modalResolver = null;
-        setTimeout(() => closeModal(null), 800);
+        els.pinError.textContent = 'Wrong PIN';
         return;
       }
       clearSession();
@@ -728,37 +641,52 @@
     }
 
     async function changePinFlow() {
-      const current = await askPin('Смена PIN', 'Сначала введите текущий PIN.');
+      const current = await askPin('Change PIN', 'Enter the current PIN first.');
       if (current === null) return;
       if (current !== getPin()) {
-        els.pinError.textContent = 'Неверный текущий PIN';
-        els.pinModal.classList.add('open');
-        modalResolver = null;
-        setTimeout(() => closeModal(null), 800);
+        els.pinError.textContent = 'Wrong current PIN';
         return;
       }
-      const next = await askPin('Новый PIN', 'Введите новый PIN от 4 до 8 цифр.');
+      const next = await askPin('New PIN', 'Enter a new PIN from 4 to 8 digits.');
       if (next === null) return;
       if (!/^\d{4,8}$/.test(next)) {
-        els.pinError.textContent = 'Нужны только цифры: 4–8 символов';
-        els.pinModal.classList.add('open');
-        modalResolver = null;
-        setTimeout(() => closeModal(null), 1000);
+        els.pinError.textContent = 'Use only digits: 4–8';
         return;
       }
       setPin(next);
-      showHostStatus('PIN обновлён.', 'ok');
+      showHostStatus('PIN updated.', 'ok');
     }
 
     function saveFromHost() {
-      const updated = readHostInputs();
+      const updated = parseBulkText(els.bulkEditor.value);
       if (!updated.length) {
-        showHostStatus('Нужен хотя бы один игрок.', 'warn');
+        showHostStatus('Add at least one line.', 'warn');
         return;
       }
       savePlayers(updated);
+      const session = getSession();
+      if (session && !updated.some(p => p.id === session.playerId)) {
+        clearSession();
+      }
       renderHost();
-      showHostStatus('Данные сохранены.', 'ok');
+      showHostStatus('Saved.', 'ok');
+    }
+
+    function shuffleWordsOnly() {
+      const data = parseBulkText(els.bulkEditor.value);
+      if (!data.length) {
+        showHostStatus('Nothing to shuffle.', 'warn');
+        return;
+      }
+      const words = data.map(p => p.word || '');
+      for (let i = words.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [words[i], words[j]] = [words[j], words[i]];
+      }
+      const shuffled = data.map((p, i) => ({ ...p, word: words[i] }));
+      els.bulkEditor.value = toBulkText(shuffled);
+      savePlayers(shuffled);
+      showHostStatus('Words shuffled.', 'ok');
     }
 
     function escapeHtml(value) {
@@ -770,19 +698,11 @@
         .replace(/'/g, '&#39;');
     }
 
-    function escapeAttr(value) {
-      return escapeHtml(value);
-    }
-
-    function cssEscape(value) {
-      return String(value).replace(/([ #;?%&,.+*~\':"!^$\[\]()=>|\/])/g, '\\$1');
-    }
-
     function boot() {
       document.addEventListener('contextmenu', e => e.preventDefault());
 
       els.lockInfoBtn.addEventListener('click', () => {
-        alert('Экран уже зафиксирован. Простая перезагрузка не меняет выбранного игрока.');
+        alert('The screen is already locked for this player. A normal refresh will not reveal their own card.');
       });
 
       els.changePlayerBtn.addEventListener('click', confirmChangePlayer);
@@ -791,7 +711,7 @@
       els.changePinBtn.addEventListener('click', changePinFlow);
       els.resetSessionBtn.addEventListener('click', () => {
         clearSession();
-        showHostStatus('Игрок сброшен.', 'warn');
+        showHostStatus('Current player reset.', 'warn');
       });
       els.backBtn.addEventListener('click', () => {
         const session = getSession();
