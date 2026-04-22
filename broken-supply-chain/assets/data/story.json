@@ -1,0 +1,1591 @@
+{
+  "meta": {
+    "title": "The Broken Supply Chain",
+    "description": "A phone-first English logistics game about a delayed shipment, missing cargo, and an urgent customer.",
+    "caseTitle": "The Broken Supply Chain",
+    "caseTag": "Case 01",
+    "playerName": "Emir",
+    "defaultDifficulty": "easy",
+    "defaultAudioRate": 0.9,
+    "startNotes": [
+      "A shipment from Germany is late.",
+      "Find the delay, the missing cargo, and a fast solution."
+    ],
+    "endTitle": "The urgent delivery is moving.",
+    "endSummary": "You split the shipment and sent the urgent spare parts first.",
+    "preGameVocab": [
+      {
+        "term": "shipment",
+        "definition": "goods sent from one place to another",
+        "translation": "поставка"
+      },
+      {
+        "term": "cargo",
+        "definition": "the goods inside a truck or ship",
+        "translation": "груз"
+      },
+      {
+        "term": "delay",
+        "definition": "something happens later than planned",
+        "translation": "задержка"
+      },
+      {
+        "term": "warehouse",
+        "definition": "a large place where goods are stored",
+        "translation": "склад"
+      },
+      {
+        "term": "route",
+        "definition": "the road or path for a delivery",
+        "translation": "маршрут"
+      },
+      {
+        "term": "tracking number",
+        "definition": "a code used to follow a shipment",
+        "translation": "номер отслеживания"
+      }
+    ],
+    "difficultyModes": [
+      {
+        "id": "easy",
+        "label": "Easy",
+        "description": "Russian support stays visible.",
+        "translationVisibility": "full"
+      },
+      {
+        "id": "normal",
+        "label": "Normal",
+        "description": "Start words hide Russian first.",
+        "translationVisibility": "lesson"
+      },
+      {
+        "id": "hard",
+        "label": "Hard",
+        "description": "Russian shows only in review.",
+        "translationVisibility": "review"
+      }
+    ],
+    "reviewPhrases": [
+      {
+        "speaker": "yusuf",
+        "text": "The truck has a mechanical problem.",
+        "translation": "У грузовика механическая проблема."
+      },
+      {
+        "speaker": "lara",
+        "text": "We sent 120 boxes, not 95.",
+        "translation": "Мы отправили 120 коробок, а не 95."
+      },
+      {
+        "speaker": "faruk",
+        "text": "Send the urgent boxes in a smaller van.",
+        "translation": "Отправьте срочные коробки на меньшем фургоне."
+      }
+    ]
+  },
+  "speakers": {
+    "mia": {
+      "name": "Emir",
+      "role": "Logistics manager",
+      "avatar": "./assets/images/avatars/manager.svg",
+      "naturalVoice": "en-US-BrianMultilingualNeural",
+      "naturalRate": "-10%",
+      "voice": "Microsoft David Desktop",
+      "tokenColor": "#ff8f5a"
+    },
+    "yusuf": {
+      "name": "Yusuf",
+      "role": "Truck driver",
+      "avatar": "./assets/images/avatars/tim.svg",
+      "naturalVoice": "en-US-AndrewMultilingualNeural",
+      "naturalRate": "-10%",
+      "voice": "Microsoft David Desktop",
+      "tokenColor": "#5ab889"
+    },
+    "selin": {
+      "name": "Selin",
+      "role": "Warehouse lead",
+      "avatar": "./assets/images/avatars/nora.svg",
+      "naturalVoice": "en-US-EmmaMultilingualNeural",
+      "naturalRate": "-10%",
+      "voice": "Microsoft Zira Desktop",
+      "tokenColor": "#74b9ff"
+    },
+    "lara": {
+      "name": "Lara",
+      "role": "Supplier rep",
+      "avatar": "./assets/images/avatars/alex.svg",
+      "naturalVoice": "en-US-AvaMultilingualNeural",
+      "naturalRate": "-10%",
+      "voice": "Microsoft Zira Desktop",
+      "tokenColor": "#f7c561"
+    },
+    "faruk": {
+      "name": "Faruk",
+      "role": "Carrier dispatcher",
+      "avatar": "./assets/images/avatars/alex.svg",
+      "naturalVoice": "en-US-BrianMultilingualNeural",
+      "naturalRate": "-10%",
+      "voice": "Microsoft David Desktop",
+      "tokenColor": "#9b7bff"
+    },
+    "nisa": {
+      "name": "Nisa",
+      "role": "Customer",
+      "avatar": "./assets/images/avatars/nora.svg",
+      "naturalVoice": "en-US-JennyNeural",
+      "naturalRate": "-10%",
+      "voice": "Microsoft Zira Desktop",
+      "tokenColor": "#ff7b89"
+    },
+    "narrator": {
+      "name": "Narrator",
+      "role": "Logistics guide",
+      "avatar": "./assets/images/avatars/manager.svg",
+      "naturalVoice": "en-US-JennyNeural",
+      "naturalRate": "-14%",
+      "voice": "Microsoft Zira Desktop",
+      "tokenColor": "#f7c561"
+    }
+  },
+  "introLines": [
+    {
+      "id": "case_intro_1",
+      "speaker": "narrator",
+      "text": "Case one. The spare parts shipment is late."
+    },
+    {
+      "id": "case_intro_2",
+      "speaker": "narrator",
+      "text": "A truck from Germany stopped outside Istanbul."
+    },
+    {
+      "id": "case_intro_3",
+      "speaker": "mia",
+      "text": "I need the tracking screen first."
+    }
+  ],
+  "comprehensionChecks": [
+    {
+      "id": "check_driver_problem",
+      "stepId": "talkSelin",
+      "question": "What problem does Yusuf report?",
+      "help": "Remember Yusuf's message.",
+      "options": [
+        {
+          "id": "mechanical",
+          "label": "A mechanical problem",
+          "isCorrect": true
+        },
+        {
+          "id": "customs",
+          "label": "A customs problem",
+          "isCorrect": false
+        }
+      ],
+      "correctLines": [
+        {
+          "id": "check_driver_right_1",
+          "speaker": "narrator",
+          "text": "Right. Yusuf says the truck has a mechanical problem."
+        }
+      ],
+      "wrongLines": [
+        {
+          "id": "check_driver_wrong_1",
+          "speaker": "narrator",
+          "text": "Not customs. Yusuf says the truck has a mechanical problem."
+        }
+      ],
+      "notes": {
+        "correct": "You understood Yusuf's problem.",
+        "wrong": "Yusuf says the truck is broken."
+      }
+    },
+    {
+      "id": "check_box_count",
+      "stepId": "talkCustomer",
+      "question": "How many boxes does Lara say the supplier sent?",
+      "help": "Listen to Lara's number.",
+      "options": [
+        {
+          "id": "120",
+          "label": "120 boxes",
+          "isCorrect": true
+        },
+        {
+          "id": "95",
+          "label": "95 boxes",
+          "isCorrect": false
+        }
+      ],
+      "correctLines": [
+        {
+          "id": "check_boxes_right_1",
+          "speaker": "narrator",
+          "text": "Correct. Lara confirms 120 boxes were sent."
+        }
+      ],
+      "wrongLines": [
+        {
+          "id": "check_boxes_wrong_1",
+          "speaker": "narrator",
+          "text": "Not 95. Lara says the supplier sent 120 boxes."
+        }
+      ],
+      "notes": {
+        "correct": "You remembered the supplier number.",
+        "wrong": "The supplier sent 120 boxes."
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "checkTracking",
+      "title": "Check the tracking screen",
+      "instruction": "The delivery is late. Go to the tracking screen.",
+      "targetIds": [
+        "trackingScreen"
+      ],
+      "vocabulary": [
+        {
+          "term": "shipment",
+          "definition": "goods moving from one place to another",
+          "translation": "поставка"
+        },
+        {
+          "term": "tracking number",
+          "definition": "a code used to follow a delivery",
+          "translation": "номер отслеживания"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_tracking_1",
+          "speaker": "narrator",
+          "text": "Look at the top left office area."
+        },
+        {
+          "id": "hint_tracking_2",
+          "speaker": "narrator",
+          "text": "Find the blue tracking screen."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "The first clue is on the tracking screen.",
+        "lines": [
+          {
+            "id": "wrong_tracking_1",
+            "speaker": "narrator",
+            "text": "Not yet."
+          },
+          {
+            "id": "wrong_tracking_2",
+            "speaker": "narrator",
+            "text": "Start with the tracking screen."
+          }
+        ]
+      }
+    },
+    {
+      "id": "askDriver",
+      "title": "Ask Yusuf",
+      "instruction": "The truck stopped outside the city. Ask Yusuf what happened.",
+      "targetIds": [
+        "yusuf"
+      ],
+      "vocabulary": [
+        {
+          "term": "delay",
+          "definition": "something happens later than planned",
+          "translation": "задержка"
+        },
+        {
+          "term": "route",
+          "definition": "the road for the delivery",
+          "translation": "маршрут"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_driver_1",
+          "speaker": "narrator",
+          "text": "Yusuf is by the truck."
+        },
+        {
+          "id": "hint_driver_2",
+          "speaker": "narrator",
+          "text": "Go to the top right loading area."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "The next clue comes from Yusuf.",
+        "lines": [
+          {
+            "id": "wrong_driver_1",
+            "speaker": "narrator",
+            "text": "You still need Yusuf's update."
+          },
+          {
+            "id": "wrong_driver_2",
+            "speaker": "narrator",
+            "text": "Ask the driver by the truck."
+          }
+        ]
+      }
+    },
+    {
+      "id": "talkSelin",
+      "title": "Ask Selin",
+      "instruction": "Now check the warehouse count with Selin.",
+      "targetIds": [
+        "selin"
+      ],
+      "vocabulary": [
+        {
+          "term": "warehouse",
+          "definition": "a place where goods are stored",
+          "translation": "склад"
+        },
+        {
+          "term": "cargo",
+          "definition": "goods inside the truck",
+          "translation": "груз"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_selin_1",
+          "speaker": "narrator",
+          "text": "Selin is in the middle warehouse."
+        },
+        {
+          "id": "hint_selin_2",
+          "speaker": "narrator",
+          "text": "Go to the blue worker by the shelves."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "The warehouse count is with Selin.",
+        "lines": [
+          {
+            "id": "wrong_selin_1",
+            "speaker": "narrator",
+            "text": "You need the warehouse report."
+          },
+          {
+            "id": "wrong_selin_2",
+            "speaker": "narrator",
+            "text": "Ask Selin in the center."
+          }
+        ]
+      }
+    },
+    {
+      "id": "checkInvoice",
+      "title": "Check the invoice",
+      "instruction": "Compare the paper invoice with the system.",
+      "targetIds": [
+        "invoiceBoard"
+      ],
+      "vocabulary": [
+        {
+          "term": "invoice",
+          "definition": "the document for the shipment and payment",
+          "translation": "счет-фактура"
+        },
+        {
+          "term": "delivery",
+          "definition": "bringing goods to the customer",
+          "translation": "доставка"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_invoice_1",
+          "speaker": "narrator",
+          "text": "The invoice board is on the left."
+        },
+        {
+          "id": "hint_invoice_2",
+          "speaker": "narrator",
+          "text": "Look for the clipboard board."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "The invoice gives the official box count.",
+        "lines": [
+          {
+            "id": "wrong_invoice_1",
+            "speaker": "narrator",
+            "text": "Check the paper record."
+          },
+          {
+            "id": "wrong_invoice_2",
+            "speaker": "narrator",
+            "text": "Go to the invoice board."
+          }
+        ]
+      }
+    },
+    {
+      "id": "askSupplier",
+      "title": "Ask Lara",
+      "instruction": "Call Lara from the supplier and confirm the number of boxes.",
+      "targetIds": [
+        "lara"
+      ],
+      "vocabulary": [
+        {
+          "term": "supplier",
+          "definition": "the company that sends the goods",
+          "translation": "поставщик"
+        },
+        {
+          "term": "customs",
+          "definition": "border control for goods",
+          "translation": "таможня"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_supplier_1",
+          "speaker": "narrator",
+          "text": "Lara is in the lower left office."
+        },
+        {
+          "id": "hint_supplier_2",
+          "speaker": "narrator",
+          "text": "Ask the supplier rep by the desk."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "You still need the supplier confirmation.",
+        "lines": [
+          {
+            "id": "wrong_supplier_1",
+            "speaker": "narrator",
+            "text": "The supplier knows the real count."
+          },
+          {
+            "id": "wrong_supplier_2",
+            "speaker": "narrator",
+            "text": "Talk to Lara on the left."
+          }
+        ]
+      }
+    },
+    {
+      "id": "talkCustomer",
+      "title": "Talk to the customer",
+      "instruction": "The customer is angry. Go to Nisa and hear the urgent request.",
+      "targetIds": [
+        "nisa"
+      ],
+      "vocabulary": [
+        {
+          "term": "carrier",
+          "definition": "the transport company for the goods",
+          "translation": "перевозчик"
+        },
+        {
+          "term": "spare parts",
+          "definition": "parts used to repair machines or cars",
+          "translation": "запчасти"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_customer_1",
+          "speaker": "narrator",
+          "text": "Nisa is waiting at the customer desk."
+        },
+        {
+          "id": "hint_customer_2",
+          "speaker": "narrator",
+          "text": "Go to the lower left reception desk."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "The customer must hear the plan soon.",
+        "lines": [
+          {
+            "id": "wrong_customer_1",
+            "speaker": "narrator",
+            "text": "The angry customer is still waiting."
+          },
+          {
+            "id": "wrong_customer_2",
+            "speaker": "narrator",
+            "text": "Talk to Nisa at reception."
+          }
+        ]
+      }
+    },
+    {
+      "id": "planSolution",
+      "title": "Open the route board",
+      "instruction": "Use the route board and plan a split delivery.",
+      "targetIds": [
+        "dispatchBoard"
+      ],
+      "vocabulary": [
+        {
+          "term": "dispatch",
+          "definition": "send a vehicle or goods quickly",
+          "translation": "отправить"
+        },
+        {
+          "term": "damaged goods",
+          "definition": "goods that arrive broken",
+          "translation": "поврежденный товар"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_plan_1",
+          "speaker": "narrator",
+          "text": "The route board is on the right."
+        },
+        {
+          "id": "hint_plan_2",
+          "speaker": "narrator",
+          "text": "Find the board near the dispatcher."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "The next step is on the route board.",
+        "lines": [
+          {
+            "id": "wrong_plan_1",
+            "speaker": "narrator",
+            "text": "You need a new route plan."
+          },
+          {
+            "id": "wrong_plan_2",
+            "speaker": "narrator",
+            "text": "Check the board on the right."
+          }
+        ]
+      }
+    },
+    {
+      "id": "askDispatcher",
+      "title": "Ask Faruk",
+      "instruction": "Ask Faruk for a fast transport solution.",
+      "targetIds": [
+        "faruk"
+      ],
+      "vocabulary": [
+        {
+          "term": "carrier",
+          "definition": "the company moving the delivery",
+          "translation": "перевозчик"
+        },
+        {
+          "term": "construction",
+          "definition": "road work that slows traffic",
+          "translation": "ремонт дороги"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_dispatcher_1",
+          "speaker": "narrator",
+          "text": "Faruk is below the route board."
+        },
+        {
+          "id": "hint_dispatcher_2",
+          "speaker": "narrator",
+          "text": "Talk to the purple dispatcher."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Faruk has the transport options.",
+        "lines": [
+          {
+            "id": "wrong_dispatcher_1",
+            "speaker": "narrator",
+            "text": "You need the carrier plan."
+          },
+          {
+            "id": "wrong_dispatcher_2",
+            "speaker": "narrator",
+            "text": "Ask Faruk on the right."
+          }
+        ]
+      }
+    },
+    {
+      "id": "loadUrgentBoxes",
+      "title": "Find the urgent boxes",
+      "instruction": "Go to the urgent pallet and get the priority cargo.",
+      "targetIds": [
+        "urgentPallet"
+      ],
+      "vocabulary": [
+        {
+          "term": "urgent",
+          "definition": "needed very soon",
+          "translation": "срочный"
+        },
+        {
+          "term": "cargo",
+          "definition": "goods inside the delivery",
+          "translation": "груз"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_pallet_1",
+          "speaker": "narrator",
+          "text": "The urgent pallet is in the lower center warehouse."
+        },
+        {
+          "id": "hint_pallet_2",
+          "speaker": "narrator",
+          "text": "Look for the stacked boxes."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "You need the urgent boxes before the van leaves.",
+        "lines": [
+          {
+            "id": "wrong_pallet_1",
+            "speaker": "narrator",
+            "text": "Find the priority cargo first."
+          },
+          {
+            "id": "wrong_pallet_2",
+            "speaker": "narrator",
+            "text": "Go to the pallet in the center."
+          }
+        ]
+      }
+    },
+    {
+      "id": "sendVan",
+      "title": "Send the van",
+      "instruction": "Take the urgent boxes to the smaller van.",
+      "targetIds": [
+        "vanBay"
+      ],
+      "vocabulary": [
+        {
+          "term": "dispatch",
+          "definition": "send a vehicle or goods",
+          "translation": "отправка"
+        },
+        {
+          "term": "van",
+          "definition": "a smaller delivery vehicle",
+          "translation": "фургон"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_van_1",
+          "speaker": "narrator",
+          "text": "The smaller van is at the bottom right."
+        },
+        {
+          "id": "hint_van_2",
+          "speaker": "narrator",
+          "text": "Take the urgent cargo to the green van."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "The urgent cargo still needs the van.",
+        "lines": [
+          {
+            "id": "wrong_van_1",
+            "speaker": "narrator",
+            "text": "The urgent boxes are still with you."
+          },
+          {
+            "id": "wrong_van_2",
+            "speaker": "narrator",
+            "text": "Dispatch them with the smaller van."
+          }
+        ]
+      }
+    },
+    {
+      "id": "updateCustomer",
+      "title": "Update Nisa",
+      "instruction": "Go back to Nisa and give the final delivery plan.",
+      "targetIds": [
+        "nisa"
+      ],
+      "vocabulary": [
+        {
+          "term": "investigation",
+          "definition": "a careful check to find the truth",
+          "translation": "расследование"
+        },
+        {
+          "term": "communication",
+          "definition": "sharing clear information with people",
+          "translation": "коммуникация"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_update_1",
+          "speaker": "narrator",
+          "text": "Go back to the customer desk."
+        },
+        {
+          "id": "hint_update_2",
+          "speaker": "narrator",
+          "text": "Nisa is waiting on the lower left."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "The customer still needs the final update.",
+        "lines": [
+          {
+            "id": "wrong_update_1",
+            "speaker": "narrator",
+            "text": "One more job."
+          },
+          {
+            "id": "wrong_update_2",
+            "speaker": "narrator",
+            "text": "Go tell Nisa about the split delivery."
+          }
+        ]
+      }
+    }
+  ],
+  "world": {
+    "width": 1000,
+    "height": 920,
+    "playerStart": {
+      "x": 120,
+      "y": 820
+    },
+    "zones": [
+      {
+        "x": 36,
+        "y": 36,
+        "width": 284,
+        "height": 848,
+        "color": "#dff1f6"
+      },
+      {
+        "x": 344,
+        "y": 36,
+        "width": 320,
+        "height": 848,
+        "color": "#eef4db"
+      },
+      {
+        "x": 690,
+        "y": 36,
+        "width": 274,
+        "height": 848,
+        "color": "#efe3f6"
+      }
+    ],
+    "decor": [
+      {
+        "asset": "./assets/images/environment/tracking-screen.svg",
+        "x": 182,
+        "y": 140,
+        "scale": 0.92
+      },
+      {
+        "asset": "./assets/images/environment/reception-desk.svg",
+        "x": 178,
+        "y": 720,
+        "scale": 1.02,
+        "collider": {
+          "width": 132,
+          "height": 78
+        }
+      },
+      {
+        "asset": "./assets/images/environment/cargo-shelf.svg",
+        "x": 520,
+        "y": 248,
+        "scale": 1.02,
+        "collider": {
+          "width": 122,
+          "height": 96
+        }
+      },
+      {
+        "asset": "./assets/images/environment/cargo-shelf.svg",
+        "x": 520,
+        "y": 612,
+        "scale": 1.02,
+        "collider": {
+          "width": 122,
+          "height": 96
+        }
+      },
+      {
+        "asset": "./assets/images/environment/counter.svg",
+        "x": 520,
+        "y": 788,
+        "scale": 1.08,
+        "collider": {
+          "width": 160,
+          "height": 82
+        }
+      },
+      {
+        "asset": "./assets/images/environment/truck.svg",
+        "x": 824,
+        "y": 166,
+        "scale": 0.92,
+        "collider": {
+          "width": 210,
+          "height": 94
+        }
+      },
+      {
+        "asset": "./assets/images/environment/route-board.svg",
+        "x": 820,
+        "y": 560,
+        "scale": 0.94
+      },
+      {
+        "asset": "./assets/images/environment/delivery-van.svg",
+        "x": 826,
+        "y": 806,
+        "scale": 0.88,
+        "collider": {
+          "width": 144,
+          "height": 88
+        }
+      }
+    ]
+  },
+  "inventoryItems": {
+    "trackingReport": {
+      "label": "Tracking report",
+      "icon": "./assets/images/ui/tracking-report.svg"
+    },
+    "invoiceCopy": {
+      "label": "Invoice copy",
+      "icon": "./assets/images/ui/invoice.svg"
+    },
+    "dispatchTicket": {
+      "label": "Dispatch ticket",
+      "icon": "./assets/images/ui/dispatch-ticket.svg"
+    },
+    "urgentBoxes": {
+      "label": "Urgent boxes",
+      "icon": "./assets/images/ui/urgent-boxes.svg"
+    }
+  },
+  "interactives": [
+    {
+      "id": "trackingScreen",
+      "label": "Tracking Screen",
+      "kind": "object",
+      "asset": "./assets/images/environment/tracking-screen.svg",
+      "x": 182,
+      "y": 142,
+      "radius": 86,
+      "scale": 0.92,
+      "responses": {
+        "checkTracking": {
+          "lines": [
+            {
+              "id": "tracking_clue_1",
+              "speaker": "narrator",
+              "text": "The shipment from Germany is delayed."
+            },
+            {
+              "id": "tracking_clue_2",
+              "speaker": "narrator",
+              "text": "The tracking number shows the truck stopped 120 kilometers away."
+            },
+            {
+              "id": "tracking_clue_3",
+              "speaker": "mia",
+              "text": "I need Yusuf's update now."
+            }
+          ],
+          "effects": {
+            "step": "askDriver",
+            "addInventory": [
+              "trackingReport"
+            ],
+            "notes": [
+              "The system shows a delay.",
+              "The truck stopped 120 kilometers away."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "tracking_default_1",
+                "speaker": "narrator",
+                "text": "The tracking screen shows the route."
+              }
+            ],
+            [
+              {
+                "id": "tracking_default_2",
+                "speaker": "narrator",
+                "text": "I already checked the tracking number."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "yusuf",
+      "label": "Yusuf",
+      "kind": "npc",
+      "speakerId": "yusuf",
+      "x": 812,
+      "y": 286,
+      "radius": 88,
+      "responses": {
+        "askDriver": {
+          "lines": [
+            {
+              "id": "yusuf_clue_1",
+              "speaker": "yusuf",
+              "text": "Hey, what's up, Emir? The truck has a mechanical problem."
+            },
+            {
+              "id": "yusuf_clue_2",
+              "speaker": "yusuf",
+              "text": "I cannot continue the route."
+            },
+            {
+              "id": "yusuf_clue_3",
+              "speaker": "yusuf",
+              "text": "The road is partly closed because of construction."
+            }
+          ],
+          "effects": {
+            "step": "talkSelin",
+            "notes": [
+              "Yusuf reports a mechanical problem.",
+              "The road is partly closed."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "yusuf_default_1",
+                "speaker": "yusuf",
+                "text": "Hey, what's up, Emir?"
+              }
+            ],
+            [
+              {
+                "id": "yusuf_default_2",
+                "speaker": "yusuf",
+                "text": "I am still with the broken truck."
+              }
+            ],
+            [
+              {
+                "id": "yusuf_default_3",
+                "speaker": "yusuf",
+                "text": "The route is still blocked here."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "truckStatus",
+      "label": "Truck",
+      "kind": "object",
+      "asset": "./assets/images/environment/truck.svg",
+      "x": 826,
+      "y": 166,
+      "radius": 96,
+      "scale": 0.92,
+      "responses": {
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "truck_default_1",
+                "speaker": "narrator",
+                "text": "The truck is not moving."
+              }
+            ],
+            [
+              {
+                "id": "truck_default_2",
+                "speaker": "narrator",
+                "text": "The status is still delayed."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "selin",
+      "label": "Selin",
+      "kind": "npc",
+      "speakerId": "selin",
+      "x": 520,
+      "y": 420,
+      "radius": 88,
+      "responses": {
+        "talkSelin": {
+          "lines": [
+            {
+              "id": "selin_clue_1",
+              "speaker": "selin",
+              "text": "Hey, what's up, Emir? The warehouse system lists only 95 boxes."
+            },
+            {
+              "id": "selin_clue_2",
+              "speaker": "selin",
+              "text": "But the shipment should have 120 boxes."
+            },
+            {
+              "id": "selin_clue_3",
+              "speaker": "selin",
+              "text": "Some cargo is missing."
+            }
+          ],
+          "effects": {
+            "step": "checkInvoice",
+            "notes": [
+              "The system shows only 95 boxes.",
+              "Some cargo may be missing."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "selin_default_1",
+                "speaker": "selin",
+                "text": "Hey, what's up, Emir?"
+              }
+            ],
+            [
+              {
+                "id": "selin_default_2",
+                "speaker": "selin",
+                "text": "I am checking the warehouse numbers."
+              }
+            ],
+            [
+              {
+                "id": "selin_default_3",
+                "speaker": "selin",
+                "text": "The shelves are ready, but the count is wrong."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "warehouseScanner",
+      "label": "Scanner",
+      "kind": "object",
+      "asset": "./assets/images/environment/scanner-station.svg",
+      "x": 518,
+      "y": 562,
+      "radius": 88,
+      "scale": 0.9,
+      "responses": {
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "scanner_default_1",
+                "speaker": "narrator",
+                "text": "The scanner shows 95 boxes in the system."
+              }
+            ],
+            [
+              {
+                "id": "scanner_default_2",
+                "speaker": "narrator",
+                "text": "The warehouse count still looks short."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "invoiceBoard",
+      "label": "Invoice Board",
+      "kind": "object",
+      "asset": "./assets/images/environment/invoice-board.svg",
+      "x": 260,
+      "y": 306,
+      "radius": 86,
+      "scale": 0.86,
+      "responses": {
+        "checkInvoice": {
+          "lines": [
+            {
+              "id": "invoice_clue_1",
+              "speaker": "narrator",
+              "text": "The invoice says 120 boxes."
+            },
+            {
+              "id": "invoice_clue_2",
+              "speaker": "narrator",
+              "text": "The paper and the system do not match."
+            },
+            {
+              "id": "invoice_clue_3",
+              "speaker": "mia",
+              "text": "I need the supplier confirmation."
+            }
+          ],
+          "effects": {
+            "step": "askSupplier",
+            "addInventory": [
+              "invoiceCopy"
+            ],
+            "notes": [
+              "The invoice says 120 boxes.",
+              "The paper record does not match the system."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "invoice_default_1",
+                "speaker": "narrator",
+                "text": "The invoice board holds the paper records."
+              }
+            ],
+            [
+              {
+                "id": "invoice_default_2",
+                "speaker": "narrator",
+                "text": "I already checked the invoice copy."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "customsDesk",
+      "label": "Customs Desk",
+      "kind": "object",
+      "asset": "./assets/images/environment/invoice-board.svg",
+      "x": 264,
+      "y": 640,
+      "radius": 84,
+      "scale": 0.72,
+      "responses": {
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "customs_default_1",
+                "speaker": "narrator",
+                "text": "Customs is already clear for this shipment."
+              }
+            ],
+            [
+              {
+                "id": "customs_default_2",
+                "speaker": "narrator",
+                "text": "The main problem is not customs now."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "lara",
+      "label": "Lara",
+      "kind": "npc",
+      "speakerId": "lara",
+      "x": 178,
+      "y": 532,
+      "radius": 88,
+      "responses": {
+        "askSupplier": {
+          "lines": [
+            {
+              "id": "lara_clue_1",
+              "speaker": "lara",
+              "text": "Hey, what's up, Emir? We sent 120 boxes from Germany."
+            },
+            {
+              "id": "lara_clue_2",
+              "speaker": "lara",
+              "text": "So the missing cargo was lost during transportation."
+            },
+            {
+              "id": "lara_clue_3",
+              "speaker": "lara",
+              "text": "Please check with the carrier."
+            }
+          ],
+          "effects": {
+            "step": "talkCustomer",
+            "notes": [
+              "The supplier confirms 120 boxes were sent.",
+              "The cargo was lost during transportation."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "lara_default_1",
+                "speaker": "lara",
+                "text": "Hey, what's up, Emir?"
+              }
+            ],
+            [
+              {
+                "id": "lara_default_2",
+                "speaker": "lara",
+                "text": "I can check the supplier documents."
+              }
+            ],
+            [
+              {
+                "id": "lara_default_3",
+                "speaker": "lara",
+                "text": "The supplier copy is still open on my side."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "nisa",
+      "label": "Nisa",
+      "kind": "npc",
+      "speakerId": "nisa",
+      "x": 184,
+      "y": 792,
+      "radius": 88,
+      "responses": {
+        "talkCustomer": {
+          "lines": [
+            {
+              "id": "nisa_clue_1",
+              "speaker": "nisa",
+              "text": "Hey, what's up? I need the spare parts today."
+            },
+            {
+              "id": "nisa_clue_2",
+              "speaker": "nisa",
+              "text": "I cannot wait for the full delivery."
+            },
+            {
+              "id": "nisa_clue_3",
+              "speaker": "nisa",
+              "text": "Please send the urgent boxes first."
+            }
+          ],
+          "effects": {
+            "step": "planSolution",
+            "notes": [
+              "The customer needs urgent parts today.",
+              "She cannot wait for the full delivery."
+            ]
+          }
+        },
+        "updateCustomer": {
+          "lines": [
+            {
+              "id": "nisa_finish_1",
+              "speaker": "nisa",
+              "text": "Thank you. The urgent parts are enough for today."
+            },
+            {
+              "id": "nisa_finish_2",
+              "speaker": "nisa",
+              "text": "I can wait for the rest later."
+            },
+            {
+              "id": "nisa_finish_3",
+              "speaker": "narrator",
+              "text": "Good. The situation is under control."
+            }
+          ],
+          "effects": {
+            "completeCase": true,
+            "notes": [
+              "The urgent delivery is moving.",
+              "The company will investigate the missing boxes."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "nisa_default_1",
+                "speaker": "nisa",
+                "text": "Hey, what's up?"
+              }
+            ],
+            [
+              {
+                "id": "nisa_default_2",
+                "speaker": "nisa",
+                "text": "I still need clear delivery news."
+              }
+            ],
+            [
+              {
+                "id": "nisa_default_3",
+                "speaker": "nisa",
+                "text": "Please keep me updated."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "dispatchBoard",
+      "label": "Route Board",
+      "kind": "object",
+      "asset": "./assets/images/environment/route-board.svg",
+      "x": 820,
+      "y": 562,
+      "radius": 90,
+      "scale": 0.94,
+      "responses": {
+        "planSolution": {
+          "lines": [
+            {
+              "id": "plan_clue_1",
+              "speaker": "mia",
+              "text": "I have a broken truck, missing cargo, and an angry customer."
+            },
+            {
+              "id": "plan_clue_2",
+              "speaker": "mia",
+              "text": "I need a split delivery plan."
+            }
+          ],
+          "effects": {
+            "step": "askDispatcher",
+            "notes": [
+              "A split delivery may solve the urgent problem."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "plan_default_1",
+                "speaker": "narrator",
+                "text": "The board shows the delivery routes."
+              }
+            ],
+            [
+              {
+                "id": "plan_default_2",
+                "speaker": "narrator",
+                "text": "I already used the route board."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "faruk",
+      "label": "Faruk",
+      "kind": "npc",
+      "speakerId": "faruk",
+      "x": 816,
+      "y": 702,
+      "radius": 88,
+      "responses": {
+        "askDispatcher": {
+          "lines": [
+            {
+              "id": "faruk_clue_1",
+              "speaker": "faruk",
+              "text": "Hey, what's up, Emir? A second truck can help, but it needs two hours."
+            },
+            {
+              "id": "faruk_clue_2",
+              "speaker": "faruk",
+              "text": "A smaller van can take the urgent boxes now."
+            },
+            {
+              "id": "faruk_clue_3",
+              "speaker": "faruk",
+              "text": "Then the rest can come later."
+            }
+          ],
+          "effects": {
+            "step": "loadUrgentBoxes",
+            "addInventory": [
+              "dispatchTicket"
+            ],
+            "notes": [
+              "The second truck needs two hours.",
+              "A smaller van can move the urgent boxes now."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "faruk_default_1",
+                "speaker": "faruk",
+                "text": "Hey, what's up, Emir?"
+              }
+            ],
+            [
+              {
+                "id": "faruk_default_2",
+                "speaker": "faruk",
+                "text": "I am checking the carrier options."
+              }
+            ],
+            [
+              {
+                "id": "faruk_default_3",
+                "speaker": "faruk",
+                "text": "We can still move part of this shipment."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "urgentPallet",
+      "label": "Urgent Pallet",
+      "kind": "object",
+      "asset": "./assets/images/environment/pallet-stack.svg",
+      "x": 520,
+      "y": 780,
+      "radius": 88,
+      "scale": 0.92,
+      "responses": {
+        "loadUrgentBoxes": {
+          "lines": [
+            {
+              "id": "pallet_clue_1",
+              "speaker": "narrator",
+              "text": "These are the urgent spare parts."
+            },
+            {
+              "id": "pallet_clue_2",
+              "speaker": "mia",
+              "text": "I will take them to the smaller van."
+            }
+          ],
+          "effects": {
+            "step": "sendVan",
+            "addInventory": [
+              "urgentBoxes"
+            ],
+            "notes": [
+              "The urgent spare parts are ready."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "pallet_default_1",
+                "speaker": "narrator",
+                "text": "These boxes are ready to move."
+              }
+            ],
+            [
+              {
+                "id": "pallet_default_2",
+                "speaker": "narrator",
+                "text": "The pallet holds priority cargo."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "vanBay",
+      "label": "Van",
+      "kind": "object",
+      "asset": "./assets/images/environment/delivery-van.svg",
+      "x": 826,
+      "y": 808,
+      "radius": 90,
+      "scale": 0.88,
+      "responses": {
+        "sendVan": {
+          "lines": [
+            {
+              "id": "van_clue_1",
+              "speaker": "narrator",
+              "text": "The smaller van is ready."
+            },
+            {
+              "id": "van_clue_2",
+              "speaker": "narrator",
+              "text": "Dispatch the urgent cargo first."
+            },
+            {
+              "id": "van_clue_3",
+              "speaker": "mia",
+              "text": "Now I need to update Nisa."
+            }
+          ],
+          "effects": {
+            "step": "updateCustomer",
+            "notes": [
+              "The urgent boxes left with the smaller van."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "van_default_1",
+                "speaker": "narrator",
+                "text": "The smaller van is waiting."
+              }
+            ],
+            [
+              {
+                "id": "van_default_2",
+                "speaker": "narrator",
+                "text": "This van can move faster through the city."
+              }
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}

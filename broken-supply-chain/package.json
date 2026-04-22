@@ -1,0 +1,9 @@
+{
+  "name": "the-broken-supply-chain",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "python -m http.server 8000",
+    "builder": "python tools/builder_server.py"
+  }
+}

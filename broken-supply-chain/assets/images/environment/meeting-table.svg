@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 120">
+  <defs>
+    <linearGradient id="meetingWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2cf9b"/>
+      <stop offset="1" stop-color="#d59a57"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="120" cy="110" rx="92" ry="10" fill="#334155" opacity="0.16"/>
+  <rect x="24" y="24" width="192" height="52" rx="22" fill="url(#meetingWood)" stroke="#9a6538" stroke-width="4"/>
+  <rect x="74" y="34" width="34" height="20" rx="4" fill="#ffffff"/>
+  <rect x="132" y="34" width="34" height="20" rx="4" fill="#bfdbfe"/>
+  <circle cx="196" cy="48" r="8" fill="#fde68a"/>
+  <rect x="52" y="74" width="16" height="28" rx="6" fill="#8b5c32"/>
+  <rect x="172" y="74" width="16" height="28" rx="6" fill="#8b5c32"/>
+</svg>

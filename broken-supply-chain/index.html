@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Broken Supply Chain</title>
+  <meta name="description" content="A phone-first English logistics game about a delayed shipment, missing cargo, and an urgent customer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <main class="game-shell">
+      <section class="playfield-card">
+        <div class="canvas-shell">
+          <div id="phaser-root" aria-label="Game world"></div>
+
+          <div class="hud-rail hud-rail-left" aria-label="Game controls">
+            <button id="info-button" class="hud-button" aria-label="Show task" title="Show task">
+              <span aria-hidden="true">&#9432;</span>
+              <span class="sr-only">Show task</span>
+            </button>
+            <button id="hint-button" class="hud-button" aria-label="Show hint" title="Show hint">
+              <span aria-hidden="true">&#128161;</span>
+              <span class="sr-only">Show hint</span>
+            </button>
+            <button id="audio-button" class="hud-button" aria-label="Audio on" title="Audio on">
+              <span aria-hidden="true">&#128266;</span>
+              <span class="sr-only">Audio on</span>
+            </button>
+            <button id="replay-button" class="hud-button" aria-label="Replay line" title="Replay line">
+              <span aria-hidden="true">&#8635;</span>
+              <span class="sr-only">Replay line</span>
+            </button>
+          </div>
+
+          <div class="hud-rail hud-rail-right" aria-label="Open panels">
+            <button class="hud-button" data-drawer-button="dialogue" data-drawer-title="Talk" aria-label="Talk" title="Talk">
+              <span aria-hidden="true">&#128172;</span>
+              <span class="sr-only">Talk</span>
+            </button>
+            <button class="hud-button" data-drawer-button="words" data-drawer-title="Words" aria-label="Words" title="Words">
+              <span aria-hidden="true">&#128214;</span>
+              <span class="sr-only">Words</span>
+            </button>
+            <button class="hud-button" data-drawer-button="inventory" data-drawer-title="Bag" aria-label="Bag" title="Bag">
+              <span aria-hidden="true">&#128273;</span>
+              <span class="sr-only">Bag</span>
+            </button>
+            <button class="hud-button" data-drawer-button="notes" data-drawer-title="Notes" aria-label="Notes" title="Notes">
+              <span aria-hidden="true">&#128221;</span>
+              <span class="sr-only">Notes</span>
+            </button>
+            <button class="hud-button" data-drawer-button="progress" data-drawer-title="Steps" aria-label="Steps" title="Steps">
+              <span aria-hidden="true">&#127919;</span>
+              <span class="sr-only">Steps</span>
+            </button>
+            <button class="hud-button" data-drawer-button="settings" data-drawer-title="Settings" aria-label="Settings" title="Settings">
+              <span aria-hidden="true">&#9881;</span>
+              <span class="sr-only">Settings</span>
+            </button>
+          </div>
+
+          <section id="subtitle-panel" class="subtitle-card subtitle-card-hidden" aria-live="polite">
+            <p id="subtitle-speaker" class="subtitle-speaker">Narrator</p>
+            <p id="subtitle-text" class="subtitle-text">Press Start Game when you are ready.</p>
+          </section>
+
+          <section id="message-panel" class="message-card message-card-hidden" aria-live="polite">
+            <div class="message-head">
+              <p id="message-kicker" class="panel-label">Task</p>
+              <button id="message-close" class="button button-primary button-small">Got it</button>
+            </div>
+            <h2 id="message-title">Find the machine</h2>
+            <p id="message-text">Go to the coffee machine.</p>
+          </section>
+
+          <section id="question-panel" class="question-card question-card-hidden" aria-live="polite">
+            <p class="panel-label">Quick Check</p>
+            <h3 id="question-text">Where should Mia go now?</h3>
+            <p id="question-help" class="question-help">Choose the best answer.</p>
+            <div id="question-options" class="question-options"></div>
+          </section>
+
+          <div id="start-screen" class="overlay-card">
+            <p class="overlay-kicker">6 Words First</p>
+            <h3>Read the words. Then start the case.</h3>
+            <p class="start-text">
+              Learn these easy words first. They will help you in the game.
+            </p>
+            <ul id="start-vocab-list" class="start-vocab-list"></ul>
+            <div class="overlay-actions">
+              <button id="start-button" class="button button-primary">Start Game</button>
+              <button id="reset-button" class="button button-secondary">Reset Case</button>
+            </div>
+          </div>
+
+          <div id="end-screen" class="overlay-card overlay-card-hidden review-screen">
+            <p class="overlay-kicker">Case Closed</p>
+            <h3 id="end-title">The coffee is ready.</h3>
+            <p id="end-summary">
+              You solved the case and learned the office words.
+            </p>
+            <div class="star-row" id="star-row" aria-label="Score"></div>
+            <div id="review-stats" class="review-stats" aria-label="Review stats"></div>
+            <section class="review-block">
+              <p class="panel-label">Words You Learned</p>
+              <ul id="review-words" class="data-list review-list"></ul>
+            </section>
+            <section class="review-block">
+              <p class="panel-label">Key Phrases</p>
+              <ul id="review-phrases" class="data-list review-list"></ul>
+            </section>
+            <div class="overlay-actions">
+              <button id="play-again-button" class="button button-primary">Play Again</button>
+            </div>
+          </div>
+
+          <div class="touch-controls" aria-label="Touch controls">
+            <div class="joystick-shell">
+              <div id="joystick-base" class="joystick-base" aria-label="Move joystick">
+                <div id="joystick-knob" class="joystick-knob"></div>
+              </div>
+              <p class="touch-label">Move</p>
+            </div>
+            <div class="action-buttons">
+              <button class="touch-button touch-button-action" data-touch-action="interact" aria-label="Talk">
+                <span class="touch-button-symbol" aria-hidden="true">E</span>
+                <span class="touch-button-text">Talk</span>
+              </button>
+            </div>
+          </div>
+
+          <section id="drawer-sheet" class="drawer-sheet drawer-sheet-hidden">
+            <div class="drawer-head">
+              <div>
+                <p class="panel-label">Panel</p>
+                <h3 id="drawer-title">Talk</h3>
+              </div>
+              <button id="drawer-close" class="button button-secondary button-small">Close</button>
+            </div>
+
+            <section class="drawer-panel" data-drawer-panel="dialogue">
+              <div id="speaker-card" class="speaker-card">
+                <img id="speaker-avatar" src="./assets/images/avatars/mia.svg" alt="" class="speaker-avatar">
+                <div class="speaker-meta">
+                  <h3 id="speaker-name">Narrator</h3>
+                  <p id="speaker-role">Office guide</p>
+                </div>
+              </div>
+              <p id="dialogue-text" class="dialogue-text">
+                Press Start Game when you are ready.
+              </p>
+            </section>
+
+            <section class="drawer-panel" data-drawer-panel="words">
+              <ul id="vocabulary-list" class="data-list"></ul>
+            </section>
+
+            <section class="drawer-panel" data-drawer-panel="inventory">
+              <ul id="inventory-list" class="inventory-list"></ul>
+            </section>
+
+            <section class="drawer-panel" data-drawer-panel="notes">
+              <ul id="notes-list" class="data-list notes-list"></ul>
+            </section>
+
+            <section class="drawer-panel" data-drawer-panel="progress">
+              <ol id="progress-list" class="progress-list"></ol>
+            </section>
+
+            <section class="drawer-panel" data-drawer-panel="settings">
+              <div class="settings-block">
+                <p class="panel-label">Difficulty</p>
+                <div id="difficulty-options" class="settings-options"></div>
+              </div>
+              <div class="settings-block">
+                <div class="settings-row">
+                  <label class="settings-label" for="audio-enabled-input">Audio</label>
+                  <input id="audio-enabled-input" class="settings-check" type="checkbox" checked>
+                </div>
+                <div class="settings-row settings-row-stack">
+                  <label class="settings-label" for="audio-rate-input">Voice speed</label>
+                  <span id="audio-rate-value" class="settings-value">100%</span>
+                </div>
+                <input id="audio-rate-input" class="settings-range" type="range" min="0.75" max="1.2" step="0.05" value="1">
+              </div>
+            </section>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./assets/vendor/phaser.min.js"></script>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
