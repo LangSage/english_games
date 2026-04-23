@@ -76,9 +76,22 @@
             <div id="question-options" class="question-options"></div>
           </section>
 
-          <div id="start-screen" class="overlay-card">
-            <p class="overlay-kicker">6 Words First</p>
-            <h3>Read the words. Then start the case.</h3>
+          <div id="start-screen" class="overlay-card overlay-card-start">
+            <div class="start-screen-head">
+              <div class="start-screen-copy">
+                <p class="overlay-kicker">6 Words First</p>
+                <h3>Read the words. Then start.</h3>
+              </div>
+              <button
+                id="start-fullscreen-button"
+                class="button button-secondary button-small fullscreen-button fullscreen-button-hidden"
+                type="button"
+                aria-label="Fullscreen"
+                title="Fullscreen"
+              >
+                Fullscreen
+              </button>
+            </div>
             <p class="start-text">
               Learn these easy words first. They will help you in the game.
             </p>
@@ -87,7 +100,7 @@
               <div class="start-preview-head">
                 <div>
                   <p class="panel-label">Voice Speed</p>
-                  <p class="start-preview-text">Sample: “Hello. I need a basket. Where is the milk?”</p>
+                  <p class="start-preview-text">Demo: "Hello. I need a basket. Where is the milk?"</p>
                 </div>
                 <button id="start-audio-preview-button" class="button button-secondary button-small">Play Demo</button>
               </div>
@@ -175,6 +188,20 @@
                   <span id="audio-rate-value" class="settings-value">100%</span>
                 </div>
                 <input id="audio-rate-input" class="settings-range" type="range" min="0.75" max="1.2" step="0.05" value="1">
+              </div>
+              <div class="settings-block">
+                <div class="settings-row">
+                  <span class="settings-label">Full Screen</span>
+                  <button
+                    id="settings-fullscreen-button"
+                    class="button button-secondary button-small fullscreen-button fullscreen-button-hidden"
+                    type="button"
+                    aria-label="Fullscreen"
+                    title="Fullscreen"
+                  >
+                    Fullscreen
+                  </button>
+                </div>
               </div>
             </section>
           </section>

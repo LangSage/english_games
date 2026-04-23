@@ -18,6 +18,7 @@ export class UIController {
       startAudioRateInput: document.getElementById("start-audio-rate-input"),
       startAudioRateValue: document.getElementById("start-audio-rate-value"),
       startAudioPreviewButton: document.getElementById("start-audio-preview-button"),
+      startFullscreenButton: document.getElementById("start-fullscreen-button"),
       subtitlePanel: document.getElementById("subtitle-panel"),
       subtitleSpeaker: document.getElementById("subtitle-speaker"),
       subtitleText: document.getElementById("subtitle-text"),
@@ -49,12 +50,17 @@ export class UIController {
       audioEnabledInput: document.getElementById("audio-enabled-input"),
       audioRateInput: document.getElementById("audio-rate-input"),
       audioRateValue: document.getElementById("audio-rate-value"),
+      settingsFullscreenButton: document.getElementById("settings-fullscreen-button"),
       drawerSheet: document.getElementById("drawer-sheet"),
       drawerTitle: document.getElementById("drawer-title"),
       drawerClose: document.getElementById("drawer-close")
     };
     this.drawerButtons = Array.from(document.querySelectorAll("[data-drawer-button]"));
     this.drawerPanels = Array.from(document.querySelectorAll("[data-drawer-panel]"));
+    this.fullscreenButtons = [
+      this.elements.startFullscreenButton,
+      this.elements.settingsFullscreenButton
+    ].filter(Boolean);
   }
 
   bindHandlers(handlers) {
@@ -67,6 +73,8 @@ export class UIController {
     this.elements.audioButton?.addEventListener("click", handlers.onAudioToggle);
     this.elements.replayButton?.addEventListener("click", handlers.onReplay);
     this.elements.startAudioPreviewButton?.addEventListener("click", handlers.onPreviewAudio);
+    this.elements.startFullscreenButton?.addEventListener("click", handlers.onFullscreenToggle);
+    this.elements.settingsFullscreenButton?.addEventListener("click", handlers.onFullscreenToggle);
     this.elements.drawerClose?.addEventListener("click", () => this.closeDrawer());
     this.elements.messageClose?.addEventListener("click", () => this.hideMessage());
     this.elements.difficultyOptions?.addEventListener("click", (event) => {
@@ -231,6 +239,22 @@ export class UIController {
       : '<span aria-hidden="true">&#128263;</span><span class="sr-only">Audio off</span>';
     this.elements.audioButton.setAttribute("aria-label", enabled ? "Audio on" : "Audio off");
     this.elements.audioButton.setAttribute("title", enabled ? "Audio on" : "Audio off");
+  }
+
+  renderFullscreenSupport(enabled) {
+    for (const button of this.fullscreenButtons) {
+      button.classList.toggle("fullscreen-button-hidden", !enabled);
+      button.disabled = !enabled;
+    }
+  }
+
+  renderFullscreenState(isFullscreen) {
+    const label = isFullscreen ? "Exit Fullscreen" : "Fullscreen";
+    for (const button of this.fullscreenButtons) {
+      button.textContent = label;
+      button.setAttribute("aria-label", label);
+      button.setAttribute("title", label);
+    }
   }
 
   renderSettings(settings) {

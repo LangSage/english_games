@@ -265,6 +265,42 @@ class AudioController {
   }
 }
 
+function getFullscreenElement() {
+  return document.fullscreenElement ?? document.webkitFullscreenElement ?? null;
+}
+
+function canUseFullscreen(target) {
+  return Boolean(target?.requestFullscreen || target?.webkitRequestFullscreen);
+}
+
+function requestFullscreen(target) {
+  if (!target) {
+    return Promise.resolve();
+  }
+
+  if (target.requestFullscreen) {
+    return target.requestFullscreen({ navigationUI: "hide" }).catch(() => target.requestFullscreen());
+  }
+
+  if (target.webkitRequestFullscreen) {
+    return Promise.resolve(target.webkitRequestFullscreen());
+  }
+
+  return Promise.resolve();
+}
+
+function exitFullscreen() {
+  if (document.exitFullscreen) {
+    return document.exitFullscreen();
+  }
+
+  if (document.webkitExitFullscreen) {
+    return Promise.resolve(document.webkitExitFullscreen());
+  }
+
+  return Promise.resolve();
+}
+
 function renderTextureCircle(scene, key, fillColor) {
   if (scene.textures.exists(key)) {
     return;
@@ -472,8 +508,16 @@ async function bootstrap() {
     activePointerId: null,
     radius: 36
   };
+  const fullscreenTarget = document.querySelector(".page-shell");
+  const fullscreenSupported = canUseFullscreen(fullscreenTarget);
 
   let sceneRef = null;
+
+  const syncFullscreenState = () => {
+    const isFullscreen = getFullscreenElement() === fullscreenTarget;
+    ui.renderFullscreenSupport(fullscreenSupported);
+    ui.renderFullscreenState(isFullscreen);
+  };
 
   const applySettings = (nextSettings, { persist = true } = {}) => {
     settings = {
@@ -654,8 +698,29 @@ async function bootstrap() {
     audio.playLines(previewLines);
   };
 
+  const toggleFullscreen = async () => {
+    if (!fullscreenSupported) {
+      return;
+    }
+
+    try {
+      if (getFullscreenElement() === fullscreenTarget) {
+        await exitFullscreen();
+      } else {
+        await requestFullscreen(fullscreenTarget);
+      }
+    } catch {
+      // Ignore browsers that reject fullscreen requests.
+    } finally {
+      syncFullscreenState();
+    }
+  };
+
   applySettings(settings, { persist: false });
+  syncFullscreenState();
   audio.preloadLineIds(audioLineIds);
+  document.addEventListener("fullscreenchange", syncFullscreenState);
+  document.addEventListener("webkitfullscreenchange", syncFullscreenState);
   window.addEventListener("beforeunload", () => {
     audio.dispose();
   }, { once: true });
@@ -674,6 +739,7 @@ async function bootstrap() {
     },
     onReplay: () => audio.replay(),
     onPreviewAudio: previewAudio,
+    onFullscreenToggle: toggleFullscreen,
     onWordsViewed: () => {
       state.markCurrentVocabularySeen();
       render();

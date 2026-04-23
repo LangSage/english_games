@@ -363,6 +363,30 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.overlay-card-start {
+  place-content: stretch;
+  align-content: start;
+  gap: 10px;
+  overflow: auto;
+  padding-bottom: 16px;
+}
+
+.start-screen-head,
+.start-screen-copy {
+  display: grid;
+  gap: 6px;
+}
+
+.start-screen-head {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px;
+}
+
+.start-screen-copy h3 {
+  font-size: clamp(1.3rem, 4vw, 1.75rem);
+}
+
 .overlay-card h3,
 .overlay-card p,
 .overlay-kicker {
@@ -426,6 +450,18 @@ p {
   flex-wrap: wrap;
 }
 
+.overlay-card-start .overlay-actions {
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
+  padding-top: 12px;
+  background: linear-gradient(180deg, rgba(11, 23, 37, 0), rgba(11, 23, 37, 0.96) 34%);
+}
+
+.fullscreen-button-hidden {
+  display: none !important;
+}
+
 .start-preview-card {
   display: grid;
   gap: 10px;
@@ -452,6 +488,10 @@ p {
   margin-top: 4px;
   color: rgba(255, 255, 255, 0.84);
   font-size: 0.93rem;
+}
+
+.fullscreen-button {
+  white-space: nowrap;
 }
 
 .overlay-card .button-secondary {
@@ -854,6 +894,39 @@ p {
   display: none;
 }
 
+.page-shell:fullscreen,
+.page-shell:-webkit-full-screen {
+  width: 100vw;
+  height: 100vh;
+  padding:
+    max(0px, env(safe-area-inset-top))
+    max(0px, env(safe-area-inset-right))
+    max(0px, env(safe-area-inset-bottom))
+    max(0px, env(safe-area-inset-left));
+  background: #091522;
+}
+
+.page-shell:fullscreen .canvas-shell,
+.page-shell:-webkit-full-screen .canvas-shell,
+.page-shell:fullscreen #phaser-root,
+.page-shell:-webkit-full-screen #phaser-root {
+  border-radius: 0;
+}
+
+.page-shell:fullscreen .hud-rail,
+.page-shell:-webkit-full-screen .hud-rail,
+.page-shell:fullscreen .subtitle-card,
+.page-shell:-webkit-full-screen .subtitle-card {
+  top: max(12px, env(safe-area-inset-top));
+}
+
+.page-shell:fullscreen .touch-controls,
+.page-shell:-webkit-full-screen .touch-controls {
+  left: max(12px, env(safe-area-inset-left));
+  right: max(12px, env(safe-area-inset-right));
+  bottom: max(12px, env(safe-area-inset-bottom));
+}
+
 @keyframes wordsGlow {
   0% {
     transform: translateY(0);
@@ -913,6 +986,43 @@ p {
     width: min(360px, calc(100% - 120px));
     max-height: min(56dvh, 420px);
     padding: 16px;
+  }
+}
+
+@media (max-width: 520px), (max-height: 760px) {
+  .overlay-card-start {
+    gap: 8px;
+    padding: 14px 14px 12px;
+  }
+
+  .start-screen-head {
+    gap: 10px;
+  }
+
+  .start-text,
+  .start-preview-text,
+  .start-vocab-definition,
+  .start-vocab-translation {
+    font-size: 0.88rem;
+  }
+
+  .start-vocab-list {
+    gap: 8px;
+  }
+
+  .start-vocab-list li,
+  .start-preview-card {
+    padding: 10px;
+  }
+
+  .overlay-card-start .overlay-actions {
+    gap: 8px;
+  }
+}
+
+@media (max-height: 680px) {
+  .overlay-card-start .start-text {
+    display: none;
   }
 }
 
