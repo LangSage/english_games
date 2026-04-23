@@ -1,0 +1,14 @@
+<svg width="220" height="200" viewBox="0 0 220 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="28" y="160" width="164" height="16" rx="8" fill="#6D5445"/>
+  <rect x="40" y="24" width="16" height="148" rx="8" fill="#5A4337"/>
+  <rect x="164" y="24" width="16" height="148" rx="8" fill="#5A4337"/>
+  <rect x="56" y="50" width="108" height="12" rx="6" fill="#A97E5A"/>
+  <rect x="56" y="96" width="108" height="12" rx="6" fill="#A97E5A"/>
+  <rect x="56" y="142" width="108" height="12" rx="6" fill="#A97E5A"/>
+  <rect x="68" y="64" width="26" height="30" rx="6" fill="#F8E3A1"/>
+  <rect x="100" y="64" width="26" height="30" rx="6" fill="#F8E3A1"/>
+  <rect x="132" y="64" width="26" height="30" rx="6" fill="#F8E3A1"/>
+  <rect x="84" y="110" width="26" height="30" rx="6" fill="#EECF78"/>
+  <rect x="116" y="110" width="26" height="30" rx="6" fill="#EECF78"/>
+  <text x="112" y="84" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#6C5B35">RICE</text>
+</svg>

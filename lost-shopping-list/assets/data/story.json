@@ -1,0 +1,1902 @@
+{
+  "meta": {
+    "title": "The Lost Shopping List",
+    "description": "A phone-first English supermarket game about rebuilding a lost shopping list, finding the right food, and fixing a checkout mistake.",
+    "caseTitle": "The Lost Shopping List",
+    "caseTag": "Case 01",
+    "playerName": "Nadia",
+    "defaultDifficulty": "easy",
+    "defaultAudioRate": 1,
+    "startNotes": [
+      "The shopping list is wet and hard to read.",
+      "Find the right food and finish checkout before the cashier closes."
+    ],
+    "endTitle": "Checkout is complete.",
+    "endSummary": "You rebuilt the lost list, found the missing cheese, and paid for everything.",
+    "preGameVocab": [
+      {
+        "term": "supermarket",
+        "definition": "a big food shop",
+        "translation": "супермаркет"
+      },
+      {
+        "term": "basket",
+        "definition": "something you carry food in",
+        "translation": "корзина"
+      },
+      {
+        "term": "shelf",
+        "definition": "a place in the shop for products",
+        "translation": "полка"
+      },
+      {
+        "term": "cashier",
+        "definition": "the person who takes payment",
+        "translation": "кассир"
+      },
+      {
+        "term": "customer",
+        "definition": "a person who buys something",
+        "translation": "покупатель"
+      },
+      {
+        "term": "shopping list",
+        "definition": "a list of things to buy",
+        "translation": "список покупок"
+      }
+    ],
+    "difficultyModes": [
+      {
+        "id": "easy",
+        "label": "Easy",
+        "description": "Russian support stays visible.",
+        "translationVisibility": "full"
+      },
+      {
+        "id": "normal",
+        "label": "Normal",
+        "description": "Start words hide Russian first.",
+        "translationVisibility": "lesson"
+      },
+      {
+        "id": "hard",
+        "label": "Hard",
+        "description": "Russian shows only in review.",
+        "translationVisibility": "review"
+      }
+    ],
+    "reviewPhrases": [
+      {
+        "speaker": "omar",
+        "text": "You need a loaf of bread and a carton of milk first.",
+        "translation": "Сначала тебе нужны буханка хлеба и пакет молока."
+      },
+      {
+        "speaker": "lina",
+        "text": "There are tomatoes on the left and potatoes on the right.",
+        "translation": "Помидоры слева, а картофель справа."
+      },
+      {
+        "speaker": "eva",
+        "text": "Your app list still says cheese.",
+        "translation": "В твоем списке в приложении все еще есть сыр."
+      }
+    ]
+  },
+  "speakers": {
+    "mia": {
+      "name": "Nadia",
+      "role": "Shopper",
+      "avatar": "./assets/images/avatars/mia.svg",
+      "naturalVoice": "en-US-AvaMultilingualNeural",
+      "naturalRate": "0%",
+      "voice": "Microsoft Zira Desktop",
+      "tokenColor": "#FF8F5A"
+    },
+    "omar": {
+      "name": "Omar",
+      "role": "Store helper",
+      "avatar": "./assets/images/avatars/manager.svg",
+      "naturalVoice": "en-US-BrianMultilingualNeural",
+      "naturalRate": "0%",
+      "voice": "Microsoft David Desktop",
+      "tokenColor": "#6ECA8F"
+    },
+    "pavel": {
+      "name": "Pavel",
+      "role": "Stock worker",
+      "avatar": "./assets/images/avatars/tim.svg",
+      "naturalVoice": "en-US-AndrewMultilingualNeural",
+      "naturalRate": "0%",
+      "voice": "Microsoft David Desktop",
+      "tokenColor": "#5AB0F6"
+    },
+    "lina": {
+      "name": "Lina",
+      "role": "Customer",
+      "avatar": "./assets/images/avatars/nora.svg",
+      "naturalVoice": "en-US-EmmaMultilingualNeural",
+      "naturalRate": "0%",
+      "voice": "Microsoft Zira Desktop",
+      "tokenColor": "#F6A94A"
+    },
+    "eva": {
+      "name": "Eva",
+      "role": "Cashier",
+      "avatar": "./assets/images/avatars/alex.svg",
+      "naturalVoice": "en-US-JennyNeural",
+      "naturalRate": "0%",
+      "voice": "Microsoft Zira Desktop",
+      "tokenColor": "#9B7BFF"
+    },
+    "narrator": {
+      "name": "Narrator",
+      "role": "Shopping guide",
+      "avatar": "./assets/images/avatars/manager.svg",
+      "naturalVoice": "en-US-JennyNeural",
+      "naturalRate": "0%",
+      "voice": "Microsoft Zira Desktop",
+      "tokenColor": "#F7C561"
+    }
+  },
+  "introLines": [
+    {
+      "id": "case_intro_1",
+      "speaker": "narrator",
+      "text": "Case one. Nadia lost part of the shopping list."
+    },
+    {
+      "id": "case_intro_2",
+      "speaker": "narrator",
+      "text": "She needs food for dinner before the cashier closes."
+    },
+    {
+      "id": "case_intro_3",
+      "speaker": "mia",
+      "text": "I need a basket first."
+    }
+  ],
+  "comprehensionChecks": [
+    {
+      "id": "check_first_items",
+      "stepId": "findBreadShelf",
+      "question": "What are the first two items on Nadia's list?",
+      "help": "Remember Omar's clue.",
+      "options": [
+        {
+          "id": "bread_milk",
+          "label": "A loaf of bread and a carton of milk",
+          "isCorrect": true
+        },
+        {
+          "id": "water_cheese",
+          "label": "A bottle of water and cheese",
+          "isCorrect": false
+        }
+      ],
+      "correctLines": [
+        {
+          "id": "check_first_items_right_1",
+          "speaker": "narrator",
+          "text": "Right. Nadia needs a loaf of bread and a carton of milk first."
+        }
+      ],
+      "wrongLines": [
+        {
+          "id": "check_first_items_wrong_1",
+          "speaker": "narrator",
+          "text": "Not yet. Omar said bread and milk come first."
+        }
+      ],
+      "notes": {
+        "correct": "You remembered Omar's first clue.",
+        "wrong": "The list starts with bread and milk."
+      }
+    },
+    {
+      "id": "check_bread_place",
+      "stepId": "takeBread",
+      "question": "Where is the fresh bread now?",
+      "help": "Read the note on the shelf.",
+      "options": [
+        {
+          "id": "cheese_fridge",
+          "label": "Near the cheese fridge",
+          "isCorrect": true
+        },
+        {
+          "id": "front_door",
+          "label": "By the front door",
+          "isCorrect": false
+        }
+      ],
+      "correctLines": [
+        {
+          "id": "check_bread_place_right_1",
+          "speaker": "narrator",
+          "text": "Correct. The fresh bread moved near the cheese fridge."
+        }
+      ],
+      "wrongLines": [
+        {
+          "id": "check_bread_place_wrong_1",
+          "speaker": "narrator",
+          "text": "Not the front door. The shelf note says near the cheese fridge."
+        }
+      ],
+      "notes": {
+        "correct": "You found the new bread place.",
+        "wrong": "Fresh bread is near the cheese fridge."
+      }
+    },
+    {
+      "id": "check_milk_pack",
+      "stepId": "askLina",
+      "question": "What kind of milk does Nadia need?",
+      "help": "Think about the dairy fridge.",
+      "options": [
+        {
+          "id": "carton_milk",
+          "label": "A carton of milk",
+          "isCorrect": true
+        },
+        {
+          "id": "bottle_milk",
+          "label": "A bottle of milk",
+          "isCorrect": false
+        }
+      ],
+      "correctLines": [
+        {
+          "id": "check_milk_pack_right_1",
+          "speaker": "narrator",
+          "text": "Yes. Nadia needs a carton of milk."
+        }
+      ],
+      "wrongLines": [
+        {
+          "id": "check_milk_pack_wrong_1",
+          "speaker": "narrator",
+          "text": "Not a bottle. Nadia needs a carton of milk."
+        }
+      ],
+      "notes": {
+        "correct": "You remembered the milk pack.",
+        "wrong": "The list says a carton of milk."
+      }
+    },
+    {
+      "id": "check_vegetables",
+      "stepId": "takeTomatoes",
+      "question": "What vegetables are on Nadia's list?",
+      "help": "Listen to Lina's answer.",
+      "options": [
+        {
+          "id": "tomatoes_potatoes",
+          "label": "Tomatoes and potatoes",
+          "isCorrect": true
+        },
+        {
+          "id": "apples_oranges",
+          "label": "Apples and oranges",
+          "isCorrect": false
+        }
+      ],
+      "correctLines": [
+        {
+          "id": "check_vegetables_right_1",
+          "speaker": "narrator",
+          "text": "Right. Nadia needs tomatoes and potatoes."
+        }
+      ],
+      "wrongLines": [
+        {
+          "id": "check_vegetables_wrong_1",
+          "speaker": "narrator",
+          "text": "Not fruit. Lina says Nadia needs tomatoes and potatoes."
+        }
+      ],
+      "notes": {
+        "correct": "You understood Lina's vegetable clue.",
+        "wrong": "The list says tomatoes and potatoes."
+      }
+    },
+    {
+      "id": "check_rice_pack",
+      "stepId": "takeWater",
+      "question": "What does Nadia need from the dry shelf?",
+      "help": "Remember the rice shelf.",
+      "options": [
+        {
+          "id": "packet_rice",
+          "label": "A packet of rice",
+          "isCorrect": true
+        },
+        {
+          "id": "loaf_rice",
+          "label": "A loaf of rice",
+          "isCorrect": false
+        }
+      ],
+      "correctLines": [
+        {
+          "id": "check_rice_pack_right_1",
+          "speaker": "narrator",
+          "text": "Correct. Nadia needs a packet of rice."
+        }
+      ],
+      "wrongLines": [
+        {
+          "id": "check_rice_pack_wrong_1",
+          "speaker": "narrator",
+          "text": "Not a loaf. Rice comes in a packet here."
+        }
+      ],
+      "notes": {
+        "correct": "You remembered the rice clue.",
+        "wrong": "The list says a packet of rice."
+      }
+    },
+    {
+      "id": "check_drink_choice",
+      "stepId": "goCashier",
+      "question": "Which drink is on Nadia's list?",
+      "help": "Look at the top drink shelf.",
+      "options": [
+        {
+          "id": "water",
+          "label": "A bottle of water",
+          "isCorrect": true
+        },
+        {
+          "id": "juice",
+          "label": "A bottle of juice",
+          "isCorrect": false
+        }
+      ],
+      "correctLines": [
+        {
+          "id": "check_drink_choice_right_1",
+          "speaker": "narrator",
+          "text": "Yes. Nadia needs a bottle of water."
+        }
+      ],
+      "wrongLines": [
+        {
+          "id": "check_drink_choice_wrong_1",
+          "speaker": "narrator",
+          "text": "Not juice. The list says a bottle of water."
+        }
+      ],
+      "notes": {
+        "correct": "You chose the right drink.",
+        "wrong": "Nadia needs water, not juice."
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "getBasket",
+      "title": "Get a basket",
+      "instruction": "You are in the supermarket. Go to the basket rack.",
+      "targetIds": [
+        "basketRack"
+      ],
+      "vocabulary": [
+        {
+          "term": "supermarket",
+          "definition": "a big food shop",
+          "translation": "супермаркет"
+        },
+        {
+          "term": "basket",
+          "definition": "something you carry food in",
+          "translation": "корзина"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_basket_1",
+          "speaker": "narrator",
+          "text": "Look near the entrance on the left."
+        },
+        {
+          "id": "hint_basket_2",
+          "speaker": "narrator",
+          "text": "Find the orange baskets."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Nadia still needs a basket before she can shop.",
+        "lines": [
+          {
+            "id": "wrong_basket_1",
+            "speaker": "narrator",
+            "text": "Not yet."
+          },
+          {
+            "id": "wrong_basket_2",
+            "speaker": "narrator",
+            "text": "Start with the basket rack."
+          }
+        ]
+      }
+    },
+    {
+      "id": "askOmar",
+      "title": "Ask Omar",
+      "instruction": "Talk to Omar about the wet shopping list.",
+      "targetIds": [
+        "omar"
+      ],
+      "vocabulary": [
+        {
+          "term": "shopping list",
+          "definition": "a list of things to buy",
+          "translation": "список покупок"
+        },
+        {
+          "term": "shop",
+          "definition": "to buy things",
+          "translation": "делать покупки"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_omar_1",
+          "speaker": "narrator",
+          "text": "Omar is by the help desk."
+        },
+        {
+          "id": "hint_omar_2",
+          "speaker": "narrator",
+          "text": "Go to the green helper in the top left area."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Omar can read the first part of the list.",
+        "lines": [
+          {
+            "id": "wrong_omar_1",
+            "speaker": "narrator",
+            "text": "You need the list clue first."
+          },
+          {
+            "id": "wrong_omar_2",
+            "speaker": "narrator",
+            "text": "Ask Omar by the help desk."
+          }
+        ]
+      }
+    },
+    {
+      "id": "findBreadShelf",
+      "title": "Check the bread shelf",
+      "instruction": "Go to the bread shelf and look for bread.",
+      "targetIds": [
+        "bakeryShelf"
+      ],
+      "vocabulary": [
+        {
+          "term": "shelf",
+          "definition": "a place in the shop for products",
+          "translation": "полка"
+        },
+        {
+          "term": "bread",
+          "definition": "food made from flour",
+          "translation": "хлеб"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_bread_shelf_1",
+          "speaker": "narrator",
+          "text": "The bakery area is at the top center."
+        },
+        {
+          "id": "hint_bread_shelf_2",
+          "speaker": "narrator",
+          "text": "Find the shelf with the empty sign."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Nadia needs to check the bread shelf first.",
+        "lines": [
+          {
+            "id": "wrong_bread_shelf_1",
+            "speaker": "narrator",
+            "text": "Not this place."
+          },
+          {
+            "id": "wrong_bread_shelf_2",
+            "speaker": "narrator",
+            "text": "Go to the bread shelf in the bakery area."
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeBread",
+      "title": "Take the bread",
+      "instruction": "Fresh bread moved. Go to the warm bread rack.",
+      "targetIds": [
+        "breadRack"
+      ],
+      "vocabulary": [
+        {
+          "term": "loaf",
+          "definition": "one full piece of bread",
+          "translation": "буханка"
+        },
+        {
+          "term": "There is ...",
+          "definition": "we use it for one thing",
+          "translation": "есть ..."
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_take_bread_1",
+          "speaker": "narrator",
+          "text": "Look near the cheese fridge."
+        },
+        {
+          "id": "hint_take_bread_2",
+          "speaker": "narrator",
+          "text": "The warm bread rack is to the right of the empty shelf."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "The fresh bread is on the warm rack now.",
+        "lines": [
+          {
+            "id": "wrong_take_bread_1",
+            "speaker": "narrator",
+            "text": "Still no bread here."
+          },
+          {
+            "id": "wrong_take_bread_2",
+            "speaker": "narrator",
+            "text": "Try the warm rack near the cheese fridge."
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeMilk",
+      "title": "Take the milk",
+      "instruction": "Go to the dairy fridge and find a carton of milk.",
+      "targetIds": [
+        "dairyFridge"
+      ],
+      "vocabulary": [
+        {
+          "term": "carton",
+          "definition": "a paper box for drinks like milk",
+          "translation": "пакет"
+        },
+        {
+          "term": "milk",
+          "definition": "a white drink from cows",
+          "translation": "молоко"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_milk_1",
+          "speaker": "narrator",
+          "text": "The dairy fridge is below the bakery area."
+        },
+        {
+          "id": "hint_milk_2",
+          "speaker": "narrator",
+          "text": "Find the blue fridge with cartons."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Nadia still needs milk from the dairy fridge.",
+        "lines": [
+          {
+            "id": "wrong_milk_1",
+            "speaker": "narrator",
+            "text": "Not the right item."
+          },
+          {
+            "id": "wrong_milk_2",
+            "speaker": "narrator",
+            "text": "Go to the dairy fridge for milk."
+          }
+        ]
+      }
+    },
+    {
+      "id": "askLina",
+      "title": "Ask Lina",
+      "instruction": "Talk to the customer about the vegetables.",
+      "targetIds": [
+        "lina"
+      ],
+      "vocabulary": [
+        {
+          "term": "customer",
+          "definition": "a person who buys something",
+          "translation": "покупатель"
+        },
+        {
+          "term": "banana",
+          "definition": "a long yellow fruit",
+          "translation": "банан"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_lina_1",
+          "speaker": "narrator",
+          "text": "Lina is in the green produce area."
+        },
+        {
+          "id": "hint_lina_2",
+          "speaker": "narrator",
+          "text": "Go to the orange customer in the middle left."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Lina knows the vegetable part of the list.",
+        "lines": [
+          {
+            "id": "wrong_lina_1",
+            "speaker": "narrator",
+            "text": "You still need the vegetable clue."
+          },
+          {
+            "id": "wrong_lina_2",
+            "speaker": "narrator",
+            "text": "Ask Lina in the produce area."
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeTomatoes",
+      "title": "Take tomatoes",
+      "instruction": "Go to the left produce stand and take tomatoes.",
+      "targetIds": [
+        "tomatoStand"
+      ],
+      "vocabulary": [
+        {
+          "term": "tomato",
+          "definition": "a red round vegetable in this game",
+          "translation": "помидор"
+        },
+        {
+          "term": "apple",
+          "definition": "a round fruit",
+          "translation": "яблоко"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_tomatoes_1",
+          "speaker": "narrator",
+          "text": "Tomatoes are on the left produce stand."
+        },
+        {
+          "id": "hint_tomatoes_2",
+          "speaker": "narrator",
+          "text": "Find the red vegetables."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Nadia needs tomatoes before potatoes.",
+        "lines": [
+          {
+            "id": "wrong_tomatoes_1",
+            "speaker": "narrator",
+            "text": "That is not the tomato stand."
+          },
+          {
+            "id": "wrong_tomatoes_2",
+            "speaker": "narrator",
+            "text": "Try the red stand on the left."
+          }
+        ]
+      }
+    },
+    {
+      "id": "takePotatoes",
+      "title": "Take potatoes",
+      "instruction": "Now go to the right produce bin and take potatoes.",
+      "targetIds": [
+        "potatoBin"
+      ],
+      "vocabulary": [
+        {
+          "term": "potato",
+          "definition": "a brown vegetable that grows in the ground",
+          "translation": "картофель"
+        },
+        {
+          "term": "There are ...",
+          "definition": "we use it for more than one thing",
+          "translation": "есть ..."
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_potatoes_1",
+          "speaker": "narrator",
+          "text": "Potatoes are in the right bin."
+        },
+        {
+          "id": "hint_potatoes_2",
+          "speaker": "narrator",
+          "text": "Find the brown vegetables in the produce area."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Nadia still needs potatoes from the produce area.",
+        "lines": [
+          {
+            "id": "wrong_potatoes_1",
+            "speaker": "narrator",
+            "text": "You need potatoes now."
+          },
+          {
+            "id": "wrong_potatoes_2",
+            "speaker": "narrator",
+            "text": "Look at the right produce bin."
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeRice",
+      "title": "Take rice",
+      "instruction": "Go to the dry shelf and find a packet of rice.",
+      "targetIds": [
+        "riceShelf"
+      ],
+      "vocabulary": [
+        {
+          "term": "packet",
+          "definition": "a small package",
+          "translation": "пакет"
+        },
+        {
+          "term": "rice",
+          "definition": "small white grains you cook",
+          "translation": "рис"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_rice_1",
+          "speaker": "narrator",
+          "text": "The dry shelf is in the middle right area."
+        },
+        {
+          "id": "hint_rice_2",
+          "speaker": "narrator",
+          "text": "Find the yellow packets."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Nadia needs rice from the dry shelf.",
+        "lines": [
+          {
+            "id": "wrong_rice_1",
+            "speaker": "narrator",
+            "text": "Not here."
+          },
+          {
+            "id": "wrong_rice_2",
+            "speaker": "narrator",
+            "text": "Go to the dry shelf for rice."
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeWater",
+      "title": "Take water",
+      "instruction": "Go to the drinks shelf and find a bottle of water.",
+      "targetIds": [
+        "waterDisplay"
+      ],
+      "vocabulary": [
+        {
+          "term": "bottle",
+          "definition": "a plastic or glass container for drinks",
+          "translation": "бутылка"
+        },
+        {
+          "term": "water",
+          "definition": "a clear drink",
+          "translation": "вода"
+        },
+        {
+          "term": "juice",
+          "definition": "a fruit drink",
+          "translation": "сок"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_water_1",
+          "speaker": "narrator",
+          "text": "The drinks shelf is on the right side."
+        },
+        {
+          "id": "hint_water_2",
+          "speaker": "narrator",
+          "text": "Take water from the top shelf, not juice below."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Nadia needs water before she goes to the cashier.",
+        "lines": [
+          {
+            "id": "wrong_water_1",
+            "speaker": "narrator",
+            "text": "That is not the right drink."
+          },
+          {
+            "id": "wrong_water_2",
+            "speaker": "narrator",
+            "text": "Take a bottle of water from the drinks shelf."
+          }
+        ]
+      }
+    },
+    {
+      "id": "goCashier",
+      "title": "Go to the cashier",
+      "instruction": "Take your basket to Eva at the checkout.",
+      "targetIds": [
+        "eva"
+      ],
+      "vocabulary": [
+        {
+          "term": "cashier",
+          "definition": "the person who takes payment",
+          "translation": "кассир"
+        },
+        {
+          "term": "price",
+          "definition": "how much something costs",
+          "translation": "цена"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_cashier_1",
+          "speaker": "narrator",
+          "text": "Eva is at the checkout on the bottom right."
+        },
+        {
+          "id": "hint_cashier_2",
+          "speaker": "narrator",
+          "text": "Go to the purple cashier by the counter."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Eva needs to scan the basket now.",
+        "lines": [
+          {
+            "id": "wrong_cashier_1",
+            "speaker": "narrator",
+            "text": "You need the cashier now."
+          },
+          {
+            "id": "wrong_cashier_2",
+            "speaker": "narrator",
+            "text": "Go to Eva at the checkout."
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeCheese",
+      "title": "Take cheese",
+      "instruction": "Eva says one item is missing. Get cheese from the fridge.",
+      "targetIds": [
+        "cheeseFridge"
+      ],
+      "vocabulary": [
+        {
+          "term": "cheese",
+          "definition": "food made from milk",
+          "translation": "сыр"
+        },
+        {
+          "term": "orange",
+          "definition": "a round orange fruit",
+          "translation": "апельсин"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_cheese_1",
+          "speaker": "narrator",
+          "text": "The cheese fridge is above the cashier area."
+        },
+        {
+          "id": "hint_cheese_2",
+          "speaker": "narrator",
+          "text": "Find the green fridge on the right."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "The last missing item is cheese.",
+        "lines": [
+          {
+            "id": "wrong_cheese_1",
+            "speaker": "narrator",
+            "text": "One item is still missing."
+          },
+          {
+            "id": "wrong_cheese_2",
+            "speaker": "narrator",
+            "text": "Go to the cheese fridge."
+          }
+        ]
+      }
+    },
+    {
+      "id": "finishCashier",
+      "title": "Finish checkout",
+      "instruction": "Return to Eva and finish the shopping trip.",
+      "targetIds": [
+        "eva"
+      ],
+      "vocabulary": [
+        {
+          "term": "bag",
+          "definition": "something that holds shopping",
+          "translation": "пакет"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_finish_1",
+          "speaker": "narrator",
+          "text": "Go back to the cashier."
+        },
+        {
+          "id": "hint_finish_2",
+          "speaker": "narrator",
+          "text": "Eva is waiting at the checkout."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Nadia only needs to finish checkout now.",
+        "lines": [
+          {
+            "id": "wrong_finish_1",
+            "speaker": "narrator",
+            "text": "Almost done."
+          },
+          {
+            "id": "wrong_finish_2",
+            "speaker": "narrator",
+            "text": "Return to Eva at the checkout."
+          }
+        ]
+      }
+    }
+  ],
+  "world": {
+    "width": 1480,
+    "height": 1240,
+    "playerStart": {
+      "x": 120,
+      "y": 1060
+    },
+    "zones": [
+      {
+        "x": 36,
+        "y": 40,
+        "width": 420,
+        "height": 300,
+        "color": "#F3E4C8"
+      },
+      {
+        "x": 486,
+        "y": 40,
+        "width": 440,
+        "height": 430,
+        "color": "#F5EAD2"
+      },
+      {
+        "x": 36,
+        "y": 376,
+        "width": 560,
+        "height": 420,
+        "color": "#DFF0D6"
+      },
+      {
+        "x": 630,
+        "y": 520,
+        "width": 360,
+        "height": 320,
+        "color": "#EEE5D5"
+      },
+      {
+        "x": 1014,
+        "y": 78,
+        "width": 430,
+        "height": 1060,
+        "color": "#DCEBFA"
+      }
+    ],
+    "decor": [
+      {
+        "asset": "./assets/images/environment/help-desk.svg",
+        "x": 318,
+        "y": 170,
+        "scale": 0.92,
+        "collider": {
+          "width": 150,
+          "height": 54
+        }
+      },
+      {
+        "asset": "./assets/images/environment/checkout-counter.svg",
+        "x": 1198,
+        "y": 918,
+        "scale": 0.98,
+        "collider": {
+          "width": 180,
+          "height": 64
+        }
+      },
+      {
+        "asset": "./assets/images/environment/plant.svg",
+        "x": 1370,
+        "y": 1020,
+        "scale": 1,
+        "collider": {
+          "width": 54,
+          "height": 72
+        }
+      }
+    ]
+  },
+  "inventoryItems": {
+    "basket": {
+      "label": "Basket",
+      "icon": "./assets/images/ui/basket.svg"
+    },
+    "bread": {
+      "label": "Loaf of bread",
+      "icon": "./assets/images/ui/bread-loaf.svg"
+    },
+    "milk": {
+      "label": "Carton of milk",
+      "icon": "./assets/images/ui/milk-carton.svg"
+    },
+    "tomatoes": {
+      "label": "Tomatoes",
+      "icon": "./assets/images/ui/tomatoes.svg"
+    },
+    "potatoes": {
+      "label": "Potatoes",
+      "icon": "./assets/images/ui/potatoes.svg"
+    },
+    "rice": {
+      "label": "Packet of rice",
+      "icon": "./assets/images/ui/rice-packet.svg"
+    },
+    "water": {
+      "label": "Bottle of water",
+      "icon": "./assets/images/ui/water-bottle.svg"
+    },
+    "cheese": {
+      "label": "Cheese",
+      "icon": "./assets/images/ui/cheese.svg"
+    },
+    "shoppingBag": {
+      "label": "Shopping bag",
+      "icon": "./assets/images/ui/shopping-bag.svg"
+    }
+  },
+  "interactives": [
+    {
+      "id": "basketRack",
+      "label": "Basket Rack",
+      "kind": "object",
+      "asset": "./assets/images/environment/basket-rack.svg",
+      "x": 126,
+      "y": 162,
+      "radius": 92,
+      "scale": 0.86,
+      "responses": {
+        "getBasket": {
+          "lines": [
+            {
+              "id": "basket_clue_1",
+              "speaker": "narrator",
+              "text": "There is a clean basket here."
+            },
+            {
+              "id": "basket_clue_2",
+              "speaker": "mia",
+              "text": "Good. Now I can shop."
+            }
+          ],
+          "effects": {
+            "step": "askOmar",
+            "addInventory": [
+              "basket"
+            ],
+            "notes": [
+              "Nadia has a basket now."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "basket_default_1",
+                "speaker": "narrator",
+                "text": "These baskets are ready for customers."
+              }
+            ],
+            [
+              {
+                "id": "basket_default_2",
+                "speaker": "narrator",
+                "text": "The basket rack is by the entrance."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "omar",
+      "label": "Omar",
+      "kind": "npc",
+      "speakerId": "omar",
+      "x": 318,
+      "y": 170,
+      "radius": 92,
+      "responses": {
+        "askOmar": {
+          "lines": [
+            {
+              "id": "omar_clue_1",
+              "speaker": "omar",
+              "text": "Hey, what's up, Nadia? Your wet list still shows a loaf of bread and a carton of milk."
+            },
+            {
+              "id": "omar_clue_2",
+              "speaker": "omar",
+              "text": "Start at the bread shelf."
+            },
+            {
+              "id": "omar_clue_3",
+              "speaker": "omar",
+              "text": "Then go to the dairy fridge."
+            }
+          ],
+          "effects": {
+            "step": "findBreadShelf",
+            "notes": [
+              "The list starts with bread and milk."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "omar_default_1",
+                "speaker": "omar",
+                "text": "Hey, what's up, Nadia?"
+              }
+            ],
+            [
+              {
+                "id": "omar_default_2",
+                "speaker": "omar",
+                "text": "I help customers with the shopping list."
+              }
+            ],
+            [
+              {
+                "id": "omar_default_3",
+                "speaker": "omar",
+                "text": "The help desk is open all day."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "bakeryShelf",
+      "label": "Bread Shelf",
+      "kind": "object",
+      "asset": "./assets/images/environment/bakery-shelf.svg",
+      "x": 650,
+      "y": 176,
+      "radius": 96,
+      "scale": 0.92,
+      "responses": {
+        "findBreadShelf": {
+          "lines": [
+            {
+              "id": "bakery_clue_1",
+              "speaker": "narrator",
+              "text": "There is no bread on this shelf now."
+            },
+            {
+              "id": "bakery_clue_2",
+              "speaker": "narrator",
+              "text": "A note says: fresh loaves moved near the cheese fridge."
+            },
+            {
+              "id": "bakery_clue_3",
+              "speaker": "mia",
+              "text": "Okay. I need the warm bread rack."
+            }
+          ],
+          "effects": {
+            "step": "takeBread",
+            "notes": [
+              "The bread shelf is empty.",
+              "Fresh bread moved near the cheese fridge."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "bakery_default_1",
+                "speaker": "narrator",
+                "text": "This shelf is for bread."
+              }
+            ],
+            [
+              {
+                "id": "bakery_default_2",
+                "speaker": "narrator",
+                "text": "The empty sign is still on the shelf."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "breadRack",
+      "label": "Warm Bread Rack",
+      "kind": "object",
+      "asset": "./assets/images/environment/bread-rack.svg",
+      "x": 866,
+      "y": 182,
+      "radius": 96,
+      "scale": 0.9,
+      "responses": {
+        "takeBread": {
+          "lines": [
+            {
+              "id": "bread_clue_1",
+              "speaker": "narrator",
+              "text": "There is fresh bread here."
+            },
+            {
+              "id": "bread_clue_2",
+              "speaker": "mia",
+              "text": "I need one loaf of bread."
+            },
+            {
+              "id": "bread_clue_3",
+              "speaker": "mia",
+              "text": "Now I need a carton of milk."
+            }
+          ],
+          "effects": {
+            "step": "takeMilk",
+            "addInventory": [
+              "bread"
+            ],
+            "notes": [
+              "Nadia took one loaf of bread."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "bread_default_1",
+                "speaker": "narrator",
+                "text": "Fresh loaves are on this warm rack."
+              }
+            ],
+            [
+              {
+                "id": "bread_default_2",
+                "speaker": "narrator",
+                "text": "The bread smells warm here."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "dairyFridge",
+      "label": "Dairy Fridge",
+      "kind": "object",
+      "asset": "./assets/images/environment/dairy-fridge.svg",
+      "x": 802,
+      "y": 354,
+      "radius": 98,
+      "scale": 0.92,
+      "responses": {
+        "takeMilk": {
+          "lines": [
+            {
+              "id": "milk_clue_1",
+              "speaker": "narrator",
+              "text": "There is a carton of milk in the dairy fridge."
+            },
+            {
+              "id": "milk_clue_2",
+              "speaker": "mia",
+              "text": "Great. Bread and milk are ready."
+            },
+            {
+              "id": "milk_clue_3",
+              "speaker": "mia",
+              "text": "Now I need the vegetables."
+            }
+          ],
+          "effects": {
+            "step": "askLina",
+            "addInventory": [
+              "milk"
+            ],
+            "notes": [
+              "Nadia took one carton of milk."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "milk_default_1",
+                "speaker": "narrator",
+                "text": "Milk and cheese stay cold here."
+              }
+            ],
+            [
+              {
+                "id": "milk_default_2",
+                "speaker": "narrator",
+                "text": "This fridge holds dairy products."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "shoppingListBoard",
+      "label": "Wet List",
+      "kind": "object",
+      "asset": "./assets/images/environment/shopping-list-board.svg",
+      "x": 178,
+      "y": 286,
+      "radius": 82,
+      "scale": 0.7,
+      "responses": {
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "list_default_1",
+                "speaker": "narrator",
+                "text": "The paper is wet. Only part of the list is clear."
+              }
+            ],
+            [
+              {
+                "id": "list_default_2",
+                "speaker": "narrator",
+                "text": "A shopping list is on this board."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "lina",
+      "label": "Lina",
+      "kind": "npc",
+      "speakerId": "lina",
+      "x": 274,
+      "y": 560,
+      "radius": 92,
+      "responses": {
+        "askLina": {
+          "lines": [
+            {
+              "id": "lina_clue_1",
+              "speaker": "lina",
+              "text": "Hey, what's up? I heard you ask about the list."
+            },
+            {
+              "id": "lina_clue_2",
+              "speaker": "lina",
+              "text": "You need tomatoes and potatoes."
+            },
+            {
+              "id": "lina_clue_3",
+              "speaker": "lina",
+              "text": "The apples, oranges, and bananas are on sale, but they are not on your list."
+            }
+          ],
+          "effects": {
+            "step": "takeTomatoes",
+            "notes": [
+              "The list needs tomatoes and potatoes.",
+              "The fruit sale is not for Nadia."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "lina_default_1",
+                "speaker": "lina",
+                "text": "Hey, what's up?"
+              }
+            ],
+            [
+              {
+                "id": "lina_default_2",
+                "speaker": "lina",
+                "text": "I am shopping for fruit today."
+              }
+            ],
+            [
+              {
+                "id": "lina_default_3",
+                "speaker": "lina",
+                "text": "The produce area is busy now."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "tomatoStand",
+      "label": "Tomato Stand",
+      "kind": "object",
+      "asset": "./assets/images/environment/tomato-stand.svg",
+      "x": 176,
+      "y": 680,
+      "radius": 90,
+      "scale": 0.9,
+      "responses": {
+        "takeTomatoes": {
+          "lines": [
+            {
+              "id": "tomato_clue_1",
+              "speaker": "narrator",
+              "text": "There are tomatoes on the left stand."
+            },
+            {
+              "id": "tomato_clue_2",
+              "speaker": "mia",
+              "text": "I need two tomatoes."
+            },
+            {
+              "id": "tomato_clue_3",
+              "speaker": "mia",
+              "text": "Now I need potatoes."
+            }
+          ],
+          "effects": {
+            "step": "takePotatoes",
+            "addInventory": [
+              "tomatoes"
+            ],
+            "notes": [
+              "Nadia took tomatoes from the left stand."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "tomato_default_1",
+                "speaker": "narrator",
+                "text": "These tomatoes look fresh."
+              }
+            ],
+            [
+              {
+                "id": "tomato_default_2",
+                "speaker": "narrator",
+                "text": "The left stand is for tomatoes."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "potatoBin",
+      "label": "Potato Bin",
+      "kind": "object",
+      "asset": "./assets/images/environment/potato-bin.svg",
+      "x": 398,
+      "y": 684,
+      "radius": 90,
+      "scale": 0.9,
+      "responses": {
+        "takePotatoes": {
+          "lines": [
+            {
+              "id": "potato_clue_1",
+              "speaker": "narrator",
+              "text": "There are potatoes in this bin."
+            },
+            {
+              "id": "potato_clue_2",
+              "speaker": "mia",
+              "text": "Good. The vegetables are ready."
+            },
+            {
+              "id": "potato_clue_3",
+              "speaker": "mia",
+              "text": "Next is rice from the dry shelf."
+            }
+          ],
+          "effects": {
+            "step": "takeRice",
+            "addInventory": [
+              "potatoes"
+            ],
+            "notes": [
+              "Nadia took potatoes from the right bin."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "potato_default_1",
+                "speaker": "narrator",
+                "text": "The right bin is full of potatoes."
+              }
+            ],
+            [
+              {
+                "id": "potato_default_2",
+                "speaker": "narrator",
+                "text": "These potatoes are ready to cook."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "riceShelf",
+      "label": "Rice Shelf",
+      "kind": "object",
+      "asset": "./assets/images/environment/rice-shelf.svg",
+      "x": 778,
+      "y": 704,
+      "radius": 92,
+      "scale": 0.92,
+      "responses": {
+        "takeRice": {
+          "lines": [
+            {
+              "id": "rice_clue_1",
+              "speaker": "narrator",
+              "text": "There is a packet of rice on the middle shelf."
+            },
+            {
+              "id": "rice_clue_2",
+              "speaker": "mia",
+              "text": "I need one packet of rice."
+            },
+            {
+              "id": "rice_clue_3",
+              "speaker": "mia",
+              "text": "Now I need a bottle of water."
+            }
+          ],
+          "effects": {
+            "step": "takeWater",
+            "addInventory": [
+              "rice"
+            ],
+            "notes": [
+              "Nadia took one packet of rice."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "rice_default_1",
+                "speaker": "narrator",
+                "text": "This dry shelf has rice and packets."
+              }
+            ],
+            [
+              {
+                "id": "rice_default_2",
+                "speaker": "narrator",
+                "text": "The middle shelf holds the rice packets."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "waterDisplay",
+      "label": "Drinks Shelf",
+      "kind": "object",
+      "asset": "./assets/images/environment/water-display.svg",
+      "x": 1142,
+      "y": 420,
+      "radius": 96,
+      "scale": 0.9,
+      "responses": {
+        "takeWater": {
+          "lines": [
+            {
+              "id": "water_clue_1",
+              "speaker": "narrator",
+              "text": "Water is on the top shelf. Juice is below."
+            },
+            {
+              "id": "water_clue_2",
+              "speaker": "mia",
+              "text": "I need a bottle of water, not juice."
+            },
+            {
+              "id": "water_clue_3",
+              "speaker": "mia",
+              "text": "Now I can go to the cashier."
+            }
+          ],
+          "effects": {
+            "step": "goCashier",
+            "addInventory": [
+              "water"
+            ],
+            "notes": [
+              "Nadia chose water from the top shelf."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "water_default_1",
+                "speaker": "narrator",
+                "text": "Bottles are on top. Juice is lower."
+              }
+            ],
+            [
+              {
+                "id": "water_default_2",
+                "speaker": "narrator",
+                "text": "This display has water and juice."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "priceSign",
+      "label": "Price Sign",
+      "kind": "object",
+      "asset": "./assets/images/environment/price-sign.svg",
+      "x": 1284,
+      "y": 590,
+      "radius": 74,
+      "scale": 0.74,
+      "responses": {
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "price_default_1",
+                "speaker": "narrator",
+                "text": "This sign shows today's price."
+              }
+            ],
+            [
+              {
+                "id": "price_default_2",
+                "speaker": "narrator",
+                "text": "Ask the cashier for the full total."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "cheeseFridge",
+      "label": "Cheese Fridge",
+      "kind": "object",
+      "asset": "./assets/images/environment/cheese-fridge.svg",
+      "x": 1140,
+      "y": 690,
+      "radius": 96,
+      "scale": 0.92,
+      "responses": {
+        "takeCheese": {
+          "lines": [
+            {
+              "id": "cheese_clue_1",
+              "speaker": "narrator",
+              "text": "There is fresh cheese here."
+            },
+            {
+              "id": "cheese_clue_2",
+              "speaker": "mia",
+              "text": "Great. Cheese is the last item."
+            },
+            {
+              "id": "cheese_clue_3",
+              "speaker": "mia",
+              "text": "Back to the cashier."
+            }
+          ],
+          "effects": {
+            "step": "finishCashier",
+            "addInventory": [
+              "cheese"
+            ],
+            "notes": [
+              "Eva said cheese was still missing.",
+              "Nadia found cheese in the fridge."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "cheese_default_1",
+                "speaker": "narrator",
+                "text": "Cheese stays cold in this fridge."
+              }
+            ],
+            [
+              {
+                "id": "cheese_default_2",
+                "speaker": "narrator",
+                "text": "This fridge is full of cheese."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "eva",
+      "label": "Eva",
+      "kind": "npc",
+      "speakerId": "eva",
+      "x": 1186,
+      "y": 892,
+      "radius": 96,
+      "responses": {
+        "goCashier": {
+          "lines": [
+            {
+              "id": "cashier_clue_1",
+              "speaker": "eva",
+              "text": "Hey, what's up, Nadia? Let me scan your basket."
+            },
+            {
+              "id": "cashier_clue_2",
+              "speaker": "mia",
+              "text": "How much is it?"
+            },
+            {
+              "id": "cashier_clue_3",
+              "speaker": "eva",
+              "text": "It is 320 lira now, but your app list still says cheese."
+            },
+            {
+              "id": "cashier_clue_4",
+              "speaker": "eva",
+              "text": "Please get cheese from the fridge and come back."
+            }
+          ],
+          "effects": {
+            "step": "takeCheese",
+            "notes": [
+              "The current price is 320 lira.",
+              "One item is still missing: cheese."
+            ]
+          }
+        },
+        "finishCashier": {
+          "lines": [
+            {
+              "id": "cashier_finish_1",
+              "speaker": "eva",
+              "text": "Now there are all the items."
+            },
+            {
+              "id": "cashier_finish_2",
+              "speaker": "eva",
+              "text": "Here is your bag."
+            },
+            {
+              "id": "cashier_finish_3",
+              "speaker": "narrator",
+              "text": "Nice work. The shopping trip is complete."
+            }
+          ],
+          "effects": {
+            "completeCase": true,
+            "addInventory": [
+              "shoppingBag"
+            ],
+            "notes": [
+              "The cashier finished the payment.",
+              "Nadia got the shopping bag."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "cashier_default_1",
+                "speaker": "eva",
+                "text": "Hey, what's up?"
+              }
+            ],
+            [
+              {
+                "id": "cashier_default_2",
+                "speaker": "eva",
+                "text": "I am ready at the checkout."
+              }
+            ],
+            [
+              {
+                "id": "cashier_default_3",
+                "speaker": "eva",
+                "text": "Bring your basket here when you are ready."
+              }
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}
