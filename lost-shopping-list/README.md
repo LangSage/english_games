@@ -12,7 +12,7 @@
 
 ## Lesson Focus
 
-A phone-first English supermarket game about rebuilding a lost shopping list, finding the right food, and fixing a checkout mistake.
+A phone-first English supermarket game about starting at home, rebuilding a lost shopping list, and fixing two checkout problems.
 
 ### Starter Vocabulary
 
@@ -27,7 +27,7 @@ A phone-first English supermarket game about rebuilding a lost shopping list, fi
 
 - You need a loaf of bread and a carton of milk first.
 - There are tomatoes on the left and potatoes on the right.
-- Your app list still says cheese.
+- You need more money. Go home, then come back to pay.
 
 ## How To Run Locally
 

@@ -1,18 +1,18 @@
 {
   "meta": {
     "title": "The Lost Shopping List",
-    "description": "A phone-first English supermarket game about rebuilding a lost shopping list, finding the right food, and fixing a checkout mistake.",
+    "description": "A phone-first English supermarket game about starting at home, rebuilding a lost shopping list, and fixing two checkout problems.",
     "caseTitle": "The Lost Shopping List",
     "caseTag": "Case 01",
     "playerName": "Nadia",
     "defaultDifficulty": "easy",
     "defaultAudioRate": 1,
     "startNotes": [
-      "The shopping list is wet and hard to read.",
-      "Find the right food and finish checkout before the cashier closes."
+      "Nadia starts at home with a wet shopping list.",
+      "Go to the supermarket, find the right food, and finish checkout before the cashier closes."
     ],
     "endTitle": "Checkout is complete.",
-    "endSummary": "You rebuilt the lost list, found the missing cheese, and paid for everything.",
+    "endSummary": "You rebuilt the lost list, found the missing cheese, went home for money, and paid for everything.",
     "preGameVocab": [
       {
         "term": "supermarket",
@@ -96,8 +96,8 @@
       },
       {
         "speaker": "eva",
-        "text": "Your app list still says cheese.",
-        "translation": "В твоем списке в приложении все еще есть сыр."
+        "text": "You need more money. Go home, then come back to pay.",
+        "translation": "Тебе нужно больше денег. Иди домой, а потом вернись и заплати."
       }
     ]
   },
@@ -151,9 +151,9 @@
       "name": "Narrator",
       "role": "Shopping guide",
       "avatar": "./assets/images/avatars/manager.svg",
-      "naturalVoice": "en-US-JennyNeural",
-      "naturalRate": "0%",
-      "voice": "Microsoft Zira Desktop",
+      "naturalVoice": "en-US-BrianMultilingualNeural",
+      "naturalRate": "-14%",
+      "voice": "Microsoft David Desktop",
       "tokenColor": "#F7C561"
     }
   },
@@ -161,17 +161,17 @@
     {
       "id": "case_intro_1",
       "speaker": "narrator",
-      "text": "Case one. Nadia lost part of the shopping list."
+      "text": "Case one. Nadia is at home and feels hungry."
     },
     {
       "id": "case_intro_2",
-      "speaker": "narrator",
-      "text": "She needs food for dinner before the cashier closes."
+      "speaker": "mia",
+      "text": "Oh, I am hungry. Let's go shopping."
     },
     {
       "id": "case_intro_3",
-      "speaker": "mia",
-      "text": "I need a basket first."
+      "speaker": "narrator",
+      "text": "First, go to the supermarket door."
     }
   ],
   "comprehensionChecks": [
@@ -394,9 +394,58 @@
   ],
   "steps": [
     {
+      "id": "leaveHome",
+      "title": "Go to the supermarket",
+      "instruction": "You are at home. Go to the supermarket door.",
+      "targetIds": [
+        "storeDoor"
+      ],
+      "vocabulary": [
+        {
+          "term": "home",
+          "emoji": "🏠",
+          "definition": "the place where you live",
+          "translation": "дом"
+        },
+        {
+          "term": "shop",
+          "emoji": "🛒",
+          "definition": "to buy things",
+          "translation": "делать покупки"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_leave_home_1",
+          "speaker": "narrator",
+          "text": "The supermarket door is above the home area."
+        },
+        {
+          "id": "hint_leave_home_2",
+          "speaker": "narrator",
+          "text": "Go up to the blue door."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Nadia wants to leave home and go shopping first.",
+        "lines": [
+          {
+            "id": "wrong_leave_home_1",
+            "speaker": "narrator",
+            "text": "Not yet."
+          },
+          {
+            "id": "wrong_leave_home_2",
+            "speaker": "narrator",
+            "text": "Go to the supermarket door first."
+          }
+        ]
+      }
+    },
+    {
       "id": "getBasket",
       "title": "Get a basket",
-      "instruction": "You are in the supermarket. Go to the basket rack.",
+      "instruction": "Go inside and take a basket from the rack.",
       "targetIds": [
         "basketRack"
       ],
@@ -986,9 +1035,106 @@
       }
     },
     {
+      "id": "checkMoney",
+      "title": "Check the total",
+      "instruction": "Return to Eva with the cheese.",
+      "targetIds": [
+        "eva"
+      ],
+      "vocabulary": [
+        {
+          "term": "price",
+          "emoji": "💲",
+          "definition": "how much something costs",
+          "translation": "цена"
+        },
+        {
+          "term": "How much is it?",
+          "definition": "you ask this for the price",
+          "translation": "Сколько это стоит?"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_check_money_1",
+          "speaker": "narrator",
+          "text": "Eva is waiting at the checkout."
+        },
+        {
+          "id": "hint_check_money_2",
+          "speaker": "narrator",
+          "text": "Go back to the purple cashier."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Eva needs to check the full basket now.",
+        "lines": [
+          {
+            "id": "wrong_check_money_1",
+            "speaker": "narrator",
+            "text": "Almost done."
+          },
+          {
+            "id": "wrong_check_money_2",
+            "speaker": "narrator",
+            "text": "Return to Eva at the checkout."
+          }
+        ]
+      }
+    },
+    {
+      "id": "getMoneyHome",
+      "title": "Get money from home",
+      "instruction": "Eva says you need more money. Go home and check the table.",
+      "targetIds": [
+        "homeTable"
+      ],
+      "vocabulary": [
+        {
+          "term": "money",
+          "emoji": "💵",
+          "definition": "what you use to pay",
+          "translation": "деньги"
+        },
+        {
+          "term": "home",
+          "emoji": "🏠",
+          "definition": "the place where you live",
+          "translation": "дом"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_money_home_1",
+          "speaker": "narrator",
+          "text": "Go back down to the home area."
+        },
+        {
+          "id": "hint_money_home_2",
+          "speaker": "narrator",
+          "text": "Check the small table at home."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Nadia needs money from home before she can pay.",
+        "lines": [
+          {
+            "id": "wrong_money_home_1",
+            "speaker": "narrator",
+            "text": "Not this place."
+          },
+          {
+            "id": "wrong_money_home_2",
+            "speaker": "narrator",
+            "text": "Go home and check the table."
+          }
+        ]
+      }
+    },
+    {
       "id": "finishCashier",
       "title": "Finish checkout",
-      "instruction": "Return to Eva and finish the shopping trip.",
+      "instruction": "Return to Eva and pay for the shopping.",
       "targetIds": [
         "eva"
       ],
@@ -1031,10 +1177,10 @@
   ],
   "world": {
     "width": 1480,
-    "height": 1240,
+    "height": 1560,
     "playerStart": {
-      "x": 120,
-      "y": 1060
+      "x": 250,
+      "y": 1410
     },
     "zones": [
       {
@@ -1071,6 +1217,20 @@
         "width": 430,
         "height": 1060,
         "color": "#DCEBFA"
+      },
+      {
+        "x": 36,
+        "y": 1176,
+        "width": 620,
+        "height": 320,
+        "color": "#EFE1D4"
+      },
+      {
+        "x": 690,
+        "y": 1176,
+        "width": 754,
+        "height": 320,
+        "color": "#E8DED2"
       }
     ],
     "decor": [
@@ -1139,12 +1299,66 @@
       "label": "Cheese",
       "icon": "./assets/images/ui/cheese.svg"
     },
+    "money": {
+      "label": "Money",
+      "icon": "./assets/images/ui/money.svg"
+    },
     "shoppingBag": {
       "label": "Shopping bag",
       "icon": "./assets/images/ui/shopping-bag.svg"
     }
   },
   "interactives": [
+    {
+      "id": "storeDoor",
+      "label": "Supermarket Door",
+      "kind": "object",
+      "asset": "./assets/images/environment/store-door.svg",
+      "x": 196,
+      "y": 1126,
+      "radius": 90,
+      "scale": 0.88,
+      "responses": {
+        "leaveHome": {
+          "lines": [
+            {
+              "id": "door_clue_1",
+              "speaker": "narrator",
+              "text": "The supermarket door is open."
+            },
+            {
+              "id": "door_clue_2",
+              "speaker": "mia",
+              "text": "Good. I need a basket first."
+            }
+          ],
+          "effects": {
+            "step": "getBasket",
+            "notes": [
+              "Nadia left home and reached the supermarket."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "door_default_1",
+                "speaker": "narrator",
+                "text": "This door goes into the supermarket."
+              }
+            ],
+            [
+              {
+                "id": "door_default_2",
+                "speaker": "narrator",
+                "text": "The supermarket door is by the street."
+              }
+            ]
+          ]
+        }
+      }
+    },
     {
       "id": "basketRack",
       "label": "Basket Rack",
@@ -1814,7 +2028,7 @@
             }
           ],
           "effects": {
-            "step": "finishCashier",
+            "step": "checkMoney",
             "addInventory": [
               "cheese"
             ],
@@ -1884,12 +2098,43 @@
             ]
           }
         },
+        "checkMoney": {
+          "lines": [
+            {
+              "id": "cashier_money_1",
+              "speaker": "eva",
+              "text": "Nice. Now there are all the items."
+            },
+            {
+              "id": "cashier_money_2",
+              "speaker": "eva",
+              "text": "Oh no. You do not have enough money with you."
+            },
+            {
+              "id": "cashier_money_3",
+              "speaker": "mia",
+              "text": "Right. My money is at home."
+            },
+            {
+              "id": "cashier_money_4",
+              "speaker": "eva",
+              "text": "Please get it from home and come back."
+            }
+          ],
+          "effects": {
+            "step": "getMoneyHome",
+            "notes": [
+              "Nadia forgot her money at home.",
+              "Eva told Nadia to go home and come back."
+            ]
+          }
+        },
         "finishCashier": {
           "lines": [
             {
               "id": "cashier_finish_1",
               "speaker": "eva",
-              "text": "Now there are all the items."
+              "text": "Great. Now you have enough money."
             },
             {
               "id": "cashier_finish_2",
@@ -1934,6 +2179,60 @@
                 "id": "cashier_default_3",
                 "speaker": "eva",
                 "text": "Bring your basket here when you are ready."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "homeTable",
+      "label": "Home Table",
+      "kind": "object",
+      "asset": "./assets/images/environment/home-table.svg",
+      "x": 272,
+      "y": 1372,
+      "radius": 94,
+      "scale": 0.92,
+      "responses": {
+        "getMoneyHome": {
+          "lines": [
+            {
+              "id": "home_money_1",
+              "speaker": "narrator",
+              "text": "There is money on the table."
+            },
+            {
+              "id": "home_money_2",
+              "speaker": "mia",
+              "text": "Good. Now I can go back and pay."
+            }
+          ],
+          "effects": {
+            "step": "finishCashier",
+            "addInventory": [
+              "money"
+            ],
+            "notes": [
+              "Nadia found money at home.",
+              "Now she can return to Eva and pay."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "home_default_1",
+                "speaker": "narrator",
+                "text": "This is Nadia's home table."
+              }
+            ],
+            [
+              {
+                "id": "home_default_2",
+                "speaker": "narrator",
+                "text": "There are small things on the table."
               }
             ]
           ]
