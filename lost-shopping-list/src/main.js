@@ -411,6 +411,7 @@ function collectAudioLineIds(story) {
     }
   };
 
+  addLines(story.meta?.audioPreviewLines);
   addLines(story.introLines);
 
   for (const step of story.steps ?? []) {
@@ -452,6 +453,9 @@ async function bootstrap() {
   const audio = new AudioController();
   const assetSources = collectAssetSources(story);
   const audioLineIds = collectAudioLineIds(story);
+  const previewLines = story.meta?.audioPreviewLines?.length
+    ? story.meta.audioPreviewLines
+    : (story.introLines ?? []).slice(0, 2);
   const playerStart = story.world?.playerStart ?? { x: 130, y: 820 };
   let settings = loadSettings(story, settingsStorageKey);
   const touchState = {
@@ -638,6 +642,18 @@ async function bootstrap() {
     applySettings({ difficulty });
   };
 
+  const previewAudio = () => {
+    if (previewLines.length === 0) {
+      return;
+    }
+
+    if (!audio.enabled) {
+      applySettings({ audioEnabled: true });
+    }
+
+    audio.playLines(previewLines);
+  };
+
   applySettings(settings, { persist: false });
   audio.preloadLineIds(audioLineIds);
   window.addEventListener("beforeunload", () => {
@@ -657,6 +673,7 @@ async function bootstrap() {
       updateAudioEnabled(!audio.enabled);
     },
     onReplay: () => audio.replay(),
+    onPreviewAudio: previewAudio,
     onWordsViewed: () => {
       state.markCurrentVocabularySeen();
       render();

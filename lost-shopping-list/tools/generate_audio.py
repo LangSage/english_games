@@ -35,6 +35,9 @@ LEADING_SILENCE_MS = 220
 def collect_lines(story: dict) -> list[dict]:
     seen = {}
 
+    for line in story.get("meta", {}).get("audioPreviewLines", []):
+        seen[line["id"]] = line
+
     for line in story.get("introLines", []):
         seen[line["id"]] = line
 

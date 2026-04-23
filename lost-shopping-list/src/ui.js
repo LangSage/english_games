@@ -15,6 +15,9 @@ export class UIController {
       reviewWords: document.getElementById("review-words"),
       reviewPhrases: document.getElementById("review-phrases"),
       startVocabList: document.getElementById("start-vocab-list"),
+      startAudioRateInput: document.getElementById("start-audio-rate-input"),
+      startAudioRateValue: document.getElementById("start-audio-rate-value"),
+      startAudioPreviewButton: document.getElementById("start-audio-preview-button"),
       subtitlePanel: document.getElementById("subtitle-panel"),
       subtitleSpeaker: document.getElementById("subtitle-speaker"),
       subtitleText: document.getElementById("subtitle-text"),
@@ -56,26 +59,30 @@ export class UIController {
 
   bindHandlers(handlers) {
     this.handlers = handlers;
-    this.elements.startButton.addEventListener("click", handlers.onStart);
-    this.elements.resetButton.addEventListener("click", handlers.onReset);
-    this.elements.playAgainButton.addEventListener("click", handlers.onStart);
-    this.elements.infoButton.addEventListener("click", handlers.onInfo);
-    this.elements.hintButton.addEventListener("click", handlers.onHint);
-    this.elements.audioButton.addEventListener("click", handlers.onAudioToggle);
-    this.elements.replayButton.addEventListener("click", handlers.onReplay);
-    this.elements.drawerClose.addEventListener("click", () => this.closeDrawer());
-    this.elements.messageClose.addEventListener("click", () => this.hideMessage());
-    this.elements.difficultyOptions.addEventListener("click", (event) => {
+    this.elements.startButton?.addEventListener("click", handlers.onStart);
+    this.elements.resetButton?.addEventListener("click", handlers.onReset);
+    this.elements.playAgainButton?.addEventListener("click", handlers.onStart);
+    this.elements.infoButton?.addEventListener("click", handlers.onInfo);
+    this.elements.hintButton?.addEventListener("click", handlers.onHint);
+    this.elements.audioButton?.addEventListener("click", handlers.onAudioToggle);
+    this.elements.replayButton?.addEventListener("click", handlers.onReplay);
+    this.elements.startAudioPreviewButton?.addEventListener("click", handlers.onPreviewAudio);
+    this.elements.drawerClose?.addEventListener("click", () => this.closeDrawer());
+    this.elements.messageClose?.addEventListener("click", () => this.hideMessage());
+    this.elements.difficultyOptions?.addEventListener("click", (event) => {
       const button = event.target.closest("[data-difficulty-id]");
       if (!button) {
         return;
       }
       handlers.onDifficultyChange(button.dataset.difficultyId);
     });
-    this.elements.audioEnabledInput.addEventListener("change", (event) => {
+    this.elements.audioEnabledInput?.addEventListener("change", (event) => {
       handlers.onAudioEnabledChange(event.target.checked);
     });
-    this.elements.audioRateInput.addEventListener("input", (event) => {
+    this.elements.audioRateInput?.addEventListener("input", (event) => {
+      handlers.onAudioRateChange(Number(event.target.value));
+    });
+    this.elements.startAudioRateInput?.addEventListener("input", (event) => {
       handlers.onAudioRateChange(Number(event.target.value));
     });
 
@@ -95,6 +102,19 @@ export class UIController {
 
   getStartVocabulary() {
     return this.story.meta.preGameVocab ?? [];
+  }
+
+  formatWordTerm(item, className) {
+    const emoji = item?.emoji ? `<span class="word-emoji" aria-hidden="true">${item.emoji}</span>` : "";
+    return `<span class="${className}">${emoji}<span>${item.term}</span></span>`;
+  }
+
+  buildWordMarkup(item, showTranslation, termClassName) {
+    return `
+      ${this.formatWordTerm(item, termClassName)}
+      <span class="${termClassName === "start-vocab-term" ? "start-vocab-definition" : "word-definition"}">${item.definition}</span>
+      ${showTranslation && item.translation ? `<span class="${termClassName === "start-vocab-term" ? "start-vocab-translation" : "word-translation"}">${item.translation}</span>` : ""}
+    `;
   }
 
   getDifficultyMode(settings) {
@@ -122,16 +142,15 @@ export class UIController {
   }
 
   renderStartVocabulary(settings) {
+    if (!this.elements.startVocabList) {
+      return;
+    }
     this.elements.startVocabList.innerHTML = "";
     const showTranslation = this.shouldShowTranslation(settings, "start");
 
     for (const item of this.getStartVocabulary()) {
       const entry = document.createElement("li");
-      entry.innerHTML = `
-        <span class="start-vocab-term">${item.term}</span>
-        <span class="start-vocab-definition">${item.definition}</span>
-        ${showTranslation && item.translation ? `<span class="start-vocab-translation">${item.translation}</span>` : ""}
-      `;
+      entry.innerHTML = this.buildWordMarkup(item, showTranslation, "start-vocab-term");
       this.elements.startVocabList.appendChild(entry);
     }
   }
@@ -143,13 +162,27 @@ export class UIController {
 
     this.clearSubtitleTimeout();
     const speaker = speakers[line.speaker] ?? speakers.narrator;
-    this.elements.speakerAvatar.src = speaker.avatar;
-    this.elements.speakerName.textContent = speaker.name;
-    this.elements.speakerRole.textContent = speaker.role;
-    this.elements.dialogueText.textContent = line.text;
-    this.elements.subtitleSpeaker.textContent = speaker.name;
-    this.elements.subtitleText.textContent = line.text;
-    this.elements.subtitlePanel.classList.remove("subtitle-card-hidden");
+    if (this.elements.speakerAvatar) {
+      this.elements.speakerAvatar.src = speaker.avatar;
+    }
+    if (this.elements.speakerName) {
+      this.elements.speakerName.textContent = speaker.name;
+    }
+    if (this.elements.speakerRole) {
+      this.elements.speakerRole.textContent = speaker.role;
+    }
+    if (this.elements.dialogueText) {
+      this.elements.dialogueText.textContent = line.text;
+    }
+    if (this.elements.subtitleSpeaker) {
+      this.elements.subtitleSpeaker.textContent = speaker.name;
+    }
+    if (this.elements.subtitleText) {
+      this.elements.subtitleText.textContent = line.text;
+    }
+    if (this.elements.subtitlePanel) {
+      this.elements.subtitlePanel.classList.remove("subtitle-card-hidden");
+    }
   }
 
   setDialogue(lines, speakers) {
@@ -159,7 +192,7 @@ export class UIController {
 
   hideSubtitle() {
     this.clearSubtitleTimeout();
-    this.elements.subtitlePanel.classList.add("subtitle-card-hidden");
+    this.elements.subtitlePanel?.classList.add("subtitle-card-hidden");
   }
 
   clearSubtitleTimeout() {
@@ -172,7 +205,7 @@ export class UIController {
   scheduleSubtitleHide(delayMs = 3000) {
     this.clearSubtitleTimeout();
     this.subtitleTimeoutId = window.setTimeout(() => {
-      this.elements.subtitlePanel.classList.add("subtitle-card-hidden");
+      this.elements.subtitlePanel?.classList.add("subtitle-card-hidden");
       this.subtitleTimeoutId = null;
     }, delayMs);
   }
@@ -201,7 +234,9 @@ export class UIController {
   }
 
   renderSettings(settings) {
-    this.elements.difficultyOptions.innerHTML = "";
+    if (this.elements.difficultyOptions) {
+      this.elements.difficultyOptions.innerHTML = "";
+    }
 
     for (const mode of this.story.meta.difficultyModes ?? []) {
       const button = document.createElement("button");
@@ -213,12 +248,25 @@ export class UIController {
         <span class="settings-option-label">${mode.label}</span>
         <span class="settings-option-help">${mode.description}</span>
       `;
-      this.elements.difficultyOptions.appendChild(button);
+      this.elements.difficultyOptions?.appendChild(button);
     }
 
-    this.elements.audioEnabledInput.checked = settings.audioEnabled;
-    this.elements.audioRateInput.value = String(settings.audioRate);
-    this.elements.audioRateValue.textContent = `${Math.round(settings.audioRate * 100)}%`;
+    if (this.elements.audioEnabledInput) {
+      this.elements.audioEnabledInput.checked = settings.audioEnabled;
+    }
+    if (this.elements.audioRateInput) {
+      this.elements.audioRateInput.value = String(settings.audioRate);
+    }
+    if (this.elements.startAudioRateInput) {
+      this.elements.startAudioRateInput.value = String(settings.audioRate);
+    }
+    const rateText = `${Math.round(settings.audioRate * 100)}%`;
+    if (this.elements.audioRateValue) {
+      this.elements.audioRateValue.textContent = rateText;
+    }
+    if (this.elements.startAudioRateValue) {
+      this.elements.startAudioRateValue.textContent = rateText;
+    }
   }
 
   render(state, settings) {
@@ -229,10 +277,6 @@ export class UIController {
     if (!state.started) {
       this.renderVocabularyList(this.getStartVocabulary(), settings, "start");
       this.renderInventory(state);
-      this.renderList(this.elements.notesList, [
-        "Read the 6 words first.",
-        "Then press Start Game."
-      ]);
       this.renderProgress(state);
       return;
     }
@@ -240,10 +284,6 @@ export class UIController {
     const step = state.getCurrentStep();
     this.renderVocabularyList(step.vocabulary, settings, "lesson");
     this.renderInventory(state);
-    this.renderList(
-      this.elements.notesList,
-      state.notes.length > 0 ? state.notes : ["No notes yet."]
-    );
     this.renderProgress(state);
 
     if (state.completed) {
@@ -262,21 +302,23 @@ export class UIController {
   }
 
   renderVocabularyList(items, settings, context) {
+    if (!this.elements.vocabularyList) {
+      return;
+    }
     this.elements.vocabularyList.innerHTML = "";
     const showTranslation = this.shouldShowTranslation(settings, context);
 
     for (const item of items) {
       const entry = document.createElement("li");
-      entry.innerHTML = `
-        <span class="word-term">${item.term}</span>
-        <span class="word-definition">${item.definition}</span>
-        ${showTranslation && item.translation ? `<span class="word-translation">${item.translation}</span>` : ""}
-      `;
+      entry.innerHTML = this.buildWordMarkup(item, showTranslation, "word-term");
       this.elements.vocabularyList.appendChild(entry);
     }
   }
 
   renderInventory(state) {
+    if (!this.elements.inventoryList) {
+      return;
+    }
     this.elements.inventoryList.innerHTML = "";
 
     if (state.inventory.length === 0) {
@@ -298,6 +340,9 @@ export class UIController {
   }
 
   renderProgress(state) {
+    if (!this.elements.progressList) {
+      return;
+    }
     this.elements.progressList.innerHTML = "";
 
     for (const step of state.getProgress()) {
@@ -317,6 +362,9 @@ export class UIController {
   }
 
   renderList(target, items) {
+    if (!target) {
+      return;
+    }
     target.innerHTML = "";
 
     for (const text of items) {
@@ -460,6 +508,9 @@ export class UIController {
   }
 
   renderReviewWords(items, settings) {
+    if (!this.elements.reviewWords) {
+      return;
+    }
     this.elements.reviewWords.innerHTML = "";
     const showTranslation = this.shouldShowTranslation(settings, "review");
 
@@ -472,11 +523,7 @@ export class UIController {
 
     for (const item of items) {
       const entry = document.createElement("li");
-      entry.innerHTML = `
-        <span class="word-term">${item.term}</span>
-        <span class="word-definition">${item.definition}</span>
-        ${showTranslation && item.translation ? `<span class="word-translation">${item.translation}</span>` : ""}
-      `;
+      entry.innerHTML = this.buildWordMarkup(item, showTranslation, "word-term");
       this.elements.reviewWords.appendChild(entry);
     }
   }

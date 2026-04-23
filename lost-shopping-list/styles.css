@@ -405,6 +405,9 @@ p {
 }
 
 .start-vocab-term {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 800;
 }
 
@@ -421,6 +424,34 @@ p {
 
 .overlay-actions {
   flex-wrap: wrap;
+}
+
+.start-preview-card {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.start-preview-head,
+.start-preview-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.start-preview-head {
+  align-items: start;
+}
+
+.start-preview-text {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.93rem;
 }
 
 .overlay-card .button-secondary {
@@ -567,7 +598,18 @@ p {
 }
 
 .word-term {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 800;
+}
+
+.word-emoji {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.35em;
+  font-size: 1.15em;
+  line-height: 1;
 }
 
 .word-definition {

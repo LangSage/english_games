@@ -37,10 +37,6 @@
           </div>
 
           <div class="hud-rail hud-rail-right" aria-label="Open panels">
-            <button class="hud-button" data-drawer-button="dialogue" data-drawer-title="Talk" aria-label="Talk" title="Talk">
-              <span aria-hidden="true">&#128172;</span>
-              <span class="sr-only">Talk</span>
-            </button>
             <button class="hud-button" data-drawer-button="words" data-drawer-title="Words" aria-label="Words" title="Words">
               <span aria-hidden="true">&#128214;</span>
               <span class="sr-only">Words</span>
@@ -48,10 +44,6 @@
             <button class="hud-button" data-drawer-button="inventory" data-drawer-title="Bag" aria-label="Bag" title="Bag">
               <span aria-hidden="true">&#128273;</span>
               <span class="sr-only">Bag</span>
-            </button>
-            <button class="hud-button" data-drawer-button="notes" data-drawer-title="Notes" aria-label="Notes" title="Notes">
-              <span aria-hidden="true">&#128221;</span>
-              <span class="sr-only">Notes</span>
             </button>
             <button class="hud-button" data-drawer-button="progress" data-drawer-title="Steps" aria-label="Steps" title="Steps">
               <span aria-hidden="true">&#127919;</span>
@@ -91,6 +83,20 @@
               Learn these easy words first. They will help you in the game.
             </p>
             <ul id="start-vocab-list" class="start-vocab-list"></ul>
+            <section class="start-preview-card">
+              <div class="start-preview-head">
+                <div>
+                  <p class="panel-label">Voice Speed</p>
+                  <p class="start-preview-text">Sample: “Hello. I need a basket. Where is the milk?”</p>
+                </div>
+                <button id="start-audio-preview-button" class="button button-secondary button-small">Play Demo</button>
+              </div>
+              <div class="start-preview-controls">
+                <label class="settings-label" for="start-audio-rate-input">Speed</label>
+                <span id="start-audio-rate-value" class="settings-value">100%</span>
+              </div>
+              <input id="start-audio-rate-input" class="settings-range" type="range" min="0.75" max="1.2" step="0.05" value="1">
+            </section>
             <div class="overlay-actions">
               <button id="start-button" class="button button-primary">Start Game</button>
               <button id="reset-button" class="button button-secondary">Reset Case</button>
@@ -126,9 +132,9 @@
               <p class="touch-label">Move</p>
             </div>
             <div class="action-buttons">
-              <button class="touch-button touch-button-action" data-touch-action="interact" aria-label="Talk">
+              <button class="touch-button touch-button-action" data-touch-action="interact" aria-label="Use">
                 <span class="touch-button-symbol" aria-hidden="true">E</span>
-                <span class="touch-button-text">Talk</span>
+                <span class="touch-button-text">Use</span>
               </button>
             </div>
           </div>
@@ -137,23 +143,10 @@
             <div class="drawer-head">
               <div>
                 <p class="panel-label">Panel</p>
-                <h3 id="drawer-title">Talk</h3>
+                <h3 id="drawer-title">Words</h3>
               </div>
               <button id="drawer-close" class="button button-secondary button-small">Close</button>
             </div>
-
-            <section class="drawer-panel" data-drawer-panel="dialogue">
-              <div id="speaker-card" class="speaker-card">
-                <img id="speaker-avatar" src="./assets/images/avatars/mia.svg" alt="" class="speaker-avatar">
-                <div class="speaker-meta">
-                  <h3 id="speaker-name">Narrator</h3>
-                  <p id="speaker-role">Office guide</p>
-                </div>
-              </div>
-              <p id="dialogue-text" class="dialogue-text">
-                Press Start Game when you are ready.
-              </p>
-            </section>
 
             <section class="drawer-panel" data-drawer-panel="words">
               <ul id="vocabulary-list" class="data-list"></ul>
@@ -161,10 +154,6 @@
 
             <section class="drawer-panel" data-drawer-panel="inventory">
               <ul id="inventory-list" class="inventory-list"></ul>
-            </section>
-
-            <section class="drawer-panel" data-drawer-panel="notes">
-              <ul id="notes-list" class="data-list notes-list"></ul>
             </section>
 
             <section class="drawer-panel" data-drawer-panel="progress">

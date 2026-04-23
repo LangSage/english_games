@@ -16,33 +16,51 @@
     "preGameVocab": [
       {
         "term": "supermarket",
+        "emoji": "🏪",
         "definition": "a big food shop",
         "translation": "супермаркет"
       },
       {
         "term": "basket",
+        "emoji": "🧺",
         "definition": "something you carry food in",
         "translation": "корзина"
       },
       {
         "term": "shelf",
+        "emoji": "🗂️",
         "definition": "a place in the shop for products",
         "translation": "полка"
       },
       {
         "term": "cashier",
+        "emoji": "💳",
         "definition": "the person who takes payment",
         "translation": "кассир"
       },
       {
         "term": "customer",
+        "emoji": "🙋",
         "definition": "a person who buys something",
         "translation": "покупатель"
       },
       {
         "term": "shopping list",
+        "emoji": "📝",
         "definition": "a list of things to buy",
         "translation": "список покупок"
+      }
+    ],
+    "audioPreviewLines": [
+      {
+        "id": "preview_demo_1",
+        "speaker": "narrator",
+        "text": "Hello. This is the voice speed demo."
+      },
+      {
+        "id": "preview_demo_2",
+        "speaker": "mia",
+        "text": "I need a basket. Where is the milk?"
       }
     ],
     "difficultyModes": [
@@ -385,11 +403,13 @@
       "vocabulary": [
         {
           "term": "supermarket",
+          "emoji": "🏪",
           "definition": "a big food shop",
           "translation": "супермаркет"
         },
         {
           "term": "basket",
+          "emoji": "🧺",
           "definition": "something you carry food in",
           "translation": "корзина"
         }
@@ -432,11 +452,13 @@
       "vocabulary": [
         {
           "term": "shopping list",
+          "emoji": "📝",
           "definition": "a list of things to buy",
           "translation": "список покупок"
         },
         {
           "term": "shop",
+          "emoji": "🛒",
           "definition": "to buy things",
           "translation": "делать покупки"
         }
@@ -479,11 +501,13 @@
       "vocabulary": [
         {
           "term": "shelf",
+          "emoji": "🗂️",
           "definition": "a place in the shop for products",
           "translation": "полка"
         },
         {
           "term": "bread",
+          "emoji": "🍞",
           "definition": "food made from flour",
           "translation": "хлеб"
         }
@@ -526,6 +550,7 @@
       "vocabulary": [
         {
           "term": "loaf",
+          "emoji": "🍞",
           "definition": "one full piece of bread",
           "translation": "буханка"
         },
@@ -573,11 +598,13 @@
       "vocabulary": [
         {
           "term": "carton",
+          "emoji": "🥛",
           "definition": "a paper box for drinks like milk",
           "translation": "пакет"
         },
         {
           "term": "milk",
+          "emoji": "🥛",
           "definition": "a white drink from cows",
           "translation": "молоко"
         }
@@ -620,11 +647,13 @@
       "vocabulary": [
         {
           "term": "customer",
+          "emoji": "🙋",
           "definition": "a person who buys something",
           "translation": "покупатель"
         },
         {
           "term": "banana",
+          "emoji": "🍌",
           "definition": "a long yellow fruit",
           "translation": "банан"
         }
@@ -667,11 +696,13 @@
       "vocabulary": [
         {
           "term": "tomato",
+          "emoji": "🍅",
           "definition": "a red round vegetable in this game",
           "translation": "помидор"
         },
         {
           "term": "apple",
+          "emoji": "🍎",
           "definition": "a round fruit",
           "translation": "яблоко"
         }
@@ -714,6 +745,7 @@
       "vocabulary": [
         {
           "term": "potato",
+          "emoji": "🥔",
           "definition": "a brown vegetable that grows in the ground",
           "translation": "картофель"
         },
@@ -761,11 +793,13 @@
       "vocabulary": [
         {
           "term": "packet",
+          "emoji": "📦",
           "definition": "a small package",
           "translation": "пакет"
         },
         {
           "term": "rice",
+          "emoji": "🍚",
           "definition": "small white grains you cook",
           "translation": "рис"
         }
@@ -808,16 +842,19 @@
       "vocabulary": [
         {
           "term": "bottle",
+          "emoji": "🧴",
           "definition": "a plastic or glass container for drinks",
           "translation": "бутылка"
         },
         {
           "term": "water",
+          "emoji": "💧",
           "definition": "a clear drink",
           "translation": "вода"
         },
         {
           "term": "juice",
+          "emoji": "🧃",
           "definition": "a fruit drink",
           "translation": "сок"
         }
@@ -860,11 +897,13 @@
       "vocabulary": [
         {
           "term": "cashier",
+          "emoji": "💳",
           "definition": "the person who takes payment",
           "translation": "кассир"
         },
         {
           "term": "price",
+          "emoji": "💲",
           "definition": "how much something costs",
           "translation": "цена"
         }
@@ -907,11 +946,13 @@
       "vocabulary": [
         {
           "term": "cheese",
+          "emoji": "🧀",
           "definition": "food made from milk",
           "translation": "сыр"
         },
         {
           "term": "orange",
+          "emoji": "🍊",
           "definition": "a round orange fruit",
           "translation": "апельсин"
         }
@@ -954,6 +995,7 @@
       "vocabulary": [
         {
           "term": "bag",
+          "emoji": "🛍️",
           "definition": "something that holds shopping",
           "translation": "пакет"
         }
