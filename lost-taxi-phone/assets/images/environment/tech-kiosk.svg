@@ -1,0 +1,12 @@
+<svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+  <rect x="26" y="106" width="148" height="14" rx="7" fill="#465765" opacity="0.38"/>
+  <rect x="34" y="36" width="132" height="70" rx="18" fill="#2D4C63"/>
+  <rect x="52" y="22" width="96" height="26" rx="10" fill="#F5C64A"/>
+  <text x="100" y="39" font-family="Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle" fill="#20303E">TECH</text>
+  <rect x="54" y="54" width="40" height="34" rx="8" fill="#DCEBFA"/>
+  <rect x="106" y="54" width="40" height="34" rx="8" fill="#DCEBFA"/>
+  <path d="M68 68C76 58 88 58 88 70C88 80 74 82 74 88" stroke="#2D4C63" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M121 58V84" stroke="#2D4C63" stroke-width="5" stroke-linecap="round"/>
+  <path d="M131 64L121 54L111 64" stroke="#2D4C63" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="76" y="92" width="48" height="8" rx="4" fill="#9FD17A"/>
+</svg>

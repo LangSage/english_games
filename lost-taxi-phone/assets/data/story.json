@@ -1,0 +1,1745 @@
+{
+  "meta": {
+    "title": "The Lost Taxi Phone",
+    "description": "A phone-first English city mystery about a phone lost after a taxi ride, a public phone call, the cleaning department, and the police desk.",
+    "caseTitle": "The Lost Taxi Phone",
+    "caseTag": "Case 01",
+    "playerName": "Adam",
+    "defaultDifficulty": "easy",
+    "defaultAudioRate": 0.95,
+    "startNotes": [
+      "Adam got out of a taxi at River Center.",
+      "Now his phone is gone. Follow the clues before the battery dies."
+    ],
+    "endTitle": "The phone is back.",
+    "endSummary": "You followed the city clues, charged the phone, and got it back.",
+    "preGameVocab": [
+      {
+        "term": "taxi",
+        "emoji": "🚕",
+        "definition": "a car you pay to ride in",
+        "translation": "такси"
+      },
+      {
+        "term": "phone",
+        "emoji": "📱",
+        "definition": "a small thing you use to call and text",
+        "translation": "телефон"
+      },
+      {
+        "term": "receipt",
+        "emoji": "🧾",
+        "definition": "a small paper with payment information",
+        "translation": "чек"
+      },
+      {
+        "term": "lobby",
+        "emoji": "🏢",
+        "definition": "the front area inside a building",
+        "translation": "вестибюль"
+      },
+      {
+        "term": "police",
+        "emoji": "👮",
+        "definition": "people who protect the city and help with problems",
+        "translation": "полиция"
+      },
+      {
+        "term": "charger",
+        "emoji": "🔌",
+        "definition": "something that gives power to a phone",
+        "translation": "зарядка"
+      }
+    ],
+    "audioPreviewLines": [
+      {
+        "id": "preview_demo_1",
+        "speaker": "narrator",
+        "text": "Hello. This is the voice speed demo."
+      },
+      {
+        "id": "preview_demo_2",
+        "speaker": "mia",
+        "text": "I lost my phone. Where is the lobby phone?"
+      }
+    ],
+    "difficultyModes": [
+      {
+        "id": "easy",
+        "label": "Easy",
+        "description": "Russian support stays visible.",
+        "translationVisibility": "full"
+      },
+      {
+        "id": "normal",
+        "label": "Normal",
+        "description": "Start words hide Russian first.",
+        "translationVisibility": "lesson"
+      },
+      {
+        "id": "hard",
+        "label": "Hard",
+        "description": "Russian shows only in review.",
+        "translationVisibility": "review"
+      }
+    ],
+    "reviewPhrases": [
+      {
+        "speaker": "guard",
+        "text": "Use the lobby phone. It is free.",
+        "translation": "Используй телефон в вестибюле. Это бесплатно."
+      },
+      {
+        "speaker": "cleaner",
+        "text": "I sent the phone to the police desk.",
+        "translation": "Я отправила телефон на полицейскую стойку."
+      },
+      {
+        "speaker": "police",
+        "text": "Get a charger, then come back.",
+        "translation": "Возьми зарядку, а потом возвращайся."
+      }
+    ]
+  },
+  "speakers": {
+    "mia": {
+      "name": "Adam",
+      "role": "Taxi passenger",
+      "avatar": "./assets/images/avatars/tim.svg",
+      "naturalVoice": "en-US-AndrewMultilingualNeural",
+      "naturalRate": "-6%",
+      "voice": "Microsoft David Desktop",
+      "tokenColor": "#FF8F5A"
+    },
+    "guard": {
+      "name": "Leon",
+      "role": "Lobby guard",
+      "avatar": "./assets/images/avatars/manager.svg",
+      "naturalVoice": "en-US-BrianMultilingualNeural",
+      "naturalRate": "-8%",
+      "voice": "Microsoft David Desktop",
+      "tokenColor": "#6ECA8F"
+    },
+    "dispatcher": {
+      "name": "Aylin",
+      "role": "Taxi dispatcher",
+      "avatar": "./assets/images/avatars/alex.svg",
+      "naturalVoice": "en-US-AvaMultilingualNeural",
+      "naturalRate": "-6%",
+      "voice": "Microsoft Zira Desktop",
+      "tokenColor": "#74B9FF"
+    },
+    "reception": {
+      "name": "Sara",
+      "role": "Reception clerk",
+      "avatar": "./assets/images/avatars/nora.svg",
+      "naturalVoice": "en-US-EmmaMultilingualNeural",
+      "naturalRate": "-6%",
+      "voice": "Microsoft Zira Desktop",
+      "tokenColor": "#F7C561"
+    },
+    "cleaner": {
+      "name": "Mila",
+      "role": "Cleaning department",
+      "avatar": "./assets/images/avatars/alex.svg",
+      "naturalVoice": "en-US-AvaMultilingualNeural",
+      "naturalRate": "-6%",
+      "voice": "Microsoft Zira Desktop",
+      "tokenColor": "#B58BFF"
+    },
+    "waiter": {
+      "name": "Ben",
+      "role": "Cafe waiter",
+      "avatar": "./assets/images/avatars/tim.svg",
+      "naturalVoice": "en-US-BrianMultilingualNeural",
+      "naturalRate": "-6%",
+      "voice": "Microsoft David Desktop",
+      "tokenColor": "#5AB0F6"
+    },
+    "police": {
+      "name": "Officer Yusuf",
+      "role": "Police desk",
+      "avatar": "./assets/images/avatars/manager.svg",
+      "naturalVoice": "en-US-BrianMultilingualNeural",
+      "naturalRate": "-8%",
+      "voice": "Microsoft David Desktop",
+      "tokenColor": "#FF7B89"
+    },
+    "tech": {
+      "name": "Omar",
+      "role": "Tech kiosk",
+      "avatar": "./assets/images/avatars/alex.svg",
+      "naturalVoice": "en-US-AndrewMultilingualNeural",
+      "naturalRate": "-6%",
+      "voice": "Microsoft David Desktop",
+      "tokenColor": "#9B7BFF"
+    },
+    "narrator": {
+      "name": "Narrator",
+      "role": "City guide",
+      "avatar": "./assets/images/avatars/manager.svg",
+      "naturalVoice": "en-US-BrianMultilingualNeural",
+      "naturalRate": "-12%",
+      "voice": "Microsoft David Desktop",
+      "tokenColor": "#F7C561"
+    }
+  },
+  "introLines": [
+    {
+      "id": "case_intro_1",
+      "speaker": "narrator",
+      "text": "Case one. Adam got out of a taxi."
+    },
+    {
+      "id": "case_intro_2",
+      "speaker": "narrator",
+      "text": "Boom. His phone is gone."
+    },
+    {
+      "id": "case_intro_3",
+      "speaker": "mia",
+      "text": "Oh no. I need to find it fast."
+    }
+  ],
+  "comprehensionChecks": [
+    {
+      "id": "check_receipt",
+      "stepId": "talkGuard",
+      "question": "What did Adam find by the bench?",
+      "help": "Think about the small paper.",
+      "options": [
+        {
+          "id": "receipt",
+          "label": "A taxi receipt",
+          "isCorrect": true
+        },
+        {
+          "id": "key",
+          "label": "A hotel key",
+          "isCorrect": false
+        }
+      ],
+      "correctLines": [
+        {
+          "id": "check_receipt_right_1",
+          "speaker": "narrator",
+          "text": "Right. Adam found a taxi receipt."
+        }
+      ],
+      "wrongLines": [
+        {
+          "id": "check_receipt_wrong_1",
+          "speaker": "narrator",
+          "text": "Not a key. Adam found a taxi receipt."
+        }
+      ],
+      "notes": {
+        "correct": "You remembered the bench clue.",
+        "wrong": "The bench clue was a taxi receipt."
+      }
+    },
+    {
+      "id": "check_call_place",
+      "stepId": "callTaxiOffice",
+      "question": "Where can Adam call the taxi office?",
+      "help": "Listen to the guard.",
+      "options": [
+        {
+          "id": "lobby_phone",
+          "label": "The lobby phone",
+          "isCorrect": true
+        },
+        {
+          "id": "police_desk",
+          "label": "The police desk",
+          "isCorrect": false
+        }
+      ],
+      "correctLines": [
+        {
+          "id": "check_call_place_right_1",
+          "speaker": "narrator",
+          "text": "Yes. Adam can call from the lobby phone."
+        }
+      ],
+      "wrongLines": [
+        {
+          "id": "check_call_place_wrong_1",
+          "speaker": "narrator",
+          "text": "Not yet. The guard says to use the lobby phone."
+        }
+      ],
+      "notes": {
+        "correct": "You followed the guard's idea.",
+        "wrong": "The guard points Adam to the lobby phone."
+      }
+    },
+    {
+      "id": "check_taxi_answer",
+      "stepId": "talkReception",
+      "question": "What does the taxi office say?",
+      "help": "Listen to Aylin's answer.",
+      "options": [
+        {
+          "id": "no_phone_taxi",
+          "label": "There is no phone in the taxi",
+          "isCorrect": true
+        },
+        {
+          "id": "driver_has_phone",
+          "label": "The driver has the phone",
+          "isCorrect": false
+        }
+      ],
+      "correctLines": [
+        {
+          "id": "check_taxi_answer_right_1",
+          "speaker": "narrator",
+          "text": "Correct. The taxi office says there is no phone in the taxi."
+        }
+      ],
+      "wrongLines": [
+        {
+          "id": "check_taxi_answer_wrong_1",
+          "speaker": "narrator",
+          "text": "No. The taxi office says there is no phone in the taxi."
+        }
+      ],
+      "notes": {
+        "correct": "You understood the taxi office clue.",
+        "wrong": "The driver did not keep the phone."
+      }
+    },
+    {
+      "id": "check_phone_place",
+      "stepId": "talkWaiter",
+      "question": "Who has the phone now?",
+      "help": "Remember Mila's line.",
+      "options": [
+        {
+          "id": "police",
+          "label": "The police desk",
+          "isCorrect": true
+        },
+        {
+          "id": "driver",
+          "label": "The taxi driver",
+          "isCorrect": false
+        }
+      ],
+      "correctLines": [
+        {
+          "id": "check_phone_place_right_1",
+          "speaker": "narrator",
+          "text": "Right. Mila sent the phone to the police desk."
+        }
+      ],
+      "wrongLines": [
+        {
+          "id": "check_phone_place_wrong_1",
+          "speaker": "narrator",
+          "text": "Not the driver. Mila sent the phone to the police desk."
+        }
+      ],
+      "notes": {
+        "correct": "You followed the department clue.",
+        "wrong": "The next place is the police desk."
+      }
+    },
+    {
+      "id": "check_case_color",
+      "stepId": "talkPolice",
+      "question": "What color is Adam's phone case?",
+      "help": "Listen to Ben in the cafe.",
+      "options": [
+        {
+          "id": "black",
+          "label": "Black",
+          "isCorrect": true
+        },
+        {
+          "id": "green",
+          "label": "Green",
+          "isCorrect": false
+        }
+      ],
+      "correctLines": [
+        {
+          "id": "check_case_color_right_1",
+          "speaker": "narrator",
+          "text": "Yes. Ben says the phone case is black."
+        }
+      ],
+      "wrongLines": [
+        {
+          "id": "check_case_color_wrong_1",
+          "speaker": "narrator",
+          "text": "Not green. Ben says the phone case is black."
+        }
+      ],
+      "notes": {
+        "correct": "You remembered the cafe clue.",
+        "wrong": "Ben says the phone case is black."
+      }
+    },
+    {
+      "id": "check_charger_need",
+      "stepId": "finishPolice",
+      "question": "What does Adam need before the phone can turn on?",
+      "help": "Think about Officer Yusuf's instruction.",
+      "options": [
+        {
+          "id": "charger",
+          "label": "A charger",
+          "isCorrect": true
+        },
+        {
+          "id": "umbrella",
+          "label": "An umbrella",
+          "isCorrect": false
+        }
+      ],
+      "correctLines": [
+        {
+          "id": "check_charger_need_right_1",
+          "speaker": "narrator",
+          "text": "Right. Adam needs a charger."
+        }
+      ],
+      "wrongLines": [
+        {
+          "id": "check_charger_need_wrong_1",
+          "speaker": "narrator",
+          "text": "No. Adam needs a charger for the phone."
+        }
+      ],
+      "notes": {
+        "correct": "You understood the last errand.",
+        "wrong": "The phone needs power first."
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "checkTaxiStop",
+      "title": "Check the taxi stop",
+      "instruction": "Go to the taxi stop and look for the phone.",
+      "targetIds": [
+        "taxiStop"
+      ],
+      "vocabulary": [
+        {
+          "term": "taxi",
+          "emoji": "🚕",
+          "definition": "a car you pay to ride in",
+          "translation": "такси"
+        },
+        {
+          "term": "phone",
+          "emoji": "📱",
+          "definition": "a small thing you use to call and text",
+          "translation": "телефон"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_taxi_1",
+          "speaker": "narrator",
+          "text": "Start at the yellow taxi stop."
+        },
+        {
+          "id": "hint_taxi_2",
+          "speaker": "narrator",
+          "text": "The street area is at the bottom."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Adam just lost the phone. He should check the taxi stop first.",
+        "lines": [
+          {
+            "id": "wrong_taxi_1",
+            "speaker": "narrator",
+            "text": "Not yet."
+          },
+          {
+            "id": "wrong_taxi_2",
+            "speaker": "narrator",
+            "text": "Start at the taxi stop."
+          }
+        ]
+      }
+    },
+    {
+      "id": "checkBench",
+      "title": "Check the bench",
+      "instruction": "The phone is not there. Go to the bench and look again.",
+      "targetIds": [
+        "streetBench"
+      ],
+      "vocabulary": [
+        {
+          "term": "receipt",
+          "emoji": "🧾",
+          "definition": "a small paper with payment information",
+          "translation": "чек"
+        },
+        {
+          "term": "bench",
+          "emoji": "🪑",
+          "definition": "a long seat in a public place",
+          "translation": "скамейка"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_bench_1",
+          "speaker": "narrator",
+          "text": "Look left in the street area."
+        },
+        {
+          "id": "hint_bench_2",
+          "speaker": "narrator",
+          "text": "The bench is near the curb."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Adam should look by the bench next.",
+        "lines": [
+          {
+            "id": "wrong_bench_1",
+            "speaker": "narrator",
+            "text": "Try again."
+          },
+          {
+            "id": "wrong_bench_2",
+            "speaker": "narrator",
+            "text": "Go to the bench."
+          }
+        ]
+      }
+    },
+    {
+      "id": "talkGuard",
+      "title": "Ask the guard",
+      "instruction": "Talk to the guard and ask for help.",
+      "targetIds": [
+        "guard"
+      ],
+      "vocabulary": [
+        {
+          "term": "lobby",
+          "emoji": "🏢",
+          "definition": "the front area inside a building",
+          "translation": "вестибюль"
+        },
+        {
+          "term": "guard",
+          "emoji": "🛡️",
+          "definition": "a person who protects a place",
+          "translation": "охранник"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_guard_1",
+          "speaker": "narrator",
+          "text": "Go to the green guard in the lobby."
+        },
+        {
+          "id": "hint_guard_2",
+          "speaker": "narrator",
+          "text": "The lobby is in the left middle area."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "The guard can help Adam call.",
+        "lines": [
+          {
+            "id": "wrong_guard_1",
+            "speaker": "narrator",
+            "text": "The next clue is with the guard."
+          },
+          {
+            "id": "wrong_guard_2",
+            "speaker": "narrator",
+            "text": "Ask the guard in the lobby."
+          }
+        ]
+      }
+    },
+    {
+      "id": "callTaxiOffice",
+      "title": "Call the taxi office",
+      "instruction": "Use the lobby phone and call the taxi office.",
+      "targetIds": [
+        "lobbyPhone"
+      ],
+      "vocabulary": [
+        {
+          "term": "call",
+          "emoji": "☎️",
+          "definition": "to speak to someone by phone",
+          "translation": "звонить"
+        },
+        {
+          "term": "office",
+          "emoji": "🏬",
+          "definition": "a place where people work",
+          "translation": "офис"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_phone_1",
+          "speaker": "narrator",
+          "text": "The public phone is to the right of the guard."
+        },
+        {
+          "id": "hint_phone_2",
+          "speaker": "narrator",
+          "text": "Use the blue phone in the lobby."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Adam should use the lobby phone now.",
+        "lines": [
+          {
+            "id": "wrong_phone_1",
+            "speaker": "narrator",
+            "text": "Not this place."
+          },
+          {
+            "id": "wrong_phone_2",
+            "speaker": "narrator",
+            "text": "Use the lobby phone."
+          }
+        ]
+      }
+    },
+    {
+      "id": "talkReception",
+      "title": "Talk to reception",
+      "instruction": "Go to reception in River Center.",
+      "targetIds": [
+        "reception"
+      ],
+      "vocabulary": [
+        {
+          "term": "building",
+          "emoji": "🏢",
+          "definition": "a large place with rooms inside",
+          "translation": "здание"
+        },
+        {
+          "term": "reception",
+          "emoji": "🛎️",
+          "definition": "the front desk in a building",
+          "translation": "стойка регистрации"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_reception_1",
+          "speaker": "narrator",
+          "text": "Reception is in the middle of the map."
+        },
+        {
+          "id": "hint_reception_2",
+          "speaker": "narrator",
+          "text": "Look for Sara at the front desk."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Reception has the next building clue.",
+        "lines": [
+          {
+            "id": "wrong_reception_1",
+            "speaker": "narrator",
+            "text": "Adam needs the front desk now."
+          },
+          {
+            "id": "wrong_reception_2",
+            "speaker": "narrator",
+            "text": "Go to reception in River Center."
+          }
+        ]
+      }
+    },
+    {
+      "id": "checkLostDoor",
+      "title": "Read the blue door note",
+      "instruction": "Reception says to read the blue lost and found door note.",
+      "targetIds": [
+        "lostDoor"
+      ],
+      "vocabulary": [
+        {
+          "term": "lost and found",
+          "emoji": "🚪",
+          "definition": "a place for missing things",
+          "translation": "бюро находок"
+        },
+        {
+          "term": "note",
+          "emoji": "📝",
+          "definition": "a short written message",
+          "translation": "записка"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_lostdoor_1",
+          "speaker": "narrator",
+          "text": "The blue door is above reception."
+        },
+        {
+          "id": "hint_lostdoor_2",
+          "speaker": "narrator",
+          "text": "Read the note on the lost and found door."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Adam should read the blue door note now.",
+        "lines": [
+          {
+            "id": "wrong_lostdoor_1",
+            "speaker": "narrator",
+            "text": "There is a note on the blue door."
+          },
+          {
+            "id": "wrong_lostdoor_2",
+            "speaker": "narrator",
+            "text": "Go to the lost and found door."
+          }
+        ]
+      }
+    },
+    {
+      "id": "talkCleaner",
+      "title": "Go to the cleaning department",
+      "instruction": "Go to the cleaning department desk.",
+      "targetIds": [
+        "cleaner"
+      ],
+      "vocabulary": [
+        {
+          "term": "department",
+          "emoji": "🏷️",
+          "definition": "one part of a company or building",
+          "translation": "отдел"
+        },
+        {
+          "term": "cleaner",
+          "emoji": "🧹",
+          "definition": "a person who cleans a place",
+          "translation": "уборщик"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_cleaner_1",
+          "speaker": "narrator",
+          "text": "The cleaning desk is near the cabinet."
+        },
+        {
+          "id": "hint_cleaner_2",
+          "speaker": "narrator",
+          "text": "Go to Mila in the middle upper area."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "The cleaning department has the next clue.",
+        "lines": [
+          {
+            "id": "wrong_cleaner_1",
+            "speaker": "narrator",
+            "text": "Not yet."
+          },
+          {
+            "id": "wrong_cleaner_2",
+            "speaker": "narrator",
+            "text": "Go to the cleaning department."
+          }
+        ]
+      }
+    },
+    {
+      "id": "talkWaiter",
+      "title": "Ask the cafe waiter",
+      "instruction": "Go to the cafe and talk to the waiter.",
+      "targetIds": [
+        "waiter"
+      ],
+      "vocabulary": [
+        {
+          "term": "cafe",
+          "emoji": "☕",
+          "definition": "a small place for drinks and snacks",
+          "translation": "кафе"
+        },
+        {
+          "term": "case",
+          "emoji": "📱",
+          "definition": "the cover around a phone",
+          "translation": "чехол"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_waiter_1",
+          "speaker": "narrator",
+          "text": "The cafe is in the top left area."
+        },
+        {
+          "id": "hint_waiter_2",
+          "speaker": "narrator",
+          "text": "Ask Ben by the table."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "The cafe waiter knows the phone case clue.",
+        "lines": [
+          {
+            "id": "wrong_waiter_1",
+            "speaker": "narrator",
+            "text": "Adam needs the cafe clue now."
+          },
+          {
+            "id": "wrong_waiter_2",
+            "speaker": "narrator",
+            "text": "Go to the cafe waiter."
+          }
+        ]
+      }
+    },
+    {
+      "id": "talkPolice",
+      "title": "Talk to the police desk",
+      "instruction": "Go to the police desk and describe your phone.",
+      "targetIds": [
+        "police"
+      ],
+      "vocabulary": [
+        {
+          "term": "police desk",
+          "emoji": "👮",
+          "definition": "the place where an officer helps people",
+          "translation": "полицейская стойка"
+        },
+        {
+          "term": "battery",
+          "emoji": "🔋",
+          "definition": "the power inside a phone",
+          "translation": "батарея"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_police_1",
+          "speaker": "narrator",
+          "text": "The police desk is in the blue office."
+        },
+        {
+          "id": "hint_police_2",
+          "speaker": "narrator",
+          "text": "Go to Officer Yusuf on the right."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "The police desk may have the phone now.",
+        "lines": [
+          {
+            "id": "wrong_police_1",
+            "speaker": "narrator",
+            "text": "This clue is with the police desk."
+          },
+          {
+            "id": "wrong_police_2",
+            "speaker": "narrator",
+            "text": "Go to Officer Yusuf."
+          }
+        ]
+      }
+    },
+    {
+      "id": "getCharger",
+      "title": "Get a charger",
+      "instruction": "Go to the tech kiosk and get a charger.",
+      "targetIds": [
+        "techKiosk"
+      ],
+      "vocabulary": [
+        {
+          "term": "charger",
+          "emoji": "🔌",
+          "definition": "something that gives power to a phone",
+          "translation": "зарядка"
+        },
+        {
+          "term": "kiosk",
+          "emoji": "🛍️",
+          "definition": "a very small shop",
+          "translation": "киоск"
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_tech_1",
+          "speaker": "narrator",
+          "text": "The tech kiosk is in the bottom right area."
+        },
+        {
+          "id": "hint_tech_2",
+          "speaker": "narrator",
+          "text": "Look for the yellow tech sign."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Adam needs a charger from the tech kiosk.",
+        "lines": [
+          {
+            "id": "wrong_tech_1",
+            "speaker": "narrator",
+            "text": "Not yet."
+          },
+          {
+            "id": "wrong_tech_2",
+            "speaker": "narrator",
+            "text": "Go to the tech kiosk."
+          }
+        ]
+      }
+    },
+    {
+      "id": "finishPolice",
+      "title": "Return to the police desk",
+      "instruction": "Return to the police desk with the charger.",
+      "targetIds": [
+        "police"
+      ],
+      "vocabulary": [
+        {
+          "term": "screen",
+          "emoji": "📲",
+          "definition": "the front part of a phone you look at",
+          "translation": "экран"
+        },
+        {
+          "term": "There is ...",
+          "definition": "we use it for one thing",
+          "translation": "есть ..."
+        }
+      ],
+      "hints": [
+        {
+          "id": "hint_finish_1",
+          "speaker": "narrator",
+          "text": "Go back to the police desk."
+        },
+        {
+          "id": "hint_finish_2",
+          "speaker": "narrator",
+          "text": "Officer Yusuf is waiting with the phone."
+        }
+      ],
+      "wrongInteraction": {
+        "note": "Adam only needs to return to the police desk now.",
+        "lines": [
+          {
+            "id": "wrong_finish_1",
+            "speaker": "narrator",
+            "text": "Almost done."
+          },
+          {
+            "id": "wrong_finish_2",
+            "speaker": "narrator",
+            "text": "Return to the police desk."
+          }
+        ]
+      }
+    }
+  ],
+  "world": {
+    "width": 1480,
+    "height": 1580,
+    "playerStart": {
+      "x": 720,
+      "y": 1410
+    },
+    "zones": [
+      {
+        "x": 40,
+        "y": 40,
+        "width": 520,
+        "height": 330,
+        "color": "#F6DFD3"
+      },
+      {
+        "x": 40,
+        "y": 760,
+        "width": 520,
+        "height": 320,
+        "color": "#F1E5D8"
+      },
+      {
+        "x": 590,
+        "y": 430,
+        "width": 390,
+        "height": 650,
+        "color": "#E9E4D8"
+      },
+      {
+        "x": 1010,
+        "y": 60,
+        "width": 430,
+        "height": 520,
+        "color": "#DCEBFA"
+      },
+      {
+        "x": 1030,
+        "y": 780,
+        "width": 400,
+        "height": 320,
+        "color": "#F4E9CA"
+      },
+      {
+        "x": 40,
+        "y": 1140,
+        "width": 940,
+        "height": 380,
+        "color": "#DDE7EE"
+      },
+      {
+        "x": 590,
+        "y": 1140,
+        "width": 390,
+        "height": 250,
+        "color": "#F4EBD8"
+      }
+    ],
+    "decor": [
+      {
+        "asset": "./assets/images/environment/meeting-table.svg",
+        "x": 250,
+        "y": 218,
+        "scale": 0.86,
+        "collider": {
+          "width": 168,
+          "height": 74
+        }
+      },
+      {
+        "asset": "./assets/images/environment/reception-desk.svg",
+        "x": 760,
+        "y": 914,
+        "scale": 0.96,
+        "collider": {
+          "width": 182,
+          "height": 62
+        }
+      },
+      {
+        "asset": "./assets/images/environment/cabinet.svg",
+        "x": 812,
+        "y": 540,
+        "scale": 0.84,
+        "collider": {
+          "width": 118,
+          "height": 56
+        }
+      },
+      {
+        "asset": "./assets/images/environment/counter.svg",
+        "x": 1218,
+        "y": 338,
+        "scale": 0.94,
+        "collider": {
+          "width": 176,
+          "height": 58
+        }
+      },
+      {
+        "asset": "./assets/images/environment/plant.svg",
+        "x": 524,
+        "y": 952,
+        "scale": 1,
+        "collider": {
+          "width": 56,
+          "height": 70
+        }
+      },
+      {
+        "asset": "./assets/images/environment/plant.svg",
+        "x": 1360,
+        "y": 988,
+        "scale": 1,
+        "collider": {
+          "width": 56,
+          "height": 70
+        }
+      }
+    ]
+  },
+  "inventoryItems": {
+    "receipt": {
+      "label": "Taxi receipt",
+      "icon": "./assets/images/ui/receipt.svg"
+    },
+    "charger": {
+      "label": "Charger",
+      "icon": "./assets/images/ui/charger.svg"
+    },
+    "phone": {
+      "label": "Phone",
+      "icon": "./assets/images/ui/phone.svg"
+    }
+  },
+  "interactives": [
+    {
+      "id": "taxiStop",
+      "label": "Taxi Stop",
+      "kind": "object",
+      "asset": "./assets/images/environment/taxi-stop.svg",
+      "x": 708,
+      "y": 1328,
+      "radius": 104,
+      "scale": 0.94,
+      "responses": {
+        "checkTaxiStop": {
+          "lines": [
+            {
+              "id": "taxi_clue_1",
+              "speaker": "narrator",
+              "text": "The taxi is gone."
+            },
+            {
+              "id": "taxi_clue_2",
+              "speaker": "narrator",
+              "text": "Adam does not have his phone."
+            },
+            {
+              "id": "taxi_clue_3",
+              "speaker": "mia",
+              "text": "Maybe I dropped it near the bench."
+            }
+          ],
+          "effects": {
+            "step": "checkBench",
+            "notes": [
+              "The phone is not at the taxi stop.",
+              "Adam should check the bench next."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "taxi_default_1",
+                "speaker": "narrator",
+                "text": "This is the taxi stop."
+              }
+            ],
+            [
+              {
+                "id": "taxi_default_2",
+                "speaker": "narrator",
+                "text": "Many taxis stop here."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "streetBench",
+      "label": "Street Bench",
+      "kind": "object",
+      "asset": "./assets/images/environment/street-bench.svg",
+      "x": 270,
+      "y": 1320,
+      "radius": 96,
+      "scale": 0.92,
+      "responses": {
+        "checkBench": {
+          "lines": [
+            {
+              "id": "bench_clue_1",
+              "speaker": "narrator",
+              "text": "There is no phone on the bench."
+            },
+            {
+              "id": "bench_clue_2",
+              "speaker": "narrator",
+              "text": "But there is a taxi receipt here."
+            },
+            {
+              "id": "bench_clue_3",
+              "speaker": "mia",
+              "text": "Good. I can ask the guard and call the taxi office."
+            }
+          ],
+          "effects": {
+            "step": "talkGuard",
+            "addInventory": [
+              "receipt"
+            ],
+            "notes": [
+              "Adam found a taxi receipt by the bench.",
+              "Now he can ask for help."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "bench_default_1",
+                "speaker": "narrator",
+                "text": "This bench is by the street."
+              }
+            ],
+            [
+              {
+                "id": "bench_default_2",
+                "speaker": "narrator",
+                "text": "People wait here for taxis."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "guard",
+      "label": "Leon",
+      "kind": "npc",
+      "speakerId": "guard",
+      "x": 206,
+      "y": 892,
+      "radius": 92,
+      "responses": {
+        "talkGuard": {
+          "lines": [
+            {
+              "id": "guard_clue_1",
+              "speaker": "guard",
+              "text": "Hey, what's up? You look worried."
+            },
+            {
+              "id": "guard_clue_2",
+              "speaker": "mia",
+              "text": "I lost my phone."
+            },
+            {
+              "id": "guard_clue_3",
+              "speaker": "guard",
+              "text": "Use the lobby phone. It is free."
+            }
+          ],
+          "effects": {
+            "step": "callTaxiOffice",
+            "notes": [
+              "Leon says Adam can use the lobby phone."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "guard_default_1",
+                "speaker": "guard",
+                "text": "Hey, what's up?"
+              }
+            ],
+            [
+              {
+                "id": "guard_default_2",
+                "speaker": "guard",
+                "text": "I watch the lobby door."
+              }
+            ],
+            [
+              {
+                "id": "guard_default_3",
+                "speaker": "guard",
+                "text": "The lobby phone is inside."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "lobbyPhone",
+      "label": "Lobby Phone",
+      "kind": "object",
+      "asset": "./assets/images/environment/public-phone.svg",
+      "x": 432,
+      "y": 910,
+      "radius": 92,
+      "scale": 0.9,
+      "responses": {
+        "callTaxiOffice": {
+          "lines": [
+            {
+              "id": "phone_clue_1",
+              "speaker": "dispatcher",
+              "text": "Taxi Blue 14? The driver checked the car."
+            },
+            {
+              "id": "phone_clue_2",
+              "speaker": "dispatcher",
+              "text": "There is no phone in the taxi."
+            },
+            {
+              "id": "phone_clue_3",
+              "speaker": "dispatcher",
+              "text": "A cleaner from River Center asked about a phone."
+            },
+            {
+              "id": "phone_clue_4",
+              "speaker": "mia",
+              "text": "Okay. I will ask reception in the building."
+            }
+          ],
+          "effects": {
+            "step": "talkReception",
+            "notes": [
+              "The taxi office says the phone is not in the taxi.",
+              "A cleaner from River Center may know more."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "phone_default_1",
+                "speaker": "narrator",
+                "text": "This is the public phone."
+              }
+            ],
+            [
+              {
+                "id": "phone_default_2",
+                "speaker": "narrator",
+                "text": "People can call from here."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "reception",
+      "label": "Sara",
+      "kind": "npc",
+      "speakerId": "reception",
+      "x": 760,
+      "y": 890,
+      "radius": 94,
+      "responses": {
+        "talkReception": {
+          "lines": [
+            {
+              "id": "reception_clue_1",
+              "speaker": "reception",
+              "text": "Hey, what's up? The lost and found room is closed now."
+            },
+            {
+              "id": "reception_clue_2",
+              "speaker": "reception",
+              "text": "Please read the note on the blue door."
+            },
+            {
+              "id": "reception_clue_3",
+              "speaker": "mia",
+              "text": "Okay. I will check the door."
+            }
+          ],
+          "effects": {
+            "step": "checkLostDoor",
+            "notes": [
+              "Sara sends Adam to the lost and found door note."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "reception_default_1",
+                "speaker": "reception",
+                "text": "I work at the front desk."
+              }
+            ],
+            [
+              {
+                "id": "reception_default_2",
+                "speaker": "reception",
+                "text": "The building is busy today."
+              }
+            ],
+            [
+              {
+                "id": "reception_default_3",
+                "speaker": "reception",
+                "text": "Lost things come through reception first."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "lostDoor",
+      "label": "Lost And Found Door",
+      "kind": "object",
+      "asset": "./assets/images/environment/lost-found-door.svg",
+      "x": 790,
+      "y": 676,
+      "radius": 96,
+      "scale": 0.9,
+      "responses": {
+        "checkLostDoor": {
+          "lines": [
+            {
+              "id": "lostdoor_clue_1",
+              "speaker": "narrator",
+              "text": "The note says: For phones, ask Cleaning Department Room 2."
+            },
+            {
+              "id": "lostdoor_clue_2",
+              "speaker": "mia",
+              "text": "So I need the cleaning department."
+            }
+          ],
+          "effects": {
+            "step": "talkCleaner",
+            "notes": [
+              "The blue door note points Adam to the cleaning department."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "lostdoor_default_1",
+                "speaker": "narrator",
+                "text": "This is the lost and found door."
+              }
+            ],
+            [
+              {
+                "id": "lostdoor_default_2",
+                "speaker": "narrator",
+                "text": "There is a note on the door."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "cleaner",
+      "label": "Mila",
+      "kind": "npc",
+      "speakerId": "cleaner",
+      "x": 792,
+      "y": 518,
+      "radius": 92,
+      "responses": {
+        "talkCleaner": {
+          "lines": [
+            {
+              "id": "cleaner_clue_1",
+              "speaker": "cleaner",
+              "text": "Yes, I found a phone near the taxi door."
+            },
+            {
+              "id": "cleaner_clue_2",
+              "speaker": "cleaner",
+              "text": "I sent it to the police desk."
+            },
+            {
+              "id": "cleaner_clue_3",
+              "speaker": "cleaner",
+              "text": "The battery was very low."
+            },
+            {
+              "id": "cleaner_clue_4",
+              "speaker": "cleaner",
+              "text": "For proof, ask the cafe waiter. He saw your phone case."
+            }
+          ],
+          "effects": {
+            "step": "talkWaiter",
+            "notes": [
+              "Mila sent the phone to the police desk.",
+              "Ben in the cafe knows the phone case clue."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "cleaner_default_1",
+                "speaker": "cleaner",
+                "text": "I clean this building."
+              }
+            ],
+            [
+              {
+                "id": "cleaner_default_2",
+                "speaker": "cleaner",
+                "text": "The service room is behind me."
+              }
+            ],
+            [
+              {
+                "id": "cleaner_default_3",
+                "speaker": "cleaner",
+                "text": "We find many lost things here."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "waiter",
+      "label": "Ben",
+      "kind": "npc",
+      "speakerId": "waiter",
+      "x": 260,
+      "y": 206,
+      "radius": 92,
+      "responses": {
+        "talkWaiter": {
+          "lines": [
+            {
+              "id": "waiter_clue_1",
+              "speaker": "waiter",
+              "text": "Hey, what's up? I remember your phone."
+            },
+            {
+              "id": "waiter_clue_2",
+              "speaker": "waiter",
+              "text": "It had a black case and a football wallpaper."
+            },
+            {
+              "id": "waiter_clue_3",
+              "speaker": "waiter",
+              "text": "If the battery is dead, the tech kiosk sells chargers."
+            },
+            {
+              "id": "waiter_clue_4",
+              "speaker": "mia",
+              "text": "Great. Now I can talk to the police."
+            }
+          ],
+          "effects": {
+            "step": "talkPolice",
+            "notes": [
+              "Ben says the phone case is black.",
+              "The tech kiosk sells chargers."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "waiter_default_1",
+                "speaker": "waiter",
+                "text": "Hey, what's up?"
+              }
+            ],
+            [
+              {
+                "id": "waiter_default_2",
+                "speaker": "waiter",
+                "text": "I work in the cafe."
+              }
+            ],
+            [
+              {
+                "id": "waiter_default_3",
+                "speaker": "waiter",
+                "text": "People leave things on the tables."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "police",
+      "label": "Officer Yusuf",
+      "kind": "npc",
+      "speakerId": "police",
+      "x": 1218,
+      "y": 314,
+      "radius": 96,
+      "responses": {
+        "talkPolice": {
+          "lines": [
+            {
+              "id": "police_clue_1",
+              "speaker": "police",
+              "text": "We have one phone here."
+            },
+            {
+              "id": "police_clue_2",
+              "speaker": "police",
+              "text": "Tell me the case color."
+            },
+            {
+              "id": "police_clue_3",
+              "speaker": "mia",
+              "text": "It is black."
+            },
+            {
+              "id": "police_clue_4",
+              "speaker": "police",
+              "text": "Right. This is your phone, but the battery is dead."
+            },
+            {
+              "id": "police_clue_5",
+              "speaker": "police",
+              "text": "Get a charger from the tech kiosk, then come back."
+            }
+          ],
+          "effects": {
+            "step": "getCharger",
+            "notes": [
+              "Officer Yusuf has the phone.",
+              "Adam needs a charger before the phone can turn on."
+            ]
+          }
+        },
+        "finishPolice": {
+          "lines": [
+            {
+              "id": "police_finish_1",
+              "speaker": "police",
+              "text": "Good. The phone is on now."
+            },
+            {
+              "id": "police_finish_2",
+              "speaker": "police",
+              "text": "Here is your phone."
+            },
+            {
+              "id": "police_finish_3",
+              "speaker": "mia",
+              "text": "Great. Thank you."
+            },
+            {
+              "id": "police_finish_4",
+              "speaker": "narrator",
+              "text": "Nice work. Adam has his phone again."
+            }
+          ],
+          "effects": {
+            "completeCase": true,
+            "addInventory": [
+              "phone"
+            ],
+            "notes": [
+              "The phone turned on.",
+              "Adam got his phone back."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "police_default_1",
+                "speaker": "police",
+                "text": "Hey, what's up?"
+              }
+            ],
+            [
+              {
+                "id": "police_default_2",
+                "speaker": "police",
+                "text": "I help people at the police desk."
+              }
+            ],
+            [
+              {
+                "id": "police_default_3",
+                "speaker": "police",
+                "text": "Lost phones come here sometimes."
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "techKiosk",
+      "label": "Tech Kiosk",
+      "kind": "object",
+      "asset": "./assets/images/environment/tech-kiosk.svg",
+      "x": 1210,
+      "y": 938,
+      "radius": 100,
+      "scale": 0.92,
+      "responses": {
+        "getCharger": {
+          "lines": [
+            {
+              "id": "tech_clue_1",
+              "speaker": "tech",
+              "text": "Here is a small charger."
+            },
+            {
+              "id": "tech_clue_2",
+              "speaker": "tech",
+              "text": "Take it to the police desk."
+            },
+            {
+              "id": "tech_clue_3",
+              "speaker": "mia",
+              "text": "Good. Now the phone can turn on."
+            }
+          ],
+          "effects": {
+            "step": "finishPolice",
+            "addInventory": [
+              "charger"
+            ],
+            "notes": [
+              "Adam got a charger from the tech kiosk."
+            ]
+          }
+        },
+        "default": {
+          "variants": [
+            [
+              {
+                "id": "tech_default_1",
+                "speaker": "narrator",
+                "text": "This kiosk sells phone things."
+              }
+            ],
+            [
+              {
+                "id": "tech_default_2",
+                "speaker": "tech",
+                "text": "Chargers are on the shelf."
+              }
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}

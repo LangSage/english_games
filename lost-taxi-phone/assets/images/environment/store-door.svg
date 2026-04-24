@@ -1,0 +1,12 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="34" y="18" width="152" height="186" rx="18" fill="#DCEBFA" stroke="#7FA7C6" stroke-width="8"/>
+  <rect x="52" y="42" width="56" height="136" rx="10" fill="#F7FBFF"/>
+  <rect x="112" y="42" width="56" height="136" rx="10" fill="#F7FBFF"/>
+  <rect x="100" y="42" width="8" height="136" rx="4" fill="#87A9C3"/>
+  <circle cx="96" cy="112" r="4" fill="#5A6C7D"/>
+  <circle cx="124" cy="112" r="4" fill="#5A6C7D"/>
+  <rect x="62" y="58" width="36" height="44" rx="8" fill="#E8F5FF"/>
+  <rect x="122" y="58" width="36" height="44" rx="8" fill="#E8F5FF"/>
+  <rect x="70" y="12" width="80" height="26" rx="10" fill="#F4C561"/>
+  <text x="110" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="700" fill="#5C4520">SHOP</text>
+</svg>

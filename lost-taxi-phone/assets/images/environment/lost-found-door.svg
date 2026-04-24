@@ -1,0 +1,10 @@
+<svg width="180" height="170" viewBox="0 0 180 170" xmlns="http://www.w3.org/2000/svg">
+  <rect x="28" y="16" width="124" height="142" rx="16" fill="#5C8AB8"/>
+  <rect x="42" y="34" width="96" height="110" rx="12" fill="#DDE9F5"/>
+  <rect x="58" y="48" width="64" height="22" rx="8" fill="#5C8AB8"/>
+  <text x="90" y="63" font-family="Arial, sans-serif" font-size="10" font-weight="700" text-anchor="middle" fill="#FFFFFF">LOST &amp; FOUND</text>
+  <rect x="56" y="82" width="68" height="34" rx="10" fill="#FFF8EE"/>
+  <path d="M67 99H113" stroke="#5C8AB8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M67 108H103" stroke="#5C8AB8" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="124" cy="102" r="5" fill="#D7A441"/>
+</svg>

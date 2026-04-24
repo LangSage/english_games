@@ -1,0 +1,15 @@
+<svg width="230" height="190" viewBox="0 0 230 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="24" y="152" width="182" height="18" rx="9" fill="#6D5445"/>
+  <rect x="36" y="24" width="18" height="140" rx="8" fill="#5A4337"/>
+  <rect x="176" y="24" width="18" height="140" rx="8" fill="#5A4337"/>
+  <rect x="52" y="48" width="126" height="12" rx="6" fill="#A97E5A"/>
+  <rect x="52" y="100" width="126" height="12" rx="6" fill="#A97E5A"/>
+  <ellipse cx="82" cy="82" rx="24" ry="15" fill="#E6A85A"/>
+  <ellipse cx="115" cy="82" rx="24" ry="15" fill="#E6A85A"/>
+  <ellipse cx="148" cy="82" rx="24" ry="15" fill="#E6A85A"/>
+  <ellipse cx="98" cy="128" rx="28" ry="17" fill="#D89448"/>
+  <ellipse cx="136" cy="128" rx="28" ry="17" fill="#D89448"/>
+  <path d="M66 78H98" stroke="#F7D7A6" stroke-width="5" stroke-linecap="round" stroke-dasharray="7 6"/>
+  <path d="M99 78H131" stroke="#F7D7A6" stroke-width="5" stroke-linecap="round" stroke-dasharray="7 6"/>
+  <path d="M132 78H164" stroke="#F7D7A6" stroke-width="5" stroke-linecap="round" stroke-dasharray="7 6"/>
+</svg>
